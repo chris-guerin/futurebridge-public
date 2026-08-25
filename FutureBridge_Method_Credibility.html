@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The method · FutureBridge Signal Engine</title>
+<style>
+  :root{
+    --black:#000000;
+    --white:#FFFFFF;
+    --grey:#4B4B55;
+    --red:#F84E5D;
+    --hair:rgba(0,0,0,0.14);
+    --hair-light:rgba(255,255,255,0.22);
+    --font:"Circular Std","Circular Std Book",Arial,sans-serif;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+  body{
+    font-family:var(--font);
+    font-weight:400;
+    color:var(--black);
+    background:var(--white);
+    line-height:1.62;
+    font-size:18px;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  /* ---------- shared two-column rhythm: left breathing column + content ---------- */
+  .row{
+    display:grid;
+    grid-template-columns:1fr 3fr;
+    gap:40px;
+    padding:0 32px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .row .label{
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:none;
+    color:var(--grey);
+    padding-top:8px;
+  }
+  .row .label .num{
+    display:block;
+    font-size:34px;
+    letter-spacing:0;
+    color:var(--black);
+    line-height:1;
+    margin-bottom:10px;
+  }
+
+  /* ---------- top bar: graphic device left, logotype right ---------- */
+  header.bar{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:30px 32px 0 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .device{display:block;}
+  .device rect{fill:var(--black);}
+  .logotype{
+    font-weight:500;
+    font-size:21px;
+    letter-spacing:-0.01em;
+    color:var(--black);
+    white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px 0;}
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.14em;
+    color:var(--grey);
+    margin-bottom:30px;
+  }
+  h1{
+    font-weight:500;
+    font-size:clamp(2.1rem,4.7vw,3.7rem);
+    line-height:1.08;
+    letter-spacing:-0.02em;
+    max-width:18ch;
+    margin-bottom:34px;
+  }
+  .hero .lede{
+    font-size:clamp(1.05rem,1.6vw,1.28rem);
+    line-height:1.6;
+    max-width:62ch;
+    color:var(--black);
+  }
+  .hero .lede + .lede{margin-top:20px;}
+  .em-red{color:var(--red);}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:58px 0;}
+  .divider{border:none;border-top:1px solid var(--hair);max-width:var(--maxw);margin:0 auto;}
+
+  h2{
+    font-weight:500;
+    font-size:clamp(1.5rem,2.7vw,2.25rem);
+    line-height:1.12;
+    letter-spacing:-0.015em;
+    max-width:24ch;
+    margin-bottom:22px;
+  }
+  h3{
+    font-weight:700;
+    font-size:1.18rem;
+    letter-spacing:-0.005em;
+    margin-bottom:12px;
+  }
+  p{max-width:64ch;}
+  p + p{margin-top:18px;}
+  .sub{color:var(--grey);font-size:0.98rem;margin-bottom:30px;}
+
+  /* ---------- pillars ---------- */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--hair);
+    border-top:1px solid var(--hair);
+    border-bottom:1px solid var(--hair);
+    margin-top:30px;
+  }
+  .pillar{
+    background:var(--white);
+    padding:34px 28px 38px 28px;
+  }
+  .pillar .tag{
+    font-size:12px;
+    letter-spacing:0.16em;
+    color:var(--red);
+    margin-bottom:18px;
+  }
+  .pillar .role{
+    font-size:0.92rem;
+    color:var(--grey);
+    margin-bottom:6px;
+  }
+  .pillar h3{margin-bottom:16px;font-size:1.12rem;}
+  .pillar .anchor{
+    font-size:0.92rem;
+    color:var(--grey);
+    border-left:2px solid var(--black);
+    padding-left:14px;
+    margin-bottom:20px;
+    line-height:1.5;
+  }
+  .pillar .anchor strong{font-weight:700;color:var(--black);}
+  .pillar p{font-size:0.96rem;max-width:none;}
+  .pillar .micro{
+    font-size:12px;
+    letter-spacing:0.1em;
+    color:var(--grey);
+    margin:22px 0 6px 0;
+  }
+
+  /* ---------- flow ---------- */
+  .flow{margin-top:28px;border-top:1px solid var(--hair);}
+  .step{
+    display:grid;
+    grid-template-columns:1fr 3fr;
+    gap:40px;
+    padding:28px 0;
+    border-bottom:1px solid var(--hair);
+    align-items:start;
+  }
+  .step .n{
+    font-size:32px;
+    line-height:1;
+    color:var(--black);
+  }
+  .step h3{margin-bottom:8px;}
+  .step p{font-size:1rem;}
+
+  /* ---------- grey emphasis block (case study) ---------- */
+  .block-grey{
+    background:var(--grey);
+    color:var(--white);
+  }
+  .block-grey .row .label{color:rgba(255,255,255,0.62);}
+  .block-grey .row .label .num{color:var(--white);}
+  .block-grey h2{color:var(--white);}
+  .block-grey p{color:rgba(255,255,255,0.92);}
+  .block-grey .pull{
+    font-size:clamp(1.2rem,2vw,1.55rem);
+    font-weight:500;
+    line-height:1.3;
+    letter-spacing:-0.01em;
+    color:var(--white);
+    max-width:30ch;
+    margin:30px 0 6px 0;
+  }
+  .block-grey .casefoot{
+    font-size:0.92rem;
+    color:rgba(255,255,255,0.6);
+    margin-top:26px;
+    border-top:1px solid var(--hair-light);
+    padding-top:16px;
+    max-width:60ch;
+  }
+
+  /* ---------- table ---------- */
+  .tablewrap{overflow-x:auto;margin-top:28px;-webkit-overflow-scrolling:touch;}
+  table{
+    border-collapse:collapse;
+    width:100%;
+    min-width:760px;
+    font-size:0.95rem;
+  }
+  th,td{
+    text-align:left;
+    vertical-align:top;
+    padding:18px 20px;
+    border-bottom:1px solid var(--hair);
+  }
+  thead th{
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    color:var(--grey);
+    border-bottom:1px solid var(--black);
+  }
+  tbody th{
+    font-weight:700;
+    color:var(--black);
+    width:21%;
+  }
+  td{color:var(--black);line-height:1.5;}
+  td.diff{color:var(--black);}
+
+  /* ---------- honest answer ---------- */
+  .honest{
+    border-left:2px solid var(--red);
+    padding-left:26px;
+    max-width:64ch;
+  }
+  .honest .q{
+    font-weight:500;
+    font-size:1.2rem;
+    margin-bottom:16px;
+  }
+
+  /* ---------- closing (black) ---------- */
+  .closing{
+    background:var(--black);
+    color:var(--white);
+    padding:72px 0;
+  }
+  .closing .wrap{max-width:var(--maxw);}
+  .closing .big{
+    font-weight:500;
+    font-size:clamp(1.6rem,3vw,2.4rem);
+    line-height:1.18;
+    letter-spacing:-0.015em;
+    max-width:22ch;
+    margin-bottom:34px;
+  }
+  .closing .chain{
+    font-size:1.02rem;
+    color:rgba(255,255,255,0.82);
+    margin-bottom:10px;
+  }
+  .closing .chain strong{color:var(--white);font-weight:700;}
+  .closing .kicker{
+    font-size:1.1rem;
+    color:var(--white);
+    margin-top:26px;
+    max-width:48ch;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:46px 0 64px 0;
+    border-top:1px solid var(--hair);
+  }
+  footer .device-foot{margin-bottom:22px;}
+  footer .src{
+    font-size:0.86rem;
+    color:var(--grey);
+    line-height:1.6;
+    max-width:78ch;
+    margin-bottom:20px;
+  }
+  footer .meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer .offices{font-size:0.92rem;color:var(--black);}
+  footer .cta a{
+    color:var(--red);
+    text-decoration:none;
+    font-weight:500;
+  }
+  footer .cta a:hover{text-decoration:underline;}
+
+  .printbtn{
+    background:none;
+    border:1px solid var(--black);
+    color:var(--black);
+    font-family:var(--font);
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    padding:9px 16px;
+    cursor:pointer;
+  }
+  .printbtn:hover{background:var(--black);color:var(--white);}
+
+  /* ---------- staggered reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- figures / diagrams ---------- */
+  figure{margin:0;}
+  .figcap{font-size:0.85rem;color:var(--grey);margin-top:14px;max-width:54ch;line-height:1.5;}
+  .block-grey .figcap{color:rgba(255,255,255,0.62);}
+  .svgfig{width:100%;height:auto;display:block;}
+
+  .landscape-fig{margin-top:36px;}
+  .ls-link{stroke:var(--hair);stroke-width:1.4;fill:none;}
+  .block-grey .ls-link{stroke:rgba(255,255,255,0.28);}
+  .ls-node{fill:none;stroke:var(--black);stroke-width:1.6;}
+  .block-grey .ls-node{stroke:rgba(255,255,255,0.85);}
+  .ls-label{font-family:var(--font);font-size:12px;fill:var(--grey);}
+  .block-grey .ls-label{fill:rgba(255,255,255,0.7);}
+  .ls-sig-link{stroke:#3F43AD;stroke-width:2.2;fill:none;stroke-dasharray:160;stroke-dashoffset:160;}
+  .ls-sig-node{fill:#3F43AD;stroke:#3F43AD;}
+  .ls-sig-label{font-family:var(--font);font-size:12px;fill:#3F43AD;font-weight:700;}
+  .in .ls-sig-link{animation:lsdraw 1.1s ease .25s forwards;}
+  .in .ls-sig-node{animation:lspulse 1.7s ease .7s;}
+  @keyframes lsdraw{to{stroke-dashoffset:0;}}
+  @keyframes lspulse{0%{r:4;}40%{r:8;}100%{r:6;}}
+
+  /* pillar glyphs */
+  .pillar .glyph{width:40px;height:40px;margin-bottom:22px;display:block;}
+  .pillar .glyph line,.pillar .glyph circle,.pillar .glyph path{stroke:var(--black);stroke-width:1.6;fill:none;}
+  .pillar .glyph .dot{fill:var(--black);stroke:none;}
+
+  /* flow rail + badges */
+  .flow{position:relative;border-top:none;margin-top:30px;padding-left:0;}
+  .flow::before{content:"";position:absolute;left:21px;top:30px;bottom:30px;width:1px;background:var(--hair);}
+  .step{position:relative;border-bottom:1px solid var(--hair);}
+  .step .n{
+    width:44px;height:44px;border:1px solid var(--black);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.05rem;background:var(--white);position:relative;z-index:1;
+  }
+  .flow-split{
+    display:grid;grid-template-columns:1fr 3fr;gap:40px;
+    padding:20px 0;align-items:center;
+  }
+  .flow-split .marker{
+    width:44px;height:44px;border-radius:50%;background:var(--red);
+    display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  }
+  .flow-split .marker svg{width:20px;height:20px;}
+  .flow-split .splitlabel{font-size:0.95rem;color:var(--black);}
+  .flow-split .splitlabel strong{font-weight:700;}
+
+  /* crossover chart panel (white inset on grey) */
+  .chartcard{background:var(--white);padding:30px 28px 24px 28px;margin-top:34px;}
+  .chartcard .ctitle{font-size:12px;letter-spacing:0.12em;color:var(--grey);margin-bottom:4px;}
+  .chartcard .csub{font-size:0.95rem;color:var(--black);margin-bottom:20px;max-width:56ch;}
+  .chart-axis{stroke:var(--black);stroke-width:1;}
+  .chart-grid{stroke:var(--hair);stroke-width:1;}
+  .chart-import{stroke:#3F43AD;stroke-width:2.4;fill:none;}
+  .chart-build{stroke:#22AE8A;stroke-width:2.4;fill:none;}
+  .chart-build-dash{stroke:#22AE8A;stroke-width:1.2;fill:none;stroke-dasharray:4 4;opacity:0.55;}
+  .chart-band{fill:rgba(0,0,0,0.055);}
+  .chart-cross-line{stroke:var(--red);stroke-width:1.4;stroke-dasharray:3 3;}
+  .chart-cross-dot{fill:var(--black);}
+  .chart-txt{font-family:var(--font);font-size:12px;fill:var(--grey);}
+  .chart-txt-dark{font-family:var(--font);font-size:12px;fill:var(--black);}
+  .chart-cross-txt{font-family:var(--font);font-size:12px;fill:var(--red);font-weight:700;}
+  .chart-legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:0.88rem;color:var(--black);}
+  .chart-legend span{display:inline-flex;align-items:center;gap:8px;}
+  .chart-legend i{width:18px;height:3px;display:inline-block;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:760px){
+    body{font-size:17px;}
+    .row,.step,.flow-split{grid-template-columns:1fr;gap:14px;}
+    .row .label .num{margin-bottom:4px;}
+    .pillars{grid-template-columns:1fr;}
+    header.bar{padding-top:22px;}
+    .hero{padding:44px 0 20px 0;}
+    section{padding:44px 0;}
+    .flow::before{display:none;}
+    .chartcard{padding:22px 16px 18px 16px;}
+  }
+
+  @media print{
+    .reveal{opacity:1;transform:none;}
+    .printbtn{display:none;}
+    .closing,.block-grey{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    section{padding:30px 0;page-break-inside:avoid;}
+    .pillar,.step{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- top bar -->
+  <header class="bar reveal">
+    <svg class="device" width="50" height="34" viewBox="0 0 50 34" aria-label="FutureBridge graphic device">
+      <rect x="0" y="0"  width="50" height="7"/>
+      <rect x="0" y="13" width="35" height="7"/>
+      <rect x="0" y="26" width="22" height="7"/>
+    </svg>
+    <div class="logotype">FutureBridge</div>
+  </header>
+
+  <!-- hero -->
+  <div class="wrap hero">
+    <div class="eyebrow reveal">FutureBridge Signal Engine · The method · May 2026</div>
+    <h1 class="reveal">The method is not new. What is new is that the landscape is mapped <span class="em-red">before</span> the news arrives.</h1>
+    <p class="lede reveal">Discovery-driven planning, causal modelling, and driver-based planning are each well established. FutureBridge did not invent them. We connect them — and we populate the full landscape of hypotheses in advance. When a story breaks, we already know where it lands.</p>
+    <p class="lede reveal">Most approaches describe the future. This one tests whether it is arriving, and reads the impact of each event off a map that already exists.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- the landscape -->
+  <section class="row reveal">
+    <div class="label"><span class="num">01</span>The shift</div>
+    <div>
+      <h2>The landscape comes first</h2>
+      <p>Strategy questions do not arrive one at a time. A single market holds dozens of open questions at once. Will local manufacture beat import. Will demand tip toward electric. Will a domestic supplier base form in time.</p>
+      <p>We write each as a falsifiable claim, with a threshold, and we map how they connect. That map is the landscape. It exists before any particular news story does.</p>
+      <p>When an event arrives, the work is not to analyse it from scratch. It is to locate it. Which hypotheses does it touch. Which thresholds does it move. What does it set off downstream. Because the structure is already built, the answer is immediate.</p>
+      <p>This is the difference. A story that looks minor in isolation can move three thresholds at once. You only see that if the landscape is already drawn.</p>
+
+      <figure class="landscape-fig">
+        <svg class="svgfig" viewBox="0 0 640 290" role="img" aria-label="A network of hypotheses with one incoming signal touching three of them">
+          <!-- causal links -->
+          <line class="ls-link" x1="180" y1="86"  x2="250" y2="158"/>
+          <line class="ls-link" x1="300" y1="58"  x2="420" y2="104"/>
+          <line class="ls-link" x1="300" y1="58"  x2="510" y2="74"/>
+          <line class="ls-link" x1="420" y1="104" x2="392" y2="196"/>
+          <line class="ls-link" x1="180" y1="86"  x2="150" y2="200"/>
+          <line class="ls-link" x1="392" y1="196" x2="520" y2="200"/>
+          <line class="ls-link" x1="510" y1="74"  x2="520" y2="200"/>
+          <line class="ls-link" x1="250" y1="158" x2="150" y2="200"/>
+          <!-- signal-touched links (animated) -->
+          <line class="ls-sig-link" x1="250" y1="158" x2="180" y2="86"/>
+          <line class="ls-sig-link" x1="250" y1="158" x2="392" y2="196"/>
+          <line class="ls-sig-link" x1="250" y1="158" x2="300" y2="58"/>
+          <!-- incoming signal arrow -->
+          <line class="ls-sig-link" x1="58" y1="158" x2="234" y2="158"/>
+          <polygon class="ls-sig-node" points="234,158 224,152 224,164"/>
+          <!-- background nodes -->
+          <circle class="ls-node" cx="420" cy="104" r="6"/>
+          <circle class="ls-node" cx="510" cy="74"  r="6"/>
+          <circle class="ls-node" cx="150" cy="200" r="6"/>
+          <circle class="ls-node" cx="520" cy="200" r="6"/>
+          <!-- touched nodes (highlighted) -->
+          <circle class="ls-sig-node" cx="250" cy="158" r="7"/>
+          <circle class="ls-sig-node" cx="180" cy="86"  r="6"/>
+          <circle class="ls-sig-node" cx="392" cy="196" r="6"/>
+          <circle class="ls-sig-node" cx="300" cy="58"  r="6"/>
+          <!-- labels -->
+          <text class="ls-sig-label" x="58"  y="148">signal</text>
+          <text class="ls-sig-label" x="250" y="180" text-anchor="middle">tariff regime</text>
+          <text class="ls-sig-label" x="180" y="74"  text-anchor="middle">local build</text>
+          <text class="ls-sig-label" x="392" y="216" text-anchor="middle">plant payback</text>
+          <text class="ls-sig-label" x="300" y="46"  text-anchor="middle">electric demand</text>
+          <text class="ls-label"     x="510" y="62"  text-anchor="middle">model mix</text>
+          <text class="ls-label"     x="150" y="220" text-anchor="middle">regulation</text>
+          <text class="ls-label"     x="520" y="220" text-anchor="middle">price elasticity</text>
+          <text class="ls-label"     x="420" y="92"  text-anchor="middle">supplier base</text>
+        </svg>
+        <figcaption class="figcap">The landscape exists before the news. A single event, located on it, touches several hypotheses at once — and the connections show what moves downstream.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- three pillars -->
+  <section class="wrap reveal">
+    <h2>Three established disciplines, wired together</h2>
+    <p class="sub">Each pillar exists on its own across strategy practice. The connection is the part that does not.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true">
+          <line x1="4" y1="29" x2="36" y2="29"/>
+          <line x1="25" y1="9" x2="25" y2="35"/>
+          <circle class="dot" cx="13" cy="29" r="3"/>
+          <path d="M16 29 L23 18"/>
+        </svg>
+        <div class="tag">Pillar 01</div>
+        <div class="role">What must be true</div>
+        <h3>Discovery-driven planning</h3>
+        <div class="anchor"><strong>Rita McGrath · Ian MacMillan.</strong> Harvard Business Review, 1995. Foundational in corporate venture strategy and new-market entry.</div>
+        <p>Strategy for uncertain markets should start with explicit assumptions about what must be true — not treat them as fact. Making them visible allows deliberate testing.</p>
+        <div class="micro">FutureBridge application</div>
+        <p>We write those assumptions as measurable thresholds. WNTBT — what needs to be true — with specific numbers, not narratives. Each one is a claim the evidence either supports or breaks.</p>
+      </div>
+
+      <div class="pillar">
+        <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="dot" cx="11" cy="13" r="3"/>
+          <circle class="dot" cx="29" cy="13" r="3"/>
+          <circle class="dot" cx="20" cy="31" r="3"/>
+          <line x1="13" y1="14" x2="27" y2="14"/>
+          <line x1="28" y1="16" x2="21" y2="29"/>
+          <line x1="19" y1="29" x2="12" y2="16"/>
+        </svg>
+        <div class="tag">Pillar 02</div>
+        <div class="role">How the system works</div>
+        <h3>System dynamics</h3>
+        <div class="anchor"><strong>Jay W. Forrester · MIT Sloan.</strong> Originated system-dynamics modelling. The basis for much of modern supply-chain and policy simulation.</div>
+        <p>Complex outcomes come from interconnected variables and feedback loops, not single causes. To understand a system you map its causal structure. A change in one node moves the rest.</p>
+        <div class="micro">FutureBridge application</div>
+        <p>We map the causal structure of each question — regulation, technology cost, supply chain, competition — so we know which variables actually drive the outcome, and in what order.</p>
+      </div>
+
+      <div class="pillar">
+        <svg class="glyph" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="dot" cx="7" cy="20" r="3"/>
+          <line x1="10" y1="20" x2="22" y2="20"/>
+          <line x1="22" y1="20" x2="32" y2="10"/>
+          <line x1="22" y1="20" x2="32" y2="20"/>
+          <line x1="22" y1="20" x2="32" y2="30"/>
+          <circle class="dot" cx="34" cy="10" r="2.6"/>
+          <circle class="dot" cx="34" cy="20" r="2.6"/>
+          <circle class="dot" cx="34" cy="30" r="2.6"/>
+        </svg>
+        <div class="tag">Pillar 03</div>
+        <div class="role">What moves the outcome</div>
+        <h3>Driver trees</h3>
+        <div class="anchor"><strong>McKinsey-style driver-tree planning.</strong> Widely adopted in CFO and FP&amp;A practice. Decomposes performance into measurable input variables.</div>
+        <p>Performance is driven by a small set of measurable inputs. You manage a business by tracking those inputs, not the financial outputs. The right drivers give early warning.</p>
+        <div class="micro">FutureBridge application</div>
+        <p>We track the input nodes that move the outcome — tariff rates, local content, cell costs, regulatory milestones. Each news event is classified by which node it moves, and by how much.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- what futurebridge adds -->
+  <section class="row reveal">
+    <div class="label">The connection</div>
+    <div>
+      <h2>The components are standard. The connection is not.</h2>
+      <p>Each discipline above usually sits in isolation. Discovery-driven planning rarely connects to a real causal model. Driver trees rarely connect to external signal classification. And none of them update in real time.</p>
+      <p>We connect all three. Then we add a fourth layer: live news, classified against the model, updating the thresholds continuously rather than at the next review.</p>
+      <p>The landscape is populated and live. A tariff vote, a cost milestone, a regulatory decision — each is located on the map the day it lands. The relevant threshold moves. The decision window opens or closes. That cycle runs continuously, not annually.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- operational flow -->
+  <section class="wrap reveal">
+    <h2>From evidence to decision</h2>
+    <p class="sub">Five steps. The first four exist before the news does.</p>
+
+    <div class="flow">
+      <div class="step">
+        <div class="n">01</div>
+        <div>
+          <h3>Build the landscape</h3>
+          <p>Many falsifiable hypotheses across the whole question, not one at a time. Each is a claim that can be proven wrong, tied to the decision it informs.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <div>
+          <h3>Set the thresholds</h3>
+          <p>The WNTBT conditions, with numbers, that must hold for each hypothesis to stand. Measurable claims, not narrative assumptions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <div>
+          <h3>Map the causal drivers</h3>
+          <p>The input variables that decide whether each threshold is met — cost, regulatory timing, supply-chain depth, market dynamics. Mapped as a connected system, not a list.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <div>
+          <h3>Classify the live signal</h3>
+          <p>Each story is classified by which node it moves and in which direction. Only events that touch a threshold become signals. Everything else is noise.</p>
+        </div>
+      </div>
+      <div class="flow-split">
+        <div class="marker" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h12M13 7l5 5-5 5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="splitlabel"><strong>The news arrives.</strong> Steps one to four are already built. Everything below happens the day the story lands.</div>
+      </div>
+
+      <div class="step">
+        <div class="n">05</div>
+        <div>
+          <h3>Read the impact, open the window</h3>
+          <p>One event, located on the map, shows every threshold it touches and what it sets off downstream. Where thresholds converge, the decision window opens. The system surfaces it directly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- case study (grey emphasis) -->
+  <section class="block-grey">
+    <div class="row reveal" style="padding-top:58px;padding-bottom:0;">
+      <div class="label"><span class="num">↳</span>A worked example</div>
+      <div>
+        <h2>One announcement. Three thresholds moved.</h2>
+        <p>A global automaker was weighing local manufacture against import in a large, fast-growing market. The landscape held several open hypotheses at once: whether local production could beat imports on cost, whether demand would tip toward electric, whether a domestic supplier base would form in time, whether a trade agreement would reshape tariffs.</p>
+        <p>Each carried a threshold. The cost question turned on a crossover — the tariff level at which importing finished vehicles becomes cheaper than building them locally. We modelled that crossover and stress-tested it. A modest swing in local manufacturing cost moved the crossover point by several points of tariff.</p>
+        <p>Then a single event arrived. A trade agreement cut import tariffs in phases. In isolation, a line in a policy document.</p>
+        <p class="pull">Located on the landscape, it touched three hypotheses at once.</p>
+        <p>It pushed the build-versus-import calculation toward import. It changed the payback on a local plant. And it shifted the timing of the electric-demand question, because cheaper imports change the model mix on sale. The decision window on the plant investment narrowed — visibly, the day the news landed, not at the next strategy review.</p>
+
+        <div class="chartcard">
+          <div class="ctitle" style="letter-spacing:0.12em;">Modelled tariff crossover</div>
+          <div class="csub">As import tariffs rise, imported vehicles get dearer while local build cost holds. Where the lines cross, the cheaper option flips. A swing in local cost moves that crossover to roughly 32–44%.</div>
+          <svg class="svgfig" viewBox="0 0 640 360" role="img" aria-label="Line chart showing import cost rising with tariff and crossing a flat local build cost">
+            <!-- sensitivity band -->
+            <rect class="chart-band" x="355" y="30" width="112" height="282"/>
+            <!-- axes -->
+            <line class="chart-axis" x1="56" y1="30" x2="56" y2="312"/>
+            <line class="chart-axis" x1="56" y1="312" x2="616" y2="312"/>
+            <!-- build sensitivity dashed lines -->
+            <line class="chart-build-dash" x1="56" y1="147" x2="616" y2="147"/>
+            <line class="chart-build-dash" x1="56" y1="107" x2="616" y2="107"/>
+            <!-- build central line -->
+            <line class="chart-build" x1="56" y1="127" x2="616" y2="127"/>
+            <!-- import line -->
+            <line class="chart-import" x1="56" y1="256" x2="616" y2="53"/>
+            <!-- crossover -->
+            <line class="chart-cross-line" x1="414" y1="127" x2="414" y2="312"/>
+            <circle class="chart-cross-dot" cx="414" cy="127" r="4.5"/>
+            <text class="chart-cross-txt" x="414" y="116" text-anchor="middle">crossover</text>
+            <text class="chart-cross-txt" x="414" y="330" text-anchor="middle">≈ 38%</text>
+            <!-- zone labels -->
+            <text class="chart-txt" x="205" y="48" text-anchor="middle">cheaper to import</text>
+            <text class="chart-txt" x="540" y="48" text-anchor="middle">cheaper to build</text>
+            <!-- x ticks -->
+            <text class="chart-txt" x="56"  y="330" text-anchor="middle">0</text>
+            <text class="chart-txt" x="196" y="330" text-anchor="middle">15</text>
+            <text class="chart-txt" x="336" y="330" text-anchor="middle">30</text>
+            <text class="chart-txt" x="476" y="330" text-anchor="middle">45</text>
+            <text class="chart-txt" x="616" y="330" text-anchor="middle">60</text>
+            <!-- axis titles -->
+            <text class="chart-txt-dark" x="336" y="352" text-anchor="middle">import tariff (%)</text>
+            <text class="chart-txt" x="18" y="171" text-anchor="middle" transform="rotate(-90 18 171)">landed unit cost (indexed)</text>
+          </svg>
+          <div class="chart-legend">
+            <span><i style="background:#3F43AD;"></i>Cost to import</span>
+            <span><i style="background:#22AE8A;"></i>Cost to build locally</span>
+            <span><i style="background:rgba(0,0,0,0.18);height:12px;"></i>Sensitivity band on local cost</span>
+          </div>
+        </div>
+
+        <p class="casefoot">Anonymised. Figures and identities withheld. The structure of the analysis is unchanged; the detail that would identify the client and market has been removed.</p>
+      </div>
+    </div>
+    <div style="height:58px;"></div>
+  </section>
+
+  <!-- competitive table -->
+  <section class="wrap reveal">
+    <h2>What others do well, and where the gap is</h2>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Approach</th>
+            <th>Strong on</th>
+            <th>Where the gap is</th>
+            <th>The FutureBridge difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>McKinsey</th>
+            <td>Driver trees, transformation strategy, executive access</td>
+            <td>Real-time signal linkage, testable thresholds</td>
+            <td class="diff">The driver tree connected to live signals. Thresholds that update when the market moves, not when the next engagement is sold.</td>
+          </tr>
+          <tr>
+            <th>BCG</th>
+            <td>Scenario planning, transformation, technology landscape</td>
+            <td>Falsifiable hypotheses, operational signal classification</td>
+            <td class="diff">Scenarios replaced with falsifiable hypotheses. The question is not "which future?" but "is this one arriving on today's evidence?"</td>
+          </tr>
+          <tr>
+            <th>Gartner and analyst firms</th>
+            <td>Technology trends, hype cycle, peer benchmarking</td>
+            <td>Decision linkage, causal structure, client-specific thresholds</td>
+            <td class="diff">Trends classified against a client-specific causal map. A hype-cycle position does not tell you when to act. A threshold does.</td>
+          </tr>
+          <tr>
+            <th>In-house strategy teams</th>
+            <td>Deep context, internal data, speed of execution</td>
+            <td>External signal coverage, methodology discipline</td>
+            <td class="diff">External coverage connected to internal decision models, with access to fast-moving markets that an internal team cannot reach remotely.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- honest answer -->
+  <section class="row reveal">
+    <div class="label">A fair question</div>
+    <div class="honest">
+      <p class="q">"Is this a new framework?"</p>
+      <p>The honest answer is no. It is built on McGrath's discovery-driven planning, Forrester's system dynamics, and McKinsey-style driver trees. None of it is proprietary.</p>
+      <p>What is different is connecting them into a live, populated landscape that updates with external signals and makes the decision window explicit. Claiming a proprietary method invites scepticism. Naming the foundations does the opposite.</p>
+    </div>
+  </section>
+
+  <!-- closing -->
+  <div class="closing">
+    <div class="wrap reveal">
+      <div class="big">The landscape is drawn before the news arrives. That is the whole point.</div>
+      <div class="chain">External events <strong>→</strong> driver nodes <strong>→</strong> thresholds <strong>→</strong> decision window.</div>
+      <div class="chain">That cycle runs continuously. Strategy reviews run annually.</div>
+      <div class="kicker">The difference is not sophistication. It is speed.</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap">
+      <svg class="device device-foot" width="50" height="34" viewBox="0 0 50 34" aria-label="FutureBridge graphic device">
+        <rect x="0" y="0"  width="50" height="7"/>
+        <rect x="0" y="13" width="35" height="7"/>
+        <rect x="0" y="26" width="22" height="7"/>
+      </svg>
+      <p class="src">FutureBridge Advisory · Signal Engine methodology · May 2026. Method foundations: Rita McGrath and Ian MacMillan, "Discovery-Driven Planning" (Harvard Business Review, 1995); Jay W. Forrester, system dynamics (MIT, 1958 onwards); McKinsey-style driver-tree planning. FutureBridge application: connecting these into a continuously updated landscape with real-world signal classification.</p>
+      <div class="meta">
+        <div class="offices">FutureBridge · London · Mumbai · Singapore</div>
+        <div class="cta"><a href="mailto:christopher.guerin@futurebridge.com?subject=Signal%20Engine%20%E2%80%94%20the%20method">christopher.guerin@futurebridge.com →</a></div>
+        <button class="printbtn" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // staggered reveal on load + scroll
+    (function(){
+      var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+      if(!('IntersectionObserver' in window)){
+        els.forEach(function(e){e.classList.add('in');});
+        return;
+      }
+      // initial above-the-fold stagger
+      var top = els.filter(function(e){return e.getBoundingClientRect().top < window.innerHeight;});
+      top.forEach(function(e,i){ setTimeout(function(){e.classList.add('in');}, 90*i); });
+
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      },{threshold:0.12});
+      els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Never allow Signal Engine exports or client artefacts into this repo
+signal_engine_*.csv
+*_deliverable_*.csv
+*_recipients_*.csv
+*_outreach_*.csv
+*intelligence_brief*
+account_plans*
+*dashboard*.html
+*.xlsx
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Cruft
+.DS_Store
+Thumbs.db
+node_modules/

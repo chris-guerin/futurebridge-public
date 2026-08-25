@@ -1,0 +1,44 @@
+#!/bin/sh
+# Blocks client/personal data from entering this PUBLIC repo.
+# Enable with: git config core.hooksPath .githooks
+
+fail=0
+files=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$files" ] && exit 0
+
+CLIENTS='volkswagen|[^a-z]vwg[^a-z]|audi|porsche|skoda|bentley|lamborghini|scania|cupra|daimler|mercedes|knorr|michelin|continental-corp|infineon|halliburton|exxon|chevron|equinor|conocophillips|technipfmc|wolfspeed|mobileye|renesas|onsemi|datwyler|adidas'
+
+for f in $files; do
+  [ -f "$f" ] || continue
+  case "$f" in .githooks/*|README.md) continue ;; esac
+
+  # Email addresses other than our own domain
+  if git show ":$f" 2>/dev/null | grep -q -E "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"; then
+    if git show ":$f" | grep -o -E "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}" \
+       | grep -q -v -i "@futurebridge\.com"; then
+      echo "BLOCKED  $f  — contains third-party email address(es)"; fail=1
+    fi
+  fi
+
+  # LinkedIn profile URLs
+  if git show ":$f" 2>/dev/null | grep -q -i "linkedin\.com/in/"; then
+    echo "BLOCKED  $f  — contains LinkedIn profile URL(s)"; fail=1
+  fi
+
+  # Client names
+  if git show ":$f" 2>/dev/null | grep -q -i -E "$CLIENTS"; then
+    echo "BLOCKED  $f  — names a client company"; fail=1
+  fi
+done
+
+if [ "$fail" -ne 0 ]; then
+  cat <<'MSG'
+
+This repo is PUBLIC. The content above must not be published.
+Client-confidential material belongs in the private workfiles- repo.
+
+Override only if you are certain (and you should not be):  git commit --no-verify
+MSG
+  exit 1
+fi
+exit 0
