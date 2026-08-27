@@ -185,13 +185,13 @@
 
   /* ---------- grey emphasis block (case study) ---------- */
   .block-grey{
-    background:var(--grey);
-    color:var(--white);
+    background:#F7F7F8;
+    color:var(--black);
   }
-  .block-grey .row .label{color:rgba(255,255,255,0.62);}
-  .block-grey .row .label .num{color:var(--white);}
-  .block-grey h2{color:var(--white);}
-  .block-grey p{color:rgba(255,255,255,0.92);}
+  .block-grey .row .label{color:var(--grey);}
+  .block-grey .row .label .num{color:var(--black);}
+  .block-grey h2{color:var(--black);}
+  .block-grey p{color:var(--black);}
   .block-grey .pull{
     font-size:clamp(1.2rem,2vw,1.55rem);
     font-weight:500;
@@ -327,16 +327,16 @@
   /* ---------- figures / diagrams ---------- */
   figure{margin:0;}
   .figcap{font-size:0.85rem;color:var(--grey);margin-top:14px;max-width:54ch;line-height:1.5;}
-  .block-grey .figcap{color:rgba(255,255,255,0.62);}
+  .block-grey .figcap{color:var(--grey);}
   .svgfig{width:100%;height:auto;display:block;}
 
   .landscape-fig{margin-top:36px;}
   .ls-link{stroke:var(--hair);stroke-width:1.4;fill:none;}
-  .block-grey .ls-link{stroke:rgba(255,255,255,0.28);}
+  .block-grey .ls-link{stroke:var(--hair);}
   .ls-node{fill:none;stroke:var(--black);stroke-width:1.6;}
-  .block-grey .ls-node{stroke:rgba(255,255,255,0.85);}
+  .block-grey .ls-node{stroke:var(--black);}
   .ls-label{font-family:var(--font);font-size:12px;fill:var(--grey);}
-  .block-grey .ls-label{fill:rgba(255,255,255,0.7);}
+  .block-grey .ls-label{fill:var(--grey);}
   .ls-sig-link{stroke:#3F43AD;stroke-width:2.2;fill:none;stroke-dasharray:160;stroke-dashoffset:160;}
   .ls-sig-node{fill:#3F43AD;stroke:#3F43AD;}
   .ls-sig-label{font-family:var(--font);font-size:12px;fill:#3F43AD;font-weight:700;}
@@ -410,6 +410,98 @@
     section{padding:30px 0;page-break-inside:avoid;}
     .pillar,.step{page-break-inside:avoid;}
   }
+
+  /* ================= stepper ================= */
+  .stepper{border:1px solid var(--hair);}
+  .steptabs{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--hair);}
+  .steptab{appearance:none;background:none;border:none;border-right:1px solid var(--hair);
+           font-family:var(--font);text-align:left;padding:16px 16px 18px;cursor:pointer;
+           color:var(--grey);transition:background .16s ease,color .16s ease;}
+  .steptab:last-child{border-right:none;}
+  .steptab .sn{display:block;font-size:11px;letter-spacing:.18em;margin-bottom:8px;color:var(--red);}
+  .steptab .st{font-size:13.5px;line-height:1.3;font-weight:600;letter-spacing:-0.01em;}
+  .steptab:hover{background:rgba(0,0,0,0.025);}
+  .steptab[aria-selected="true"]{background:var(--black);color:var(--white);}
+  .steptab[aria-selected="true"] .sn{color:var(--red);}
+  .steppanel{padding:28px 26px 26px;min-height:132px;}
+  .stepphase{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+             border:1px solid var(--hair);padding:4px 9px;color:var(--grey);margin-bottom:16px;}
+  .stepphase.live{border-color:var(--red);color:var(--red);}
+  .steppanel h3{margin:0 0 10px;font-size:20px;letter-spacing:-0.015em;}
+  .steppanel p{margin:0;max-width:64ch;}
+  .steptrack{height:3px;background:var(--hair);}
+  .steptrack span{display:block;height:100%;width:20%;background:var(--black);
+                  transition:width .3s ease,background .3s ease;}
+  .steptrack span.live{background:var(--red);}
+
+  /* ================= live model ================= */
+  .model{background:var(--white);border:1px solid var(--hair);padding:22px 22px 24px;margin:30px 0 16px;}
+  .model-head{display:flex;justify-content:space-between;align-items:center;gap:16px;
+              flex-wrap:wrap;margin-bottom:18px;}
+  .model-title{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);font-weight:600;}
+  .applybtn{appearance:none;font-family:var(--font);font-size:13.5px;font-weight:600;
+            background:var(--black);color:var(--white);border:1px solid var(--black);
+            padding:10px 16px;cursor:pointer;transition:background .16s ease,opacity .16s ease;}
+  .applybtn:hover{background:var(--red);border-color:var(--red);}
+  .applybtn[disabled]{opacity:.45;cursor:default;background:var(--black);border-color:var(--black);}
+
+  .ctrls{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-bottom:20px;}
+  .ctrl{display:flex;align-items:center;gap:12px;}
+  .ctrl label{font-size:12.5px;color:var(--grey);width:104px;flex:none;}
+  .ctrl input[type=range]{flex:1;min-width:0;accent-color:#3F43AD;}
+  .ctrl output{font-size:13px;font-weight:600;width:74px;flex:none;text-align:right;
+               font-variant-numeric:tabular-nums;}
+
+  .model-chart{width:100%;height:auto;display:block;margin-bottom:6px;}
+  .m-band{fill:rgba(34,174,138,0.13);}
+  .m-axis{stroke:var(--hair);stroke-width:1;}
+  .m-import{stroke:#3F43AD;stroke-width:2.2;}
+  .m-build{stroke:#1B8F70;stroke-width:2.2;}
+  .m-now{stroke:var(--black);stroke-width:1;stroke-dasharray:3 3;opacity:.5;}
+  .m-nowdot{fill:#3F43AD;stroke:var(--white);stroke-width:2;}
+  .m-crossline{stroke:var(--red);stroke-width:1.4;stroke-dasharray:4 4;}
+  .m-crossdot{fill:var(--red);}
+  .m-crosstxt{font-family:var(--font);font-size:11px;fill:var(--red);font-weight:600;}
+  .m-lab{font-family:var(--font);font-size:11.5px;fill:var(--grey);}
+  .m-tick,.m-axtitle{font-family:var(--font);font-size:10.5px;fill:var(--grey);}
+
+  .verdictbar{font-size:14.5px;font-weight:600;letter-spacing:-0.01em;padding:12px 0 18px;
+              border-bottom:1px solid var(--hair);margin-bottom:20px;}
+  .verdictbar .sw{display:inline-block;width:9px;height:9px;margin-right:9px;border-radius:50%;
+                  vertical-align:baseline;}
+
+  .model-out{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;}
+  .hyp{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--hair);}
+  .hyp:last-child{border-bottom:none;}
+  .hyp .hname{font-size:14px;line-height:1.4;flex:1;}
+  .hyp .hstate{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+               white-space:nowrap;display:inline-flex;align-items:center;gap:5px;padding-top:2px;}
+  .hyp .hstate .g{font-size:11px;}
+  .hyp.holds .hstate{color:#00700B;}
+  .hyp.breaks .hstate{color:#C42B2B;}
+  .hyp.shifts .hstate{color:#8A5E00;}
+
+  .windowbox{border-left:1px solid var(--hair);padding-left:24px;}
+  .wlab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);
+        margin-bottom:12px;line-height:1.4;}
+  .wval{display:flex;align-items:baseline;gap:8px;margin-bottom:12px;}
+  .wval span:first-child{font-size:46px;font-weight:600;letter-spacing:-0.04em;line-height:1;
+                         font-variant-numeric:tabular-nums;transition:color .3s ease;}
+  .wunit{font-size:14px;color:var(--grey);}
+  .wbar{height:5px;background:var(--hair);overflow:hidden;}
+  .wbar span{display:block;height:100%;width:100%;background:var(--black);
+             transition:width .4s ease,background .4s ease;}
+  .wnote{font-size:13px;color:var(--grey);line-height:1.5;margin-top:12px;}
+  .narrow .wval span:first-child{color:var(--red);}
+  .narrow .wbar span{background:var(--red);}
+
+  @media (max-width:820px){
+    .steptabs{grid-template-columns:repeat(5,1fr);}
+    .steptab{padding:12px 8px 14px;}
+    .steptab .st{font-size:11px;}
+    .ctrls,.model-out{grid-template-columns:1fr;}
+    .windowbox{border-left:none;border-top:1px solid var(--hair);padding-left:0;padding-top:20px;}
+  }
 </style>
 </head>
 <body>
@@ -439,10 +531,9 @@
     <div class="label"><span class="num">01</span>The shift</div>
     <div>
       <h2>The landscape comes first</h2>
-      <p>Strategy questions do not arrive one at a time. A single market holds dozens of open questions at once. Will local manufacture beat import. Will demand tip toward electric. Will a domestic supplier base form in time.</p>
-      <p>We write each as a falsifiable claim, with a threshold, and we map how they connect. That map is the landscape. It exists before any particular news story does.</p>
-      <p>When an event arrives, the work is not to analyse it from scratch. It is to locate it. Which hypotheses does it touch. Which thresholds does it move. What does it set off downstream. Because the structure is already built, the answer is immediate.</p>
-      <p>This is the difference. A story that looks minor in isolation can move three thresholds at once. You only see that if the landscape is already drawn.</p>
+      <p>Strategy questions do not arrive one at a time. A single market holds dozens at once &mdash; will local manufacture beat import, will demand tip toward electric, will a supplier base form in time. We write each as a falsifiable claim with a threshold, and map how they connect.</p>
+      <p>So when an event arrives, the work is not to analyse it. It is to <strong>locate</strong> it. The structure is already built, so the answer is immediate.</p>
+      <p class="pull">A story that looks minor in isolation can move three thresholds at once. You only see that if the landscape is already drawn.</p>
 
       <figure class="landscape-fig">
         <svg class="svgfig" viewBox="0 0 640 290" role="img" aria-label="A network of hypotheses with one incoming signal touching three of them">
@@ -560,8 +651,8 @@
     <div>
       <h2>The components are standard. The connection is not.</h2>
       <p>Each discipline above usually sits in isolation. Discovery-driven planning rarely connects to a real causal model. Driver trees rarely connect to external signal classification. And none of them update in real time.</p>
-      <p>We connect all three. Then we add a fourth layer: live news, classified against the model, updating the thresholds continuously rather than at the next review.</p>
-      <p>The landscape is populated and live. A tariff vote, a cost milestone, a regulatory decision — each is located on the map the day it lands. The relevant threshold moves. The decision window opens or closes. That cycle runs continuously, not annually.</p>
+      <p>We connect all three, then add a fourth layer: <strong>live news, classified against the model</strong>. A tariff vote, a cost milestone, a regulatory decision &mdash; each located on the map the day it lands. The relevant threshold moves. The decision window opens or closes.</p>
+      <p class="pull">That cycle runs continuously. Strategy reviews run annually.</p>
     </div>
   </section>
 
@@ -572,49 +663,15 @@
     <h2>From evidence to decision</h2>
     <p class="sub">Five steps. The first four exist before the news does.</p>
 
-    <div class="flow">
-      <div class="step">
-        <div class="n">01</div>
-        <div>
-          <h3>Build the landscape</h3>
-          <p>Many falsifiable hypotheses across the whole question, not one at a time. Each is a claim that can be proven wrong, tied to the decision it informs.</p>
-        </div>
+    <div class="stepper" id="stepper">
+      <div class="steptabs" role="tablist" aria-label="From evidence to decision"></div>
+      <div class="steppanel">
+        <div class="stepphase" id="stepphase"></div>
+        <h3 id="stephead"></h3>
+        <p id="stepbody"></p>
       </div>
-      <div class="step">
-        <div class="n">02</div>
-        <div>
-          <h3>Set the thresholds</h3>
-          <p>The WNTBT conditions, with numbers, that must hold for each hypothesis to stand. Measurable claims, not narrative assumptions.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <div>
-          <h3>Map the causal drivers</h3>
-          <p>The input variables that decide whether each threshold is met — cost, regulatory timing, supply-chain depth, market dynamics. Mapped as a connected system, not a list.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">04</div>
-        <div>
-          <h3>Classify the live signal</h3>
-          <p>Each story is classified by which node it moves and in which direction. Only events that touch a threshold become signals. Everything else is noise.</p>
-        </div>
-      </div>
-      <div class="flow-split">
-        <div class="marker" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h12M13 7l5 5-5 5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="splitlabel"><strong>The news arrives.</strong> Steps one to four are already built. Everything below happens the day the story lands.</div>
-      </div>
-
-      <div class="step">
-        <div class="n">05</div>
-        <div>
-          <h3>Read the impact, open the window</h3>
-          <p>One event, located on the map, shows every threshold it touches and what it sets off downstream. Where thresholds converge, the decision window opens. The system surfaces it directly.</p>
-        </div>
-      </div>
+      <div class="steptrack" aria-hidden="true"><span id="steptrackfill"></span></div>
+    </div>
     </div>
   </section>
 
@@ -624,54 +681,64 @@
       <div class="label"><span class="num">↳</span>A worked example</div>
       <div>
         <h2>One announcement. Three thresholds moved.</h2>
-        <p>A global automaker was weighing local manufacture against import in a large, fast-growing market. The landscape held several open hypotheses at once: whether local production could beat imports on cost, whether demand would tip toward electric, whether a domestic supplier base would form in time, whether a trade agreement would reshape tariffs.</p>
-        <p>Each carried a threshold. The cost question turned on a crossover — the tariff level at which importing finished vehicles becomes cheaper than building them locally. We modelled that crossover and stress-tested it. A modest swing in local manufacturing cost moved the crossover point by several points of tariff.</p>
-        <p>Then a single event arrived. A trade agreement cut import tariffs in phases. In isolation, a line in a policy document.</p>
-        <p class="pull">Located on the landscape, it touched three hypotheses at once.</p>
-        <p>It pushed the build-versus-import calculation toward import. It changed the payback on a local plant. And it shifted the timing of the electric-demand question, because cheaper imports change the model mix on sale. The decision window on the plant investment narrowed — visibly, the day the news landed, not at the next strategy review.</p>
+        <p>A global automaker was weighing local manufacture against import in a large, fast-growing market. Four hypotheses were open at once, each carrying a threshold. The cost question turned on a <strong>crossover</strong> &mdash; the tariff level at which importing finished vehicles becomes cheaper than building them locally.</p>
+        <p class="pull">Then a trade agreement cut tariffs in phases. In isolation, a line in a policy document.</p>
 
-        <div class="chartcard">
-          <div class="ctitle" style="letter-spacing:0.12em;">Modelled tariff crossover</div>
-          <div class="csub">As import tariffs rise, imported vehicles get dearer while local build cost holds. Where the lines cross, the cheaper option flips. A swing in local cost moves that crossover to roughly 32–44%.</div>
-          <svg class="svgfig" viewBox="0 0 640 360" role="img" aria-label="Line chart showing import cost rising with tariff and crossing a flat local build cost">
-            <!-- sensitivity band -->
-            <rect class="chart-band" x="355" y="30" width="112" height="282"/>
-            <!-- axes -->
-            <line class="chart-axis" x1="56" y1="30" x2="56" y2="312"/>
-            <line class="chart-axis" x1="56" y1="312" x2="616" y2="312"/>
-            <!-- build sensitivity dashed lines -->
-            <line class="chart-build-dash" x1="56" y1="147" x2="616" y2="147"/>
-            <line class="chart-build-dash" x1="56" y1="107" x2="616" y2="107"/>
-            <!-- build central line -->
-            <line class="chart-build" x1="56" y1="127" x2="616" y2="127"/>
-            <!-- import line -->
-            <line class="chart-import" x1="56" y1="256" x2="616" y2="53"/>
-            <!-- crossover -->
-            <line class="chart-cross-line" x1="414" y1="127" x2="414" y2="312"/>
-            <circle class="chart-cross-dot" cx="414" cy="127" r="4.5"/>
-            <text class="chart-cross-txt" x="414" y="116" text-anchor="middle">crossover</text>
-            <text class="chart-cross-txt" x="414" y="330" text-anchor="middle">≈ 38%</text>
-            <!-- zone labels -->
-            <text class="chart-txt" x="205" y="48" text-anchor="middle">cheaper to import</text>
-            <text class="chart-txt" x="540" y="48" text-anchor="middle">cheaper to build</text>
-            <!-- x ticks -->
-            <text class="chart-txt" x="56"  y="330" text-anchor="middle">0</text>
-            <text class="chart-txt" x="196" y="330" text-anchor="middle">15</text>
-            <text class="chart-txt" x="336" y="330" text-anchor="middle">30</text>
-            <text class="chart-txt" x="476" y="330" text-anchor="middle">45</text>
-            <text class="chart-txt" x="616" y="330" text-anchor="middle">60</text>
-            <!-- axis titles -->
-            <text class="chart-txt-dark" x="336" y="352" text-anchor="middle">import tariff (%)</text>
-            <text class="chart-txt" x="18" y="171" text-anchor="middle" transform="rotate(-90 18 171)">landed unit cost (indexed)</text>
+        <div class="model">
+          <div class="model-head">
+            <div class="model-title">Modelled tariff crossover</div>
+            <button class="applybtn" id="apply" type="button">Apply the trade agreement &rarr;</button>
+          </div>
+
+          <div class="ctrls">
+            <div class="ctrl">
+              <label for="s-tariff">Import tariff</label>
+              <input id="s-tariff" type="range" min="0" max="60" step="1" value="42">
+              <output id="o-tariff">42%</output>
+            </div>
+            <div class="ctrl">
+              <label for="s-build">Local build cost</label>
+              <input id="s-build" type="range" min="-6" max="6" step="1" value="0">
+              <output id="o-build">baseline</output>
+            </div>
+          </div>
+
+          <svg class="model-chart" id="chart" viewBox="0 0 640 320" role="img"
+               aria-label="Import cost rises with tariff and crosses a flat local build cost. Drag the controls to move the crossover.">
+            <rect class="m-band" x="62" y="0" width="558" height="10"/>
+            <line class="m-axis" x1="62" y1="28" x2="62" y2="292"/>
+            <line class="m-axis" x1="62" y1="292" x2="620" y2="292"/>
+            <line class="m-import" x1="0" y1="0" x2="0" y2="0"/>
+            <line class="m-build"  x1="62" y1="0" x2="620" y2="0"/>
+            <line class="m-now"    x1="0" y1="28" x2="0" y2="292"/>
+            <circle class="m-nowdot" cx="0" cy="0" r="5"/>
+            <line class="m-crossline" x1="0" y1="0" x2="0" y2="292"/>
+            <circle class="m-crossdot" cx="0" cy="0" r="4.5"/>
+            <text class="m-crosstxt" id="t-cross" x="0" y="0" text-anchor="middle">crossover</text>
+            <text class="m-lab" id="t-import" x="0" y="0">cost to import</text>
+            <text class="m-lab" id="t-buildlab" x="72" y="0">cost to build locally</text>
+            <text class="m-tick" x="62"  y="310" text-anchor="middle">0</text>
+            <text class="m-tick" x="201" y="310" text-anchor="middle">15</text>
+            <text class="m-tick" x="341" y="310" text-anchor="middle">30</text>
+            <text class="m-tick" x="480" y="310" text-anchor="middle">45</text>
+            <text class="m-tick" x="620" y="310" text-anchor="middle">60</text>
+            <text class="m-axtitle" x="341" y="319" text-anchor="middle">import tariff (%)</text>
           </svg>
-          <div class="chart-legend">
-            <span><i style="background:#3F43AD;"></i>Cost to import</span>
-            <span><i style="background:#22AE8A;"></i>Cost to build locally</span>
-            <span><i style="background:rgba(0,0,0,0.18);height:12px;"></i>Sensitivity band on local cost</span>
+
+          <div class="verdictbar" id="verdictbar"></div>
+
+          <div class="model-out">
+            <div class="hyps" id="hyps"></div>
+            <div class="windowbox">
+              <div class="wlab">Decision window on the plant investment</div>
+              <div class="wval"><span id="wnum">14</span><span class="wunit">months</span></div>
+              <div class="wbar"><span id="wfill"></span></div>
+              <div class="wnote" id="wnote">Balanced. The case can still be made either way.</div>
+            </div>
           </div>
         </div>
 
-        <p class="casefoot">Anonymised. Figures and identities withheld. The structure of the analysis is unchanged; the detail that would identify the client and market has been removed.</p>
+        <p class="casefoot">Anonymised and simplified for illustration. The structure of the analysis is unchanged; the figures, identities and market detail that would identify the client have been removed.</p>
       </div>
     </div>
     <div style="height:58px;"></div>
@@ -779,6 +846,174 @@
       els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
     })();
   </script>
+
+
+<script>
+(function(){
+  /* ---------------- stepper ---------------- */
+  var STEPS = [
+    { t:'Build the landscape', phase:'Before the news',
+      b:'Many falsifiable hypotheses across the whole question, not one at a time. Each is a claim that can be proven wrong, tied to the decision it informs.' },
+    { t:'Set the thresholds', phase:'Before the news',
+      b:'The WNTBT conditions, with numbers, that must hold for each hypothesis to stand. Measurable claims, not narrative assumptions.' },
+    { t:'Map the causal drivers', phase:'Before the news',
+      b:'The input variables that decide whether each threshold is met \u2014 cost, regulatory timing, supply-chain depth, market dynamics. Mapped as a connected system, not a list.' },
+    { t:'Classify the live signal', phase:'Before the news',
+      b:'Each story is classified by which node it moves and in which direction. Only events that touch a threshold become signals. Everything else is noise.' },
+    { t:'Read the impact, open the window', phase:'The day the story lands',
+      b:'One event, located on the map, shows every threshold it touches and what it sets off downstream. Where thresholds converge, the decision window opens. The system surfaces it directly.' }
+  ];
+  var tabs = document.querySelector('.steptabs');
+  var phaseEl = document.getElementById('stepphase');
+  var headEl = document.getElementById('stephead');
+  var bodyEl = document.getElementById('stepbody');
+  var fillEl = document.getElementById('steptrackfill');
+  if (tabs){
+    STEPS.forEach(function(S, i){
+      var b = document.createElement('button');
+      b.className = 'steptab'; b.type = 'button'; b.setAttribute('role','tab');
+      b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      b.innerHTML = '<span class="sn"></span><span class="st"></span>';
+      b.querySelector('.sn').textContent = '0' + (i+1);
+      b.querySelector('.st').textContent = S.t;
+      b.addEventListener('click', function(){ showStep(i); });
+      tabs.appendChild(b);
+    });
+    function showStep(i){
+      var S = STEPS[i], live = (i === 4);
+      Array.prototype.forEach.call(tabs.children, function(t, k){
+        t.setAttribute('aria-selected', k === i ? 'true' : 'false');
+      });
+      phaseEl.textContent = S.phase;
+      phaseEl.className = 'stepphase' + (live ? ' live' : '');
+      headEl.textContent = S.t;
+      bodyEl.textContent = S.b;
+      fillEl.style.width = ((i+1) * 20) + '%';
+      fillEl.className = live ? 'live' : '';
+    }
+    showStep(0);
+  }
+
+  /* ---------------- live crossover model ---------------- */
+  var chart = document.getElementById('chart');
+  if (!chart) return;
+
+  var X0 = 62, X1 = 620, Y0 = 292, Y1 = 28, VMIN = 96, VMAX = 164;
+  function X(t){ return X0 + (t/60) * (X1 - X0); }
+  function Y(v){ return Y0 - ((v - VMIN)/(VMAX - VMIN)) * (Y0 - Y1); }
+
+  var q = function(sel){ return chart.querySelector(sel); };
+  var sT = document.getElementById('s-tariff'), oT = document.getElementById('o-tariff');
+  var sB = document.getElementById('s-build'),  oB = document.getElementById('o-build');
+  var hyps = document.getElementById('hyps'), vbar = document.getElementById('verdictbar');
+  var wnum = document.getElementById('wnum'), wfill = document.getElementById('wfill');
+  var wnote = document.getElementById('wnote'), wbox = document.querySelector('.windowbox');
+  var applyBtn = document.getElementById('apply');
+
+  // static: the import line and the sensitivity band never move
+  q('.m-import').setAttribute('x1', X(0));  q('.m-import').setAttribute('y1', Y(100));
+  q('.m-import').setAttribute('x2', X(60)); q('.m-import').setAttribute('y2', Y(160));
+  q('.m-band').setAttribute('y', Y(144));
+  q('.m-band').setAttribute('height', Y(132) - Y(144));
+  document.getElementById('t-import').setAttribute('x', X(60) - 6);
+  document.getElementById('t-import').setAttribute('y', Y(160) - 10);
+  document.getElementById('t-import').setAttribute('text-anchor', 'end');
+
+  function draw(){
+    var t = +sT.value, d = +sB.value;
+    var buildCost = 138 + d, cross = Math.max(0, Math.min(60, buildCost - 100));
+
+    oT.textContent = t + '%';
+    oB.textContent = d === 0 ? 'baseline' : (d > 0 ? '+' : '') + d.toFixed(0) + ' pts';
+
+    q('.m-build').setAttribute('y1', Y(buildCost));
+    q('.m-build').setAttribute('y2', Y(buildCost));
+    document.getElementById('t-buildlab').setAttribute('y', Y(buildCost) - 9);
+
+    q('.m-crossline').setAttribute('x1', X(cross)); q('.m-crossline').setAttribute('x2', X(cross));
+    q('.m-crossline').setAttribute('y1', Y(buildCost));
+    q('.m-crossdot').setAttribute('cx', X(cross)); q('.m-crossdot').setAttribute('cy', Y(buildCost));
+    var ct = document.getElementById('t-cross');
+    ct.setAttribute('x', X(cross)); ct.setAttribute('y', Y(buildCost) - 12);
+    ct.textContent = 'crossover \u2248 ' + cross.toFixed(0) + '%';
+
+    q('.m-now').setAttribute('x1', X(t)); q('.m-now').setAttribute('x2', X(t));
+    q('.m-nowdot').setAttribute('cx', X(t)); q('.m-nowdot').setAttribute('cy', Y(100 + t));
+
+    var buildWins = t >= cross;
+    vbar.innerHTML = '';
+    var sw = document.createElement('span'); sw.className = 'sw';
+    sw.style.background = buildWins ? '#1B8F70' : '#3F43AD';
+    vbar.appendChild(sw);
+    vbar.appendChild(document.createTextNode(
+      buildWins ? 'At ' + t + '% tariff, building locally is the cheaper option.'
+                : 'At ' + t + '% tariff, importing is the cheaper option.'));
+
+    var gap = cross - t;
+    var HY = [
+      { n:'Local manufacture beats import on cost',
+        s: buildWins ? 'holds' : 'breaks' },
+      { n:'Plant investment pays back inside the planning horizon',
+        s: t >= cross + 2 ? 'holds' : (t >= cross - 4 ? 'shifts' : 'breaks') },
+      { n:'Demand tips toward electric inside the decision window',
+        s: gap > 6 ? 'shifts' : 'holds' }
+    ];
+    var LABEL = { holds:{g:'\u25b2',t:'Holds'}, breaks:{g:'\u25bc',t:'Breaks'}, shifts:{g:'\u25c6',t:'Shifts'} };
+    hyps.innerHTML = '';
+    HY.forEach(function(h){
+      var row = document.createElement('div'); row.className = 'hyp ' + h.s;
+      var nm = document.createElement('div'); nm.className = 'hname'; nm.textContent = h.n;
+      var st = document.createElement('div'); st.className = 'hstate';
+      var g = document.createElement('span'); g.className = 'g'; g.textContent = LABEL[h.s].g;
+      st.appendChild(g); st.appendChild(document.createTextNode(LABEL[h.s].t));
+      row.appendChild(nm); row.appendChild(st); hyps.appendChild(row);
+    });
+
+    var months = Math.max(1, Math.min(14, Math.round(14 - Math.max(0, gap) * 0.85)));
+    wnum.textContent = months;
+    wfill.style.width = ((months / 14) * 100) + '%';
+    wbox.className = 'windowbox' + (months <= 5 ? ' narrow' : '');
+    wnote.textContent = months <= 3
+      ? 'The case for the plant is closing. Commit or walk, and soon.'
+      : (months <= 7 ? 'The window is narrowing faster than the review cycle can track it.'
+                     : 'Balanced. The case can still be made either way.');
+  }
+
+  sT.addEventListener('input', draw);
+  sB.addEventListener('input', draw);
+
+  // the announcement: tariffs cut in phases, exactly as the agreement staged them
+  applyBtn.addEventListener('click', function(){
+    var phases = [38, 30, 22], i = 0;
+    applyBtn.disabled = true;
+    applyBtn.textContent = 'Phasing in\u2026';
+    (function nextPhase(){
+      if (i >= phases.length){
+        applyBtn.textContent = 'Reset';
+        applyBtn.disabled = false;
+        applyBtn.onclick = function(){
+          sT.value = 42; draw();
+          applyBtn.textContent = 'Apply the trade agreement \u2192';
+          applyBtn.onclick = null;
+        };
+        return;
+      }
+      var target = phases[i++];
+      var from = +sT.value, t0 = null, dur = 900;
+      function step(ts){
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0)/dur), e = 1 - Math.pow(1 - p, 3);
+        sT.value = Math.round(from + (target - from) * e);
+        draw();
+        if (p < 1) requestAnimationFrame(step); else setTimeout(nextPhase, 550);
+      }
+      requestAnimationFrame(step);
+    })();
+  });
+
+  draw();
+})();
+</script>
 
 </body>
 </html>
