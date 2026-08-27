@@ -166,6 +166,17 @@
     .wrap,.row{padding-left:22px;padding-right:22px;}
   }
   @media print{.backbar{display:none;} .reveal{opacity:1;transform:none;}}
+
+  .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--black);
+          border-bottom:1px solid var(--hair);margin:30px 0 4px;}
+  .s3{padding:22px 20px 24px;border-right:1px solid var(--hair);}
+  .s3:last-child{border-right:none;}
+  .s3v{font-size:38px;font-weight:600;letter-spacing:-0.035em;line-height:1;margin-bottom:10px;
+       font-variant-numeric:tabular-nums;}
+  .s3k{font-size:13px;color:var(--grey);line-height:1.45;}
+  @media (max-width:880px){.stats3{grid-template-columns:1fr;}
+    .s3{border-right:none;border-bottom:1px solid var(--hair);}
+    .s3:last-child{border-bottom:none;}}
 </style>
 </head>
 <body>
@@ -185,9 +196,10 @@
     was charged grid fees twice. Germany removed that in November 2025.<sup><a href="#s1">1</a></sup> From
     <b>1 January 2027</b> every newly installed or refurbished charge point in the EU must support the standard
     that makes bidirectional power transfer possible.<sup><a href="#s6">6</a></sup></p>
-  <p class="lede reveal">That is the regulatory question closing. It leaves a harder one open. The infrastructure
-    becomes V2G-capable by mandate; the <b>vehicle parc does not</b>. And the parc is what the EU&rsquo;s take-up
-    figures are counted against.</p>
+  <p class="lede reveal">That is the regulatory question closing. It leaves two harder ones open. The
+    <b>vehicle parc</b> is not reached by any mandate before 2032 &mdash; and the parc is what the EU&rsquo;s take-up
+    figures are counted against. And every V2G business case in Europe today quietly assumes a driveway, which
+    <b>roughly a third of UK households do not have</b>.</p>
 </div>
 
 <hr class="divider">
@@ -318,7 +330,59 @@
 
 <!-- 05 -->
 <section class="row reveal">
-  <div class="label"><span class="num">05</span>Take-up</div>
+  <div class="label"><span class="num">05</span>The premise</div>
+  <div>
+    <h2>Every saving figure in this paper is a driveway number</h2>
+    <p>&pound;620 a year. &euro;600. &euro;720. Each of those assumes a car parked for eight hours on private
+      property, plugged into a charger the household controls. That is not an incidental detail of the business
+      case. It <em>is</em> the business case.</p>
+    <p>In the UK, <b>roughly 35% of households &mdash; about 9.6 million &mdash; have no off-street parking at
+      all</b>.<sup><a href="#s13">13</a></sup> Eight million GB households outside London depend on public
+      charging, and <b>around 90% of them are not within a five-minute walk of a public charge
+      point</b>.<sup><a href="#s14">14</a></sup></p>
+    <p class="pull">V2G does not need a car. It needs a parking space you own.</p>
+    <p>Vehicle-to-grid requires three things simultaneously: <b>long dwell</b>, <b>predictable dwell</b>, and a
+      <b>charger under the household&rsquo;s control</b>. On-street charging supplies none of them reliably. A
+      driver who parks wherever there is space cannot commit capacity to a balancing market at 4pm for delivery
+      at 6pm, and an aggregator cannot underwrite what a driver cannot commit.</p>
+    <p>So the ceiling on V2G take-up is not set by EV sales, battery chemistry or even the regulation this paper
+      opened with. It is set by <b>housing tenure</b> &mdash; a variable no energy policy in Europe is currently
+      pointing at.</p>
+
+    <div class="stats3">
+      <div class="s3"><div class="s3v">~35%</div><div class="s3k">of UK households have no off-street parking &mdash; about 9.6 million<sup><a href="#s13">13</a></sup></div></div>
+      <div class="s3"><div class="s3v">~90%</div><div class="s3k">of on-street households outside London are over five minutes&rsquo; walk from a public charger<sup><a href="#s14">14</a></sup></div></div>
+      <div class="s3"><div class="s3v">0</div><div class="s3k">EU or UK requirements found for bidirectional <em>power hardware</em> on public charge points</div></div>
+    </div>
+
+    <h3 style="margin-top:34px;">The 2027 mandate creates the handshake, not the hardware</h3>
+    <p>It is widely read as though AFIR makes public charge points V2G-capable from 1 January 2027. It does not.
+      The requirement is that they support <b>EN ISO 15118-20:2022</b><sup><a href="#s6">6</a></sup> &mdash; the
+      communication standard whose scope <em>includes</em> bidirectional power transfer. Mandating the protocol
+      mandates the conversation. It does not mandate the inverter, the export metering or the settlement
+      arrangement that would let a lamppost buy power back from a car.</p>
+    <p>We could find <b>no UK legislation</b> requiring bidirectional capability on on-street or lamppost charge
+      points. Claims that V2G became mandatory for UK commercial chargers above 22 kW in March 2025 appear in
+      secondary sources and are contradicted by others;<sup><a href="#s15">15</a></sup> we could not substantiate
+      them and do not rely on them here. The UK sits outside AFIR in any case.</p>
+    <p>Compounding it, bidirectional hardware is not yet fungible. Deployments split across CHAdeMO and CCS, and
+      the strongest products are deliberately closed &mdash; Enphase around IQ8, SolarEdge around its DC bus, GM
+      through GM Energy.<sup><a href="#s16">16</a></sup> A federated on-street V2G network needs any car to
+      transact with any post. Today most bidirectional pairings are one car to one wallbox by design.</p>
+    <p class="pull">The distributional consequence is the part nobody says out loud.</p>
+    <p>As structured today, V2G pays households that already own a driveway to provide a grid service, and
+      charges the households that do not &mdash; through network costs socialised across all bills &mdash; to
+      receive it. It is a transfer from the terraced street to the semi-detached one. That is not an argument
+      against V2G. It is an argument that the on-street case is a <b>separate product</b>, needing separate
+      economics, and it is currently nobody&rsquo;s roadmap.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 06 -->
+<section class="row reveal">
+  <div class="label"><span class="num">06</span>Take-up</div>
   <div>
     <h2>When does this map to the EU&rsquo;s figures?</h2>
     <p>The reference point most often used is that <b>30% of EVs are V2G-capable by 2030</b>, the figure in the
@@ -386,7 +450,7 @@
 
 <!-- 06 -->
 <section class="row reveal">
-  <div class="label"><span class="num">06</span>Thresholds</div>
+  <div class="label"><span class="num">07</span>Thresholds</div>
   <div>
     <h2>What would prove this wrong</h2>
     <p class="sub">Written as claims with thresholds, so the evidence can break them.</p>
@@ -411,6 +475,14 @@
       <p>If the neutral aggregators match retailer economics per vehicle, the vertical integration thesis is
         wrong and the market layers rather than consolidates. Watch the per-vehicle figures quoted in successive
         Octopus, E.ON and Mobility House offers.</p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">No European market legislates bidirectional power hardware on public charge points before 2028</div>
+      <p>The 2027 AFIR requirement covers the communication standard, not the inverter.<sup><a href="#s6">6</a></sup>
+        Falsified by any member state or the UK mandating export-capable on-street hardware with a settlement
+        route. That would be the single largest expansion of the addressable base in this paper &mdash; and would
+        break the driveway ceiling in section 05.</p>
     </div>
     <div class="thr">
       <div class="tv">Threshold &middot; breaks if false</div>
@@ -455,6 +527,15 @@
           <a href="https://www.transportenvironment.org/articles/unlocking-vehicle-to-grid-at-scale" target="_blank" rel="noopener">transportenvironment.org</a></li>
         <li id="s12">smartEn, <em>Assessment of the regulatory framework of bidirectional EV charging in Europe</em>.
           <a href="https://smarten.eu/wp-content/uploads/2023/12/V2X-Enables-and-Barriers-Study_11-2023_DIGITAL.pdf" target="_blank" rel="noopener">smarten.eu</a></li>
+        <li id="s13">UK households without off-street parking: approximately 35% / 9.6 million (a related estimate gives 9.3 million, 32.7% of stock).
+          <a href="https://www.openaccessgovernment.org/closing-the-driveway-divide-in-ev-charging/210096/" target="_blank" rel="noopener">openaccessgovernment.org</a> &middot;
+          <a href="https://uk.mer.eco/news/ev-charging-with-no-driveway-whats-the-solution/" target="_blank" rel="noopener">mer.eco</a></li>
+        <li id="s14">Field Dynamics, public charger catchment research &mdash; 8 million GB households outside London rely on public charging; about 90% sit outside a five-minute walk of a public charger.
+          <a href="https://www.field-dynamics.co.uk/research/public-charger-catchment-research/" target="_blank" rel="noopener">field-dynamics.co.uk</a></li>
+        <li id="s15">Conflicting secondary claims regarding a March 2025 UK V2G obligation for commercial chargers above 22 kW; asserted in some guides and explicitly disputed in others. Not relied upon in this paper.
+          <a href="https://teslacharger.co.uk/blog/v2g-vehicle-to-home-charging-uk-explained/" target="_blank" rel="noopener">teslacharger.co.uk</a></li>
+        <li id="s16">Clean Energy Reviews, <em>Bidirectional EV chargers review</em> &mdash; CHAdeMO/CCS split and closed vendor ecosystems (Enphase IQ8, SolarEdge DC bus, GM Energy).
+          <a href="https://www.cleanenergyreviews.info/blog/bidirectional-ev-chargers-review" target="_blank" rel="noopener">cleanenergyreviews.info</a></li>
       </ol>
     </div>
   </div>
