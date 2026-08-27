@@ -4,65 +4,216 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FutureBridge Advisory</title>
+<meta name="description" content="Strategy questions written as falsifiable claims, mapped before the news arrives.">
 <style>
   :root{
     --black:#000000;
     --white:#FFFFFF;
     --grey:#4B4B55;
     --red:#F84E5D;
+    --indigo:#3F43AD;
     --hair:rgba(0,0,0,0.14);
     --font:"Circular Std","Circular Std Book",Arial,sans-serif;
+    --maxw:1120px;
   }
   *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
   body{margin:0;background:var(--white);color:var(--black);font-family:var(--font);
        -webkit-font-smoothing:antialiased;line-height:1.5;}
-  .wrap{max-width:860px;margin:0 auto;padding:96px 28px 120px;}
-  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 20px;}
-  h1{font-size:clamp(34px,5.4vw,58px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 26px;font-weight:600;}
-  .lede{font-size:clamp(17px,2.1vw,21px);color:var(--grey);margin:0 0 72px;max-width:62ch;}
-  h2{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);
-     margin:0 0 4px;font-weight:600;}
-  .rule{height:1px;background:var(--hair);margin:0 0 34px;}
-  ul{list-style:none;margin:0;padding:0;}
-  li{border-bottom:1px solid var(--hair);}
-  li a{display:block;padding:26px 0;text-decoration:none;color:var(--black);}
-  li a:hover .t{color:var(--red);}
-  .t{font-size:clamp(19px,2.4vw,24px);font-weight:600;letter-spacing:-0.01em;transition:color .15s ease;}
-  .d{font-size:15px;color:var(--grey);margin-top:6px;max-width:60ch;}
-  footer{margin-top:80px;padding-top:26px;border-top:1px solid var(--hair);
-         font-size:14px;color:var(--grey);}
-  footer a{color:var(--grey);}
-  @media (prefers-color-scheme: dark){
-    :root{--black:#FFFFFF;--white:#0B0B0D;--grey:#9A9AA4;--hair:rgba(255,255,255,0.16);}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  section{padding:0 0 96px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:104px 0 72px;}
+  .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 26px;}
+  h1{font-size:clamp(34px,5.6vw,64px);line-height:1.06;letter-spacing:-0.025em;
+     margin:0 0 30px;font-weight:600;max-width:19ch;}
+  .lede{font-size:clamp(17px,1.9vw,21px);color:var(--grey);margin:0;max-width:60ch;}
+
+  /* ---------- landscape figure ---------- */
+  figure{margin:0;}
+  .svgfig{width:100%;height:auto;display:block;overflow:visible;}
+  .ls-link{stroke:var(--hair);stroke-width:1.4;fill:none;}
+  .ls-node{fill:var(--white);stroke:var(--black);stroke-width:1.6;}
+  .ls-label{font-family:var(--font);font-size:12px;fill:var(--grey);}
+  .ls-sig-link{stroke:var(--indigo);stroke-width:2.2;fill:none;
+               stroke-dasharray:900;stroke-dashoffset:900;}
+  .ls-sig-node{fill:var(--indigo);stroke:var(--indigo);}
+  .in .ls-sig-link{animation:lsdraw 1.5s ease .3s forwards;}
+  .in .ls-sig-node:nth-of-type(1){animation:lspulse 1.6s ease .75s;}
+  .in .ls-sig-node:nth-of-type(2){animation:lspulse 1.6s ease 1.05s;}
+  .in .ls-sig-node:nth-of-type(3){animation:lspulse 1.6s ease 1.35s;}
+  @keyframes lsdraw{to{stroke-dashoffset:0;}}
+  @keyframes lspulse{0%{r:4;}40%{r:9;}100%{r:6;}}
+  .figcap{font-size:0.85rem;color:var(--grey);margin-top:20px;max-width:56ch;line-height:1.55;}
+  .figcap b{color:var(--black);font-weight:600;}
+
+  /* ---------- pillars ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
+           border-top:1px solid var(--hair);padding-top:44px;}
+  .pillar h3{font-size:15px;margin:0 0 10px;font-weight:600;letter-spacing:-0.01em;}
+  .pillar p{font-size:14.5px;color:var(--grey);margin:0;line-height:1.6;}
+  .pillar .n{font-size:11px;letter-spacing:.18em;color:var(--red);display:block;margin-bottom:14px;}
+
+  /* ---------- index of pieces ---------- */
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
+     margin:0 0 28px;font-weight:600;}
+  .pieces{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--black);}
+  .piece{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);}
+  .piece:last-child{border-right:none;}
+  .piece a{display:block;padding:30px 26px 34px;text-decoration:none;color:var(--black);height:100%;
+           transition:background .18s ease;}
+  .piece a:hover{background:rgba(0,0,0,0.028);}
+  .piece a:hover .t{color:var(--red);}
+  .piece a:hover .go{transform:translateX(4px);color:var(--red);}
+  .num{font-size:11px;letter-spacing:.18em;color:var(--grey);display:block;margin-bottom:20px;}
+  .t{font-size:21px;font-weight:600;letter-spacing:-0.015em;margin-bottom:9px;
+     transition:color .15s ease;line-height:1.2;}
+  .d{font-size:14.5px;color:var(--grey);line-height:1.55;}
+  .go{display:inline-block;margin-top:20px;font-size:13px;color:var(--grey);
+      transition:transform .18s ease,color .18s ease;}
+
+  footer{border-top:1px solid var(--hair);padding:34px 0 64px;font-size:14px;color:var(--grey);
+         display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  footer a{color:var(--grey);text-decoration:none;border-bottom:1px solid var(--hair);}
+  footer a:hover{color:var(--red);border-bottom-color:var(--red);}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .in .ls-sig-link{animation:none;stroke-dashoffset:0;}
+    .in .ls-sig-node{animation:none;}
+  }
+
+  @media (max-width:860px){
+    .pillars,.pieces{grid-template-columns:1fr;}
+    .pillars{gap:32px;}
+    .piece{border-right:none;}
+    .wrap{padding:0 22px;}
+    .hero{padding:72px 0 52px;}
+    section{padding:0 0 68px;}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <p class="eyebrow">FutureBridge Advisory</p>
-  <h1>Mapping the landscape before the decision.</h1>
-  <p class="lede">Structured technology and market intelligence for capital-allocation decisions in mobility and energy.</p>
 
-  <h2>Writing</h2>
-  <div class="rule"></div>
-  <ul>
-    <li><a href="FutureBridge_Method_Credibility.html">
-      <div class="t">The method</div>
-      <div class="d">Three established disciplines, wired together — from evidence to decision.</div>
-    </a></li>
-    <li><a href="uk-energy-sovereign-case.html">
-      <div class="t">Energy sovereignty</div>
-      <div class="d">The global map and the UK business case.</div>
-    </a></li>
-    <li><a href="mobility-infographic.html">
-      <div class="t">Who gets the money?</div>
-      <div class="d">Where cost and value actually sit across the mobility stack.</div>
-    </a></li>
-  </ul>
+<div class="wrap">
+
+  <header class="hero reveal">
+    <p class="eyebrow">FutureBridge Advisory</p>
+    <h1>The method is not new. What is new is that the landscape is mapped.</h1>
+    <p class="lede">Most approaches describe the future. This one tests whether it is arriving &mdash; and reads
+      the impact of each event off a map that already exists.</p>
+  </header>
+
+  <section class="reveal">
+    <figure>
+      <svg class="svgfig" viewBox="0 0 1000 330" role="img"
+           aria-label="A network of hypothesis nodes. An incoming event traces a path through the map and moves three thresholds.">
+        <g class="ls-link">
+          <path d="M120 96 L262 58"/><path d="M120 96 L252 182"/><path d="M262 58 L404 122"/>
+          <path d="M252 182 L404 122"/><path d="M252 182 L392 252"/><path d="M404 122 L548 76"/>
+          <path d="M404 122 L562 202"/><path d="M392 252 L562 202"/><path d="M548 76 L702 136"/>
+          <path d="M562 202 L702 136"/><path d="M562 202 L700 266"/><path d="M702 136 L852 92"/>
+          <path d="M702 136 L858 216"/><path d="M700 266 L858 216"/><path d="M548 76 L852 92"/>
+        </g>
+
+        <path class="ls-sig-link" d="M6 168 L252 182 L404 122 L562 202"/>
+
+        <g class="ls-node">
+          <circle cx="120" cy="96" r="6"/><circle cx="262" cy="58" r="6"/>
+          <circle cx="392" cy="252" r="6"/><circle cx="548" cy="76" r="6"/>
+          <circle cx="702" cy="136" r="6"/><circle cx="700" cy="266" r="6"/>
+          <circle cx="852" cy="92" r="6"/><circle cx="858" cy="216" r="6"/>
+        </g>
+
+        <circle class="ls-sig-node" cx="252" cy="182" r="6"/>
+        <circle class="ls-sig-node" cx="404" cy="122" r="6"/>
+        <circle class="ls-sig-node" cx="562" cy="202" r="6"/>
+
+        <text class="ls-label" x="6" y="150">event</text>
+        <text class="ls-label" x="884" y="94">hypothesis</text>
+        <text class="ls-label" x="588" y="228">threshold moved</text>
+      </svg>
+      <figcaption class="figcap">A story that looks minor in isolation can move <b>three thresholds at once</b>.
+        You only see that if the landscape is already drawn.</figcaption>
+    </figure>
+  </section>
+
+  <section class="pillars reveal">
+    <div class="pillar">
+      <span class="n">01</span>
+      <h3>Assumptions made explicit</h3>
+      <p>Each open question is written as a falsifiable claim with a specific threshold &mdash; what needs to be
+        true, in numbers rather than narrative.</p>
+    </div>
+    <div class="pillar">
+      <span class="n">02</span>
+      <h3>Causal structure mapped</h3>
+      <p>Regulation, technology cost, supply chain, competition. Which variables actually drive the
+        outcome, and in what order.</p>
+    </div>
+    <div class="pillar">
+      <span class="n">03</span>
+      <h3>Evidence read against the map</h3>
+      <p>When an event arrives the work is not to analyse it from scratch. It is to locate it, and to see
+        what it sets off downstream.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Writing</h2>
+    <div class="pieces">
+      <div class="piece"><a href="FutureBridge_Method_Credibility.html">
+        <span class="num">01</span>
+        <div class="t">The method</div>
+        <div class="d">Three established disciplines, wired together &mdash; and why the connection is the part
+          that does not already exist.</div>
+        <span class="go">Read &rarr;</span>
+      </a></div>
+      <div class="piece"><a href="uk-energy-sovereign-case.html">
+        <span class="num">02</span>
+        <div class="t">Energy sovereignty</div>
+        <div class="d">The global map, and the business case for the UK reading it deliberately rather
+          than reactively.</div>
+        <span class="go">Read &rarr;</span>
+      </a></div>
+      <div class="piece"><a href="mobility-infographic.html">
+        <span class="num">03</span>
+        <div class="t">Who gets the money?</div>
+        <div class="d">Where cost and value actually sit across the mobility stack, and who captures
+          each layer.</div>
+        <span class="go">Read &rarr;</span>
+      </a></div>
+    </div>
+  </section>
 
   <footer>
+    <span>FutureBridge Advisory</span>
     <a href="mailto:christopher.guerin@futurebridge.com">christopher.guerin@futurebridge.com</a>
   </footer>
+
 </div>
+
+<script>
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in');});
+      return;
+    }
+    var top = els.filter(function(e){return e.getBoundingClientRect().top < window.innerHeight;});
+    top.forEach(function(e,i){ setTimeout(function(){e.classList.add('in');}, 110*i); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:0.12});
+    els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
+  })();
+</script>
+
 </body>
 </html>
