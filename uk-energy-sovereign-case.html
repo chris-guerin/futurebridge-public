@@ -509,6 +509,7 @@ td.cyan { color: var(--cyan); font-weight: 600; }
 </style>
 </head>
 <body>
+<div class="backbar"><a href="index.html"><span class="ar" aria-hidden="true">&larr;</span>FutureBridge Advisory</a></div>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <div class="hero">
@@ -1271,6 +1272,17 @@ td.cyan { color: var(--cyan); font-weight: 600; }
   0%,80%,100% { opacity:0.2; transform:scale(0.8); }
   40% { opacity:1; transform:scale(1); }
 }
+
+  /* ---------- back to index ---------- */
+  .backbar{position:sticky;top:0;z-index:120;background:#FFFFFF;
+           border-bottom:1px solid rgba(0,0,0,0.10);}
+  .backbar a{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;
+             font-family:inherit;font-size:13px;line-height:1;letter-spacing:-0.005em;
+             color:#4B4B55;text-decoration:none;transition:color .15s ease;}
+  .backbar a:hover{color:#F84E5D;}
+  .backbar .ar{font-size:15px;line-height:1;transition:transform .15s ease;}
+  .backbar a:hover .ar{transform:translateX(-3px);}
+  @media print{.backbar{display:none;}}
 </style>
 
 <script>
