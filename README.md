@@ -28,6 +28,12 @@ per clone:
 
     git config core.hooksPath .githooks
 
+Published analysis that legitimately names public companies from cited public
+sources can be added to the `REVIEWED` list at the top of the hook. That waives
+**only** the client-name check for that file; the contact-data and LinkedIn
+checks still run on everything, always. Adding a file to `REVIEWED` is a
+deliberate act recorded in git history.
+
 The hook is a backstop, not a substitute for reading what you are committing.
 
 ## Contents

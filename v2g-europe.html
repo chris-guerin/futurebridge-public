@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle-to-Grid in Europe · FutureBridge</title>
+<meta name="description" content="How each European country is structuring vehicle-to-grid, what the commercial models are, how pan-European players compete, and when take-up actually reaches the EU's targeted figures.">
+<style>
+  :root{
+    --black:#000000;
+    --ink:#0b0b0b;
+    --white:#FFFFFF;
+    --grey:#4B4B55;
+    --dim:#6f6f79;
+    --red:#F84E5D;
+    --indigo:#3F43AD;
+    --green:#00700B;
+    --amber:#8A5E00;
+    --hair:rgba(0,0,0,0.14);
+    --hair2:rgba(0,0,0,0.07);
+    --font:"Circular Std","Circular Std Book",Arial,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);
+       -webkit-font-smoothing:antialiased;line-height:1.62;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  .backbar{position:sticky;top:0;z-index:120;background:#FFFFFF;border-bottom:1px solid rgba(0,0,0,0.10);}
+  .backbar a{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;
+             font-family:inherit;font-size:13px;line-height:1;color:#4B4B55;text-decoration:none;
+             transition:color .15s ease;}
+  .backbar a:hover{color:var(--red);}
+  .backbar .ar{font-size:15px;transition:transform .15s ease;}
+  .backbar a:hover .ar{transform:translateX(-3px);}
+
+  header.bar{max-width:var(--maxw);margin:0 auto;padding:30px 32px 0;
+             display:flex;justify-content:space-between;align-items:flex-start;}
+  .device rect{fill:var(--black);}
+  .logotype{font-weight:500;font-size:21px;letter-spacing:-0.01em;white-space:nowrap;}
+
+  .hero{padding:56px 0 20px;}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 24px;}
+  h1{font-size:clamp(32px,5vw,56px);line-height:1.06;letter-spacing:-0.028em;
+     margin:0 0 28px;font-weight:600;max-width:20ch;}
+  h1 .em-red{color:var(--red);}
+  .lede{font-size:clamp(17px,1.8vw,20px);color:var(--grey);margin:0 0 20px;max-width:68ch;}
+  .lede b{color:var(--ink);font-weight:600;}
+
+  hr.divider{border:none;border-top:1px solid var(--hair);margin:56px 0 0;}
+  section{padding:58px 0;}
+  .row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:44px;
+       max-width:var(--maxw);margin:0 auto;padding-left:32px;padding-right:32px;}
+  .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);
+         padding-top:6px;line-height:1.6;}
+  .label .num{display:block;font-size:26px;letter-spacing:-0.02em;color:var(--black);
+              margin-bottom:10px;font-weight:600;text-transform:none;}
+  h2{font-size:clamp(24px,3vw,34px);line-height:1.16;letter-spacing:-0.022em;margin:0 0 20px;font-weight:600;}
+  h3{font-size:18px;letter-spacing:-0.015em;margin:0 0 8px;font-weight:600;}
+  p{margin:0 0 18px;}
+  p:last-child{margin-bottom:0;}
+  .sub{color:var(--grey);margin-top:-8px;margin-bottom:26px;}
+  .pull{font-size:clamp(19px,2.2vw,25px);line-height:1.32;letter-spacing:-0.018em;
+        font-weight:600;border-left:2px solid var(--red);padding-left:20px;margin:28px 0;max-width:34ch;}
+  .fnote{font-size:12.5px;color:var(--dim);line-height:1.55;}
+  sup a{color:var(--indigo);text-decoration:none;font-size:10px;font-weight:600;
+        padding-left:2px;font-variant-numeric:tabular-nums;}
+
+  /* ---------- country matrix ---------- */
+  .matrix{border:1px solid var(--hair);}
+  .mrow{display:grid;grid-template-columns:150px repeat(4,1fr);align-items:stretch;
+        border-bottom:1px solid var(--hair2);cursor:pointer;transition:background .15s ease;}
+  .mrow:last-of-type{border-bottom:none;}
+  .mrow.head{background:#FAFAFB;cursor:default;border-bottom:1px solid var(--hair);}
+  .mrow:not(.head):hover{background:rgba(0,0,0,0.022);}
+  .mrow.open{background:rgba(63,67,173,0.045);}
+  .mc{padding:13px 14px;font-size:13px;display:flex;align-items:center;gap:8px;min-width:0;}
+  .mrow.head .mc{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);
+                 font-weight:600;line-height:1.35;}
+  .cname{font-weight:600;font-size:14.5px;}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;letter-spacing:.04em;
+         white-space:nowrap;}
+  .badge .g{font-size:11px;line-height:1;}
+  .b-yes{color:var(--green);} .b-part{color:var(--amber);} .b-no{color:var(--red);}
+  .b-unk{color:var(--dim);}
+  .mdetail{grid-column:1/-1;padding:0 16px;max-height:0;overflow:hidden;
+           transition:max-height .3s ease,padding .3s ease;background:#FBFBFC;
+           border-top:1px solid transparent;}
+  .mdetail.open{max-height:460px;padding:18px 16px 22px;border-top:1px solid var(--hair);}
+  .mdetail p{font-size:14px;margin:0 0 10px;color:var(--grey);max-width:78ch;}
+  .mdetail p:last-child{margin:0;}
+  .mdetail b{color:var(--ink);}
+
+  /* ---------- model cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--black);}
+  .card{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);padding:24px 24px 26px;}
+  .card:nth-child(2n){border-right:none;}
+  .card .cn{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+            color:var(--red);display:block;margin-bottom:14px;}
+  .card p{font-size:14.5px;color:var(--grey);margin:0 0 14px;}
+  .who{font-size:12.5px;color:var(--dim);border-top:1px solid var(--hair2);padding-top:12px;}
+  .who b{color:var(--ink);font-weight:600;}
+  .ev{font-size:13px;color:var(--ink);background:#F6F6F8;padding:10px 12px;margin:0 0 14px;
+      border-left:2px solid var(--indigo);}
+
+  /* ---------- take-up model ---------- */
+  .tmodel{border:1px solid var(--hair);padding:24px;}
+  .tctrls{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-bottom:22px;}
+  .tctrl{display:flex;align-items:center;gap:12px;}
+  .tctrl label{font-size:12.5px;color:var(--grey);width:190px;flex:none;line-height:1.35;}
+  .tctrl input[type=range]{flex:1;min-width:0;accent-color:#3F43AD;}
+  .tctrl output{font-size:13px;font-weight:600;width:62px;flex:none;text-align:right;
+                font-variant-numeric:tabular-nums;}
+  .tchart{width:100%;height:auto;display:block;margin-bottom:6px;}
+  .t-axis{stroke:var(--hair);stroke-width:1;}
+  .t-target{stroke:var(--red);stroke-width:1.4;stroke-dasharray:4 4;}
+  .t-curve{stroke:var(--indigo);stroke-width:2.4;fill:none;}
+  .t-area{fill:rgba(63,67,173,0.08);}
+  .t-hit{fill:var(--red);}
+  .t-lab{font-family:var(--font);font-size:11px;fill:var(--grey);}
+  .t-labr{font-family:var(--font);font-size:11px;fill:var(--red);font-weight:600;}
+  .tout{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--hair);
+        padding-top:20px;margin-top:6px;}
+  .tbig{font-size:44px;font-weight:600;letter-spacing:-0.035em;line-height:1;margin-bottom:8px;
+        font-variant-numeric:tabular-nums;}
+  .tbig.late{color:var(--red);}
+  .tlab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
+  .tnote{font-size:13.5px;color:var(--grey);line-height:1.5;}
+
+  /* ---------- thresholds ---------- */
+  .thr{border-left:2px solid var(--hair);padding:4px 0 4px 18px;margin-bottom:22px;}
+  .thr:last-child{margin-bottom:0;}
+  .thr .tt{font-size:15.5px;font-weight:600;margin-bottom:5px;letter-spacing:-0.01em;}
+  .thr .tv{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+           color:var(--indigo);margin-bottom:6px;}
+  .thr p{font-size:14.5px;color:var(--grey);margin:0;}
+
+  /* ---------- sources ---------- */
+  .srcs{border-top:1px solid var(--hair);padding-top:22px;}
+  .srcs ol{margin:0;padding-left:22px;}
+  .srcs li{font-size:13px;color:var(--grey);margin-bottom:9px;line-height:1.5;}
+  .srcs a{color:var(--indigo);text-decoration:none;word-break:break-word;}
+  .srcs a:hover{text-decoration:underline;}
+
+  footer{border-top:1px solid var(--hair);margin-top:20px;padding:30px 0 60px;
+         font-size:13.5px;color:var(--grey);display:flex;justify-content:space-between;
+         gap:20px;flex-wrap:wrap;}
+  footer a{color:var(--grey);text-decoration:none;border-bottom:1px solid var(--hair);}
+  footer a:hover{color:var(--red);border-bottom-color:var(--red);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+  @media (max-width:880px){
+    .row{grid-template-columns:1fr;gap:18px;}
+    .label{padding-top:0;}
+    .label .num{display:inline-block;margin-right:10px;margin-bottom:0;}
+    .cards,.tctrls,.tout{grid-template-columns:1fr;}
+    .card{border-right:none;}
+    .mrow{grid-template-columns:110px repeat(2,1fr);}
+    .mrow .mc:nth-child(4),.mrow .mc:nth-child(5){display:none;}
+    .tctrl label{width:140px;}
+    .wrap,.row{padding-left:22px;padding-right:22px;}
+  }
+  @media print{.backbar{display:none;} .reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="backbar"><a href="index.html"><span class="ar" aria-hidden="true">&larr;</span>FutureBridge Advisory</a></div>
+
+<header class="bar reveal">
+  <svg class="device" width="50" height="34" viewBox="0 0 50 34" aria-label="FutureBridge graphic device">
+    <rect x="0" y="0" width="50" height="7"/><rect x="0" y="13" width="35" height="7"/><rect x="0" y="26" width="22" height="7"/>
+  </svg>
+  <div class="logotype">FutureBridge</div>
+</header>
+
+<div class="wrap hero">
+  <div class="eyebrow reveal">FutureBridge Signal Engine &middot; Vehicle-to-grid &middot; August 2026</div>
+  <h1 class="reveal">Europe just fixed the regulation. The <span class="em-red">cars</span> are now the constraint.</h1>
+  <p class="lede reveal">For a decade the vehicle-to-grid business case died on the same point: the same electron
+    was charged grid fees twice. Germany removed that in November 2025.<sup><a href="#s1">1</a></sup> From
+    <b>1 January 2027</b> every newly installed or refurbished charge point in the EU must support the standard
+    that makes bidirectional power transfer possible.<sup><a href="#s6">6</a></sup></p>
+  <p class="lede reveal">That is the regulatory question closing. It leaves a harder one open. The infrastructure
+    becomes V2G-capable by mandate; the <b>vehicle parc does not</b>. And the parc is what the EU&rsquo;s take-up
+    figures are counted against.</p>
+</div>
+
+<hr class="divider">
+
+<!-- 01 -->
+<section class="row reveal">
+  <div class="label"><span class="num">01</span>The barrier</div>
+  <div>
+    <h2>It was never the technology</h2>
+    <p>Bidirectional hardware has worked since the CHAdeMO Leaf. What did not work was the arithmetic. In most
+      European markets electricity drawn into a car battery paid network charges, and the same electricity paid
+      again on the way back out. On a round trip that is a levy on an asset doing the grid a service.</p>
+    <p>On <b>13 November 2025</b> the Bundestag amended the Energy Industry Act (EnWG) to end double network
+      charging and to treat electricity fed back from an EV battery as storage electricity.<sup><a href="#s1">1</a></sup>
+      The Bundesnetzagentur&rsquo;s <b>MiSpeL</b> determination gives it operational form from
+      <b>1 October 2026</b>, with a transitional period to <b>30 September 2027</b> during which it applies only
+      by agreement with the grid and metering operator.<sup><a href="#s2">2</a></sup><sup><a href="#s3">3</a></sup></p>
+    <p class="pull">The economics did not improve. The penalty was removed.</p>
+    <p>That distinction matters for anyone sizing this market. Nothing about the value V2G creates changed in
+      November 2025. What changed is that a structural tax on capturing it was lifted &mdash; in one member state,
+      on a timetable that runs into late 2027 before it is unconditional.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 02 -->
+<section class="row reveal">
+  <div class="label"><span class="num">02</span>By country</div>
+  <div>
+    <h2>Four things have to be true at once</h2>
+    <p class="sub">Double charging resolved, meters that can settle it, market access for an aggregator, and a
+      product someone can actually buy. Most countries have some. Select a row for detail.</p>
+
+    <div class="matrix" id="matrix"></div>
+
+    <p class="fnote" style="margin-top:16px;">Blank cells are not zeros. Where we could not source a position
+      from public material it is marked <em>not established</em> rather than estimated.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 03 -->
+<section class="row reveal">
+  <div class="label"><span class="num">03</span>The models</div>
+  <div>
+    <h2>Four commercial models, four different owners of the customer</h2>
+    <p class="sub">The technology is common to all of them. What differs is who holds the billing relationship,
+      and therefore who captures the flexibility margin.</p>
+
+    <div class="cards">
+      <div class="card">
+        <span class="cn">Model 01 &middot; Retailer-led</span>
+        <h3>The energy supplier owns it</h3>
+        <p>The tariff is the product. The car is an input to a portfolio the supplier already optimises. Highest
+          margin capture, because the supplier nets V2G against its own imbalance position rather than selling a
+          service to a third party.</p>
+        <div class="ev">Octopus <b>Power Pack</b>, UK &mdash; reported saving around <b>&pound;620 a year</b> against a
+          standard variable tariff, with Octopus&rsquo; own modelling up to <b>&pound;850</b>.<sup><a href="#s4">4</a></sup></div>
+        <div class="who">Captured by: <b>the retailer.</b> The OEM supplies a compliant vehicle and sees none of the margin.</div>
+      </div>
+
+      <div class="card">
+        <span class="cn">Model 02 &middot; OEM-led</span>
+        <h3>The carmaker owns it</h3>
+        <p>Bidirectional charging sold as a vehicle feature with a captive wallbox and an energy partner behind
+          the scenes. Defends the OEM&rsquo;s relationship with the driver and creates a post-sale revenue line, at
+          the cost of building an energy business.</p>
+        <div class="ev">Renault 5 with the PowerBox Verso in France &mdash; first commercially available V2G offer
+          worldwide, October 2024, quoted at up to <b>&euro;600 a year</b>.<sup><a href="#s5">5</a></sup>
+          Volkswagen with Elli, and Mercedes-Benz on the electric GLC and CLA from 2026.<sup><a href="#s5">5</a></sup></div>
+        <div class="who">Captured by: <b>the OEM</b> &mdash; if it can carry the energy-market obligations. Most cannot alone.</div>
+      </div>
+
+      <div class="card">
+        <span class="cn">Model 03 &middot; Paired</span>
+        <h3>OEM plus utility, split economics</h3>
+        <p>The pragmatic middle. The carmaker brings the parc and the warranty position; the utility brings market
+          access, metering and settlement. Fastest route to a live offer, and the model most European launches have
+          actually taken.</p>
+        <div class="ev">BMW with E.ON since February 2026 &mdash; wallbox, tariff and smart meter as one package, with a
+          bonus quoted up to <b>&euro;720 a year</b>.<sup><a href="#s5">5</a></sup> Ford with Octopus from summer 2026;
+          Kia and Hyundai in the Netherlands from late 2025.<sup><a href="#s5">5</a></sup></div>
+        <div class="who">Captured by: <b>split.</b> Whoever owns the tariff tends to own the renewal.</div>
+      </div>
+
+      <div class="card">
+        <span class="cn">Model 04 &middot; Fleet and depot</span>
+        <h3>Aggregation without a consumer</h3>
+        <p>Predictable dwell time, one counterparty, no consumer churn. The only model where V2G economics work
+          today without a retail tariff, because the operator can commit capacity with confidence.</p>
+        <div class="ev">Utrecht&rsquo;s car-sharing deployment &mdash; 50 Renault 5s from June 2025, scaling toward 500.
+          The Johan Cruijff ArenA has run since 2019.<sup><a href="#s5">5</a></sup> Nuvve&rsquo;s revenue remains
+          driven by V2G school-bus hardware rather than by traded flexibility.<sup><a href="#s7">7</a></sup></div>
+        <div class="who">Captured by: <b>the fleet operator or aggregator.</b> The clearest near-term P&amp;L.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 04 -->
+<section class="row reveal">
+  <div class="label"><span class="num">04</span>Competition</div>
+  <div>
+    <h2>&ldquo;Pan-European&rdquo; is a platform claim, not a market position</h2>
+    <p>Electricity markets are national. Balancing products, network tariffs, metering rules, settlement periods
+      and consumer protection all stop at the border. A V2G proposition that works in Rotterdam does not port to
+      Dortmund without re-plumbing, and the German rules do not become unconditional until late 2027.<sup><a href="#s2">2</a></sup></p>
+    <p>So the pan-European players are not competing for a European market. They are competing to amortise one
+      platform across many national markets faster than a national incumbent can build its own. Three postures
+      are visible:</p>
+    <p><b>The vertically integrated retailer.</b> Octopus is the clearest case &mdash; it owns the customer, the tariff,
+      the optimisation stack and increasingly the OEM partnerships, and it exports the stack. Its constraint is
+      that it must win retail energy customers country by country.</p>
+    <p><b>The neutral aggregator.</b> The Mobility House, Jedlix, Virta, Nuvve. They sell the market-access layer to
+      whoever owns the customer. Scales across borders more easily precisely because it does not need the retail
+      relationship &mdash; and captures less per vehicle for the same reason.</p>
+    <p><b>The utility incumbent.</b> E.ON, Enel X and their peers, moving through OEM partnerships in their home
+      territories. Strong where they already hold the meter; weak where they do not.</p>
+    <p class="pull">Nobody is winning Europe. Several are winning the right to be the layer everyone else rents.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 05 -->
+<section class="row reveal">
+  <div class="label"><span class="num">05</span>Take-up</div>
+  <div>
+    <h2>When does this map to the EU&rsquo;s figures?</h2>
+    <p>The reference point most often used is that <b>30% of EVs are V2G-capable by 2030</b>, the figure in the
+      Coalition of the Willing on Bidirectional Charging.<sup><a href="#s8">8</a></sup> Europe&rsquo;s passenger EV
+      parc is projected to pass <b>40 million by 2030</b>.<sup><a href="#s9">9</a></sup> Thirty per cent of that is
+      roughly twelve million cars able to export power.</p>
+    <p>Set against that: of 146 EV models scheduled for release in 2024, <b>four</b> supported ISO 15118-20
+      Plug&amp;Charge.<sup><a href="#s10">10</a></sup> Transport &amp; Environment&rsquo;s proposal is for a voluntary
+      &ldquo;V2G-ready&rdquo; label now and mandatory type approval only by <b>2032</b><sup><a href="#s11">11</a></sup> &mdash;
+      two years <em>after</em> the date the 30% figure is set against.</p>
+    <p>The arithmetic below is a model, not a forecast. Set the assumptions yourself and see what the parc does.</p>
+
+    <div class="tmodel">
+      <div class="tctrls">
+        <div class="tctrl">
+          <label for="t-share">Share of new EV sales that are V2G-capable, from 2027</label>
+          <input id="t-share" type="range" min="0" max="100" step="5" value="25">
+          <output id="o-share">25%</output>
+        </div>
+        <div class="tctrl">
+          <label for="t-ramp">Years to reach that share (linear ramp)</label>
+          <input id="t-ramp" type="range" min="0" max="8" step="1" value="3">
+          <output id="o-ramp">3 yrs</output>
+        </div>
+      </div>
+
+      <svg class="tchart" id="tchart" viewBox="0 0 640 300" role="img"
+           aria-label="Modelled share of the European EV parc that is V2G-capable, against the 30 per cent by 2030 reference.">
+        <line class="t-axis" x1="58" y1="24" x2="58" y2="250"/>
+        <line class="t-axis" x1="58" y1="250" x2="620" y2="250"/>
+        <line class="t-target" id="tg-line" x1="58" y1="0" x2="620" y2="0"/>
+        <text class="t-labr" id="tg-lab" x="62" y="0">30% reference</text>
+        <path class="t-area" id="tarea" d=""/>
+        <path class="t-curve" id="tcurve" d=""/>
+        <circle class="t-hit" id="thit" cx="-99" cy="-99" r="5"/>
+        <text class="t-labr" id="thitlab" x="0" y="0" text-anchor="middle"></text>
+        <g id="tticks"></g>
+        <text class="t-lab" x="52" y="254" text-anchor="end">0%</text>
+        <text class="t-lab" x="52" y="28" text-anchor="end">60%</text>
+      </svg>
+
+      <div class="tout">
+        <div>
+          <div class="tlab">30% of parc reached in</div>
+          <div class="tbig" id="tyear">&mdash;</div>
+          <div class="tnote" id="tnote"></div>
+        </div>
+        <div>
+          <div class="tlab">V2G-capable cars in 2030</div>
+          <div class="tbig" id="tcars">&mdash;</div>
+          <div class="tnote">Against roughly 12 million implied by the 30% reference.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="fnote" style="margin-top:14px;">Model, not forecast. Assumes a European passenger EV parc of about
+      12 million in 2026 rising to 40 million by 2030<sup><a href="#s9">9</a></sup> and continuing on the same
+      trajectory, a negligible V2G-capable base today, and no scrappage of capable vehicles. Retirement of older
+      non-capable EVs would pull the crossing earlier; slower parc growth would push it later. The point of the
+      model is the shape, not the decimal.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 06 -->
+<section class="row reveal">
+  <div class="label"><span class="num">06</span>Thresholds</div>
+  <div>
+    <h2>What would prove this wrong</h2>
+    <p class="sub">Written as claims with thresholds, so the evidence can break them.</p>
+
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">The binding constraint moves from regulation to the vehicle parc during 2027</div>
+      <p>Falsified if, by the end of 2027, more than three major EU markets still charge network fees on
+        exported EV electricity. Germany&rsquo;s transitional regime running to 30 September 2027 is the thing to
+        watch.<sup><a href="#s2">2</a></sup></p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">V2G-capable share of new EU EV sales exceeds 25% by 2029</div>
+      <p>The AFIR charge-point mandate from 1 January 2027<sup><a href="#s6">6</a></sup> creates the socket. It does
+        not create the car. Falsified if OEM model announcements through 2027&ndash;28 keep bidirectional confined to
+        flagship trims.</p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">Retail tariff models out-earn neutral aggregation per vehicle by 2028</div>
+      <p>If the neutral aggregators match retailer economics per vehicle, the vertical integration thesis is
+        wrong and the market layers rather than consolidates. Watch the per-vehicle figures quoted in successive
+        Octopus, E.ON and Mobility House offers.</p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">Fleet and depot V2G remains the only profitable segment through 2027</div>
+      <p>Falsified by a retail V2G proposition reaching six figures of connected vehicles in any single European
+        market. Nuvve&rsquo;s revenue mix &mdash; still hardware-led rather than flexibility-led &mdash; is the current
+        counter-evidence.<sup><a href="#s7">7</a></sup></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal">
+  <div class="label">Sources</div>
+  <div>
+    <div class="srcs">
+      <ol>
+        <li id="s1">The Mobility House, <em>German Parliament removes key barrier to bidirectional charging</em> &mdash;
+          EnWG amendment adopted 13 November 2025.
+          <a href="https://www.mobilityhouse.com/int_en/our-company/newsroom/article/german-parliament-removes-key-barrier-to-bidirectional-charging-vehicle-to-grid-becomes-possible" target="_blank" rel="noopener">mobilityhouse.com</a></li>
+        <li id="s2">Bundesnetzagentur, <em>Festlegung zur Marktintegration von Speichern und Ladepunkten (MiSpeL)</em>.
+          <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EEG_Aufsicht/MiSpeL/artikel.html" target="_blank" rel="noopener">bundesnetzagentur.de</a></li>
+        <li id="s3">electrive.net, <em>AgNes und MiSpeL: Neue Regeln f&uuml;r Ladeparks und bidirektionales Laden</em>, 6 August 2026.
+          <a href="https://www.electrive.net/2026/08/06/agnes-und-mispel-neue-regeln-fuer-ladeparks-und-bidirektionales-laden/" target="_blank" rel="noopener">electrive.net</a></li>
+        <li id="s4">Octopus Energy, <em>Octopus Power Pack</em>.
+          <a href="https://octopus.energy/power-pack/" target="_blank" rel="noopener">octopus.energy</a></li>
+        <li id="s5">The Mobility House, <em>V2G status quo &mdash; which country is how far along?</em>
+          <a href="https://mobilityhouse-energy.com/int_en/knowledge-center/article/v2g-progress-in-each-country" target="_blank" rel="noopener">mobilityhouse-energy.com</a></li>
+        <li id="s6">Smappee, <em>AFIR &amp; ISO 15118-20 explained</em>, and Bender, <em>AFIR &amp; ISO 15118: new obligation for AC charging stations</em> &mdash; EN ISO 15118-20:2022 required for newly installed or refurbished charge points from 1 January 2027.
+          <a href="https://www.smappee.com/eu/insights/afir-iso-15118-charging-explained" target="_blank" rel="noopener">smappee.com</a> &middot;
+          <a href="https://www.bender.de/en/know-how/applications/emobility/alternative-fuels-infrastructure-regulation-afir-2025/" target="_blank" rel="noopener">bender.de</a></li>
+        <li id="s7">Nuvve Holding Corp, Q2 2026 financial update &mdash; revenue up 268% year on year, still driven principally by V2G school-bus hardware delivery.
+          <a href="https://www.stocktitan.net/news/NVVE/nuvve-provides-second-quarter-2026-financial-q3t4vbijf2q5.html" target="_blank" rel="noopener">stocktitan.net</a></li>
+        <li id="s8">Coalition of the Willing on Bidirectional Charging, cited in EU flexibility modelling &mdash; 30% of EVs assumed V2G-capable by 2030, 50% smart-charging enabled.
+          <a href="https://smarten.eu/wp-content/uploads/2023/12/V2X-Enables-and-Barriers-Study_11-2023_DIGITAL.pdf" target="_blank" rel="noopener">smarten.eu</a></li>
+        <li id="s9">Consultancy.eu, <em>Europe&rsquo;s electric vehicle fleet to reach 40 million by 2030</em>.
+          <a href="https://www.consultancy.eu/news/5766/europes-electric-vehicles-fleet-to-reach-40-million-by-2030" target="_blank" rel="noopener">consultancy.eu</a></li>
+        <li id="s10">Reported ISO 15118-20 Plug&amp;Charge support: 4 of 146 EV models scheduled for 2024 release.
+          <a href="https://www.evb.com/iso-15118-the-complete-guide-to-ev-charging-communication-standards-2026-edition/" target="_blank" rel="noopener">evb.com</a></li>
+        <li id="s11">Transport &amp; Environment, <em>Unlocking Vehicle-to-Grid at scale</em>, 6 March 2026 &mdash; voluntary &ldquo;V2G-ready&rdquo; label now, mandatory type approval by 2032.
+          <a href="https://www.transportenvironment.org/articles/unlocking-vehicle-to-grid-at-scale" target="_blank" rel="noopener">transportenvironment.org</a></li>
+        <li id="s12">smartEn, <em>Assessment of the regulatory framework of bidirectional EV charging in Europe</em>.
+          <a href="https://smarten.eu/wp-content/uploads/2023/12/V2X-Enables-and-Barriers-Study_11-2023_DIGITAL.pdf" target="_blank" rel="noopener">smarten.eu</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>FutureBridge Advisory &middot; August 2026</span>
+    <a href="mailto:christopher.guerin@futurebridge.com">christopher.guerin@futurebridge.com</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  /* ================= country matrix ================= */
+  var Y = {g:'●', c:'b-yes', t:'Resolved'};
+  var COUNTRIES = [
+    { c:'Germany',
+      cells:[['b-yes','●','Resolved'],['b-no','○','Under 10%'],['b-part','◑','From Oct 2026'],['b-yes','●','Live']],
+      d:'<p><b>The reference case, and the cautionary one.</b> The Bundestag ended double network charging in November 2025 and the MiSpeL determination operationalises it from 1 October 2026 — but only by agreement with the grid and metering operator until 30 September 2027.</p><p><b>The gap:</b> smart meter penetration is under 10%, the lowest of any large European market. Germany has fixed the law well ahead of fixing the metering that settles it. Volkswagen with Elli and Mercedes-Benz have offers in market.</p>' },
+    { c:'France',
+      cells:[['b-yes','●','Resolved'],['b-yes','●','Complete'],['b-yes','●','Open'],['b-yes','●','Live since 2024']],
+      d:'<p><b>First to a commercial product.</b> The Renault 5 with PowerBox Verso, October 2024, was the first commercially available V2G offer worldwide, quoted at up to €600 a year.</p><p>France has three structural advantages at once: a completed smart-meter rollout from the mid-2010s, a single distribution operator in Enedis rather than hundreds of DSOs, and a tax treatment under which levies amounting to 115% of the fed-in volume are reimbursed.</p>' },
+    { c:'United Kingdom',
+      cells:[['b-yes','●','Resolved'],['b-part','◑','~two thirds'],['b-yes','●','Ofgem framework'],['b-yes','●','Mass-market tariff']],
+      d:'<p><b>The furthest into retail.</b> Octopus Power Pack is the first mass-market domestic V2G tariff, reported at around £620 a year against a standard variable tariff and up to £850 on Octopus’ own modelling. Ford joins from summer 2026.</p><p><b>The friction:</b> certification requirements for systems above 3.5 kW. Outside the EU, so the AFIR charge-point mandate does not apply directly — a divergence worth tracking.</p>' },
+    { c:'Netherlands',
+      cells:[['b-yes','●','Resolved'],['b-yes','●','High'],['b-yes','●','Open'],['b-yes','●','Fleet + retail']],
+      d:'<p><b>Where fleet V2G actually runs.</b> The Johan Cruijff ArenA has operated since 2019. Utrecht’s car-sharing deployment put 50 Renault 5s into service from June 2025 with a path to 500 — the largest bidirectional car-sharing operation in Europe.</p><p>Kia and Hyundai launched V2G service for the EV9 and IONIQ 9 in late 2025. The Netherlands meets all four prerequisites, which is why it is where operators pilot.</p>' },
+    { c:'Italy',
+      cells:[['b-part','◑','Double taxation removed'],['b-part','◑','Not established'],['b-no','○','No formal policy'],['b-no','○','Pilots only']],
+      d:'<p><b>Economics improved, policy absent.</b> Removing double taxation improved the business case, and variable energy pricing supports flexibility. But there is no formal policy-level direction, so the market remains at pilot stage — the Fiat-Chrysler V2G project and the DrossOne V2G parking project.</p><p>Italy is the clearest example of a market where the arithmetic works and the route to market does not yet exist.</p>' },
+    { c:'Denmark',
+      cells:[['b-unk','○','Not established'],['b-yes','●','Ahead'],['b-unk','○','Not established'],['b-unk','○','Not established']],
+      d:'<p><b>Metering-ready, publicly thin.</b> Denmark is grouped with France and the Netherlands as well ahead on smart-meter rollout — the precondition most markets lack. We could not source a current public position on network-charge treatment, aggregator access or a live consumer offer.</p><p>Recorded as not established rather than estimated.</p>' },
+    { c:'Sweden &amp; Norway',
+      cells:[['b-unk','○','Not established'],['b-unk','○','Not established'],['b-unk','○','Not established'],['b-no','○','Limited']],
+      d:'<p><b>High EV penetration, low flexibility need.</b> Both are named as V2G expansion targets, but Sweden’s hydropower already provides substantial storage, so the system value of a car battery is lower than the EV parc alone would suggest.</p><p>A useful corrective: EV density does not predict V2G demand. The value follows the shape of the generation mix.</p>' },
+    { c:'Spain &amp; Belgium',
+      cells:[['b-unk','○','Not established'],['b-unk','○','Not established'],['b-unk','○','Not established'],['b-unk','○','Not established']],
+      d:'<p><b>Not established.</b> We could not source current public positions on network-charge treatment, metering, aggregator access or live offers for these markets at the time of writing.</p><p>Listed to keep the coverage honest rather than to imply absence. Blank beats invented.</p>' }
+  ];
+
+  var HEAD = ['Market','Double charging','Smart meters','Aggregator access','Consumer offer'];
+  var mx = document.getElementById('matrix');
+
+  var head = document.createElement('div');
+  head.className = 'mrow head';
+  HEAD.forEach(function(h){
+    var c = document.createElement('div'); c.className = 'mc'; c.innerHTML = h; head.appendChild(c);
+  });
+  mx.appendChild(head);
+
+  COUNTRIES.forEach(function(C, i){
+    var row = document.createElement('div');
+    row.className = 'mrow'; row.setAttribute('role','button'); row.setAttribute('tabindex','0');
+    var n = document.createElement('div'); n.className = 'mc';
+    var nm = document.createElement('span'); nm.className = 'cname'; nm.innerHTML = C.c;
+    n.appendChild(nm); row.appendChild(n);
+    C.cells.forEach(function(cell){
+      var c = document.createElement('div'); c.className = 'mc';
+      var b = document.createElement('span'); b.className = 'badge ' + cell[0];
+      var g = document.createElement('span'); g.className = 'g'; g.textContent = cell[1];
+      b.appendChild(g); b.appendChild(document.createTextNode(cell[2]));
+      c.appendChild(b); row.appendChild(c);
+    });
+    var det = document.createElement('div');
+    det.className = 'mdetail'; det.innerHTML = C.d;
+    function toggle(){
+      var open = det.classList.contains('open');
+      mx.querySelectorAll('.mdetail.open').forEach(function(d){ d.classList.remove('open'); });
+      mx.querySelectorAll('.mrow.open').forEach(function(r){ r.classList.remove('open'); });
+      if (!open){ det.classList.add('open'); row.classList.add('open'); }
+    }
+    row.addEventListener('click', toggle);
+    row.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+    mx.appendChild(row); mx.appendChild(det);
+  });
+
+  /* ================= take-up model ================= */
+  var Y0 = 2026, Y1 = 2036, PMIN = 0, PMAX = 60;
+  var X0 = 58, X1 = 620, YB = 250, YT = 24;
+  function PX(y){ return X0 + ((y - Y0)/(Y1 - Y0)) * (X1 - X0); }
+  function PY(p){ return YB - ((p - PMIN)/(PMAX - PMIN)) * (YB - YT); }
+
+  var sShare = document.getElementById('t-share'), oShare = document.getElementById('o-share');
+  var sRamp  = document.getElementById('t-ramp'),  oRamp  = document.getElementById('o-ramp');
+
+  // parc: ~12m in 2026 rising to ~40m by 2030, then +7m a year
+  function parc(y){
+    if (y <= 2030) return 12 + (40 - 12) * ((y - 2026)/4);
+    return 40 + (y - 2030) * 7;
+  }
+  function sales(y){ return Math.max(0, parc(y) - parc(y - 1)); }
+
+  var ticks = document.getElementById('tticks');
+  for (var y = Y0; y <= Y1; y += 2){
+    var t = document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('class','t-lab'); t.setAttribute('x', PX(y)); t.setAttribute('y', 268);
+    t.setAttribute('text-anchor','middle'); t.textContent = y;
+    ticks.appendChild(t);
+  }
+  document.getElementById('tg-line').setAttribute('y1', PY(30));
+  document.getElementById('tg-line').setAttribute('y2', PY(30));
+  document.getElementById('tg-lab').setAttribute('y', PY(30) - 7);
+
+  function run(){
+    var share = +sShare.value / 100, ramp = +sRamp.value;
+    oShare.textContent = sShare.value + '%';
+    oRamp.textContent = ramp === 0 ? 'at once' : ramp + ' yrs';
+
+    var capable = 0.2, pts = [], crossYear = null, cars2030 = null;
+    for (var y = Y0; y <= Y1; y++){
+      if (y >= 2027){
+        var f = ramp === 0 ? 1 : Math.min(1, (y - 2027 + 1)/(ramp + 1));
+        capable += sales(y) * share * f;
+      }
+      var pct = (capable / parc(y)) * 100;
+      pts.push([y, Math.min(PMAX, pct)]);
+      if (crossYear === null && pct >= 30) crossYear = y;
+      if (y === 2030) cars2030 = capable;
+    }
+
+    var d = pts.map(function(p,i){ return (i ? 'L' : 'M') + PX(p[0]) + ' ' + PY(p[1]); }).join(' ');
+    document.getElementById('tcurve').setAttribute('d', d);
+    document.getElementById('tarea').setAttribute('d',
+      d + ' L' + PX(Y1) + ' ' + YB + ' L' + PX(Y0) + ' ' + YB + ' Z');
+
+    var hit = document.getElementById('thit'), hlab = document.getElementById('thitlab');
+    var yearEl = document.getElementById('tyear'), noteEl = document.getElementById('tnote');
+    if (crossYear){
+      hit.setAttribute('cx', PX(crossYear)); hit.setAttribute('cy', PY(30));
+      hlab.setAttribute('x', PX(crossYear)); hlab.setAttribute('y', PY(30) + 20);
+      hlab.textContent = crossYear;
+      yearEl.textContent = crossYear;
+      yearEl.className = 'tbig' + (crossYear > 2030 ? ' late' : '');
+      noteEl.textContent = crossYear > 2030
+        ? (crossYear - 2030) + ' year' + (crossYear - 2030 === 1 ? '' : 's') + ' after the reference date.'
+        : 'On or ahead of the reference date.';
+    } else {
+      hit.setAttribute('cx', -99); hlab.textContent = '';
+      yearEl.textContent = 'not by ' + Y1;
+      yearEl.className = 'tbig late';
+      noteEl.textContent = 'The parc never reaches 30% on these assumptions.';
+    }
+    document.getElementById('tcars').textContent = cars2030.toFixed(1) + 'm';
+  }
+
+  sShare.addEventListener('input', run);
+  sRamp.addEventListener('input', run);
+  run();
+
+  /* ================= reveal ================= */
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var top = els.filter(function(e){ return e.getBoundingClientRect().top < window.innerHeight; });
+    top.forEach(function(e,i){ setTimeout(function(){ e.classList.add('in'); }, 100*i); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:0.08});
+    els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
+  }
+})();
+</script>
+</body>
+</html>

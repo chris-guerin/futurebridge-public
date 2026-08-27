@@ -8,6 +8,12 @@ files=$(git diff --cached --name-only --diff-filter=ACM)
 
 CLIENTS='volkswagen|[^a-z]vwg[^a-z]|audi|porsche|skoda|bentley|lamborghini|scania|cupra|daimler|mercedes|knorr|michelin|continental-corp|infineon|halliburton|exxon|chevron|equinor|conocophillips|technipfmc|wolfspeed|mobileye|renesas|onsemi|datwyler|adidas'
 
+# Published analysis that has been read and cleared to name public companies
+# from public, cited sources. Adding a file here is a deliberate act, recorded
+# in git history. It waives ONLY the client-name check -- the contact-data and
+# LinkedIn checks below still run on every file, without exception.
+REVIEWED='v2g-europe.html'
+
 for f in $files; do
   [ -f "$f" ] || continue
   case "$f" in .githooks/*|README.md) continue ;; esac
@@ -25,9 +31,13 @@ for f in $files; do
     echo "BLOCKED  $f  — contains LinkedIn profile URL(s)"; fail=1
   fi
 
-  # Client names
-  if git show ":$f" 2>/dev/null | grep -q -i -E "$CLIENTS"; then
-    echo "BLOCKED  $f  — names a client company"; fail=1
+  # Client names -- skipped for reviewed published analysis
+  reviewed=0
+  for r in $REVIEWED; do [ "$f" = "$r" ] && reviewed=1; done
+  if [ "$reviewed" -eq 0 ]; then
+    if git show ":$f" 2>/dev/null | grep -q -i -E "$CLIENTS"; then
+      echo "BLOCKED  $f  — names a client company"; fail=1
+    fi
   fi
 done
 

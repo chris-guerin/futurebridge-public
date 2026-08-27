@@ -117,15 +117,19 @@
   section{padding:0 0 96px;}
   h2.sec{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
          margin:0 0 28px;font-weight:600;}
-  .pieces{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--black);}
+  .pieces{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--black);}
   .piece{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);}
-  .piece:last-child{border-right:none;}
+  .piece:nth-child(2n){border-right:none;}
+  .meta{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .meta .date{font-size:11px;letter-spacing:.16em;color:var(--dim);}
+  .meta .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+             border:1px solid var(--hair);padding:3px 7px;color:var(--grey);}
+  .meta .tag.new{border-color:var(--red);color:var(--red);}
   .piece a{display:block;padding:30px 26px 34px;text-decoration:none;color:var(--ink);height:100%;
            transition:background .18s ease;}
   .piece a:hover{background:rgba(0,0,0,0.028);}
   .piece a:hover .t{color:var(--red);}
   .piece a:hover .go{transform:translateX(4px);color:var(--red);}
-  .num{font-size:11px;letter-spacing:.18em;color:var(--dim);display:block;margin-bottom:20px;}
   .t{font-size:21px;font-weight:600;letter-spacing:-0.015em;margin-bottom:9px;
      transition:color .15s ease;line-height:1.2;}
   .d{font-size:14.5px;color:var(--grey);line-height:1.55;}
@@ -213,27 +217,30 @@
   </div>
 
   <section class="reveal">
-    <h2 class="sec">Writing</h2>
+    <h2 class="sec">Papers</h2>
     <div class="pieces">
+      <div class="piece"><a href="v2g-europe.html">
+        <div class="meta"><span class="date">AUGUST 2026</span><span class="tag new">New</span></div>
+        <div class="t">Vehicle-to-grid in Europe</div>
+        <div class="d">Europe fixed the regulation and the cars became the constraint. Country-by-country structuring, the four commercial models, how the pan-European players compete, and when take-up actually reaches the EU&rsquo;s figures.</div>
+        <span class="go">Read &rarr;</span>
+      </a></div>
       <div class="piece"><a href="FutureBridge_Method_Credibility.html">
-        <span class="num">01</span>
+        <div class="meta"><span class="date">MAY 2026</span><span class="tag">Method</span></div>
         <div class="t">The method</div>
-        <div class="d">Three established disciplines, wired together &mdash; and why the connection is the
-          part that does not already exist.</div>
+        <div class="d">Three established disciplines, wired together &mdash; and why the connection is the part that does not already exist. With the worked example you can operate.</div>
         <span class="go">Read &rarr;</span>
       </a></div>
       <div class="piece"><a href="uk-energy-sovereign-case.html">
-        <span class="num">02</span>
+        <div class="meta"><span class="date">FEBRUARY 2026</span><span class="tag">Energy</span></div>
         <div class="t">Energy sovereignty</div>
-        <div class="d">The global map, and the business case for the UK reading it deliberately rather
-          than reactively.</div>
+        <div class="d">Eight countries hold permanent cheap electricity through amortised hydropower. The global map, and the business case for the UK reading it deliberately rather than reactively.</div>
         <span class="go">Read &rarr;</span>
       </a></div>
       <div class="piece"><a href="mobility-infographic.html">
-        <span class="num">03</span>
+        <div class="meta"><span class="date">FEBRUARY 2026</span><span class="tag">Mobility</span></div>
         <div class="t">Who gets the money?</div>
-        <div class="d">Where cost and value actually sit across the mobility stack, and who captures
-          each layer.</div>
+        <div class="d">Decomposing the cost stack per kilometre across powertrains and countries &mdash; where value actually sits, and who captures each layer.</div>
         <span class="go">Read &rarr;</span>
       </a></div>
     </div>
