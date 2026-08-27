@@ -7,20 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #06080d;
-  --card: #0d1117;
-  --card2: #131921;
-  --border: #1e2736;
-  --text: #e2e8f0;
-  --dim: #64748b;
-  --blue: #3b82f6;
-  --cyan: #06b6d4;
-  --green: #22c55e;
-  --amber: #f59e0b;
-  --red: #ef4444;
-  --purple: #a78bfa;
-  --pink: #f472b6;
-  --orange: #fb923c;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --card2: #f7f7f8;
+  --border: #e4e4e8;
+  --text: #0b0b0b;
+  --dim: #4B4B55;
+  --blue: #2a78d6;
+  --cyan: #1baf7a;
+  --green: #008300;
+  --amber: #eda100;
+  --red: #e34948;
+  --purple: #4a3aa7;
+  --pink: #e87ba4;
+  --orange: #eb6834;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,7 +75,7 @@ body {
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, #fff 0%, #4B4B55 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -189,7 +189,7 @@ body {
 }
 .bar-track {
   height: 24px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
   border-radius: 4px;
   overflow: hidden;
   display: flex;
@@ -251,7 +251,8 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.55rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.85);
+  color: #0b0b0b;
+  text-shadow: 0 0 3px rgba(255,255,255,0.9);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -619,9 +620,9 @@ body {
   </div>
 
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#334155"></div>Raw energy</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#475569"></div>Refining / gen.</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#64748b"></div>Distribution</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c4c4cc"></div>Raw energy</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#9a9aa6"></div>Refining / gen.</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#6e6e7c"></div>Distribution</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div>Networks</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Storage / bal.</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Govt tax</div>
@@ -639,9 +640,9 @@ body {
         <span class="stack-total">1.90 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:22.1%;background:#334155" title="Raw energy 0.42c">energy</div>
-        <div class="stack-seg" style="width:7.4%;background:#475569" title="Refining 0.14c"></div>
-        <div class="stack-seg" style="width:3.7%;background:#64748b" title="Distrib 0.07c"></div>
+        <div class="stack-seg" style="width:22.1%;background:#c4c4cc" title="Raw energy 0.42c">energy</div>
+        <div class="stack-seg" style="width:7.4%;background:#9a9aa6" title="Refining 0.14c"></div>
+        <div class="stack-seg" style="width:3.7%;background:#6e6e7c" title="Distrib 0.07c"></div>
         <div class="stack-seg" style="width:22.1%;background:var(--amber)" title="Networks 0.42c">net</div>
         <div class="stack-seg" style="width:2.6%;background:var(--purple)" title="Storage 0.05c"></div>
         <div class="stack-seg" style="width:16.8%;background:var(--red)" title="Tax 0.32c">tax</div>
@@ -656,9 +657,9 @@ body {
         <span class="stack-total">5.40 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:11.7%;background:#334155" title="Raw energy 0.63c">ener</div>
-        <div class="stack-seg" style="width:6.5%;background:#475569" title="Refining 0.35c"></div>
-        <div class="stack-seg" style="width:1.3%;background:#64748b" title="Distrib 0.07c"></div>
+        <div class="stack-seg" style="width:11.7%;background:#c4c4cc" title="Raw energy 0.63c">ener</div>
+        <div class="stack-seg" style="width:6.5%;background:#9a9aa6" title="Refining 0.35c"></div>
+        <div class="stack-seg" style="width:1.3%;background:#6e6e7c" title="Distrib 0.07c"></div>
         <div class="stack-seg" style="width:22.8%;background:var(--amber)" title="Networks 1.23c">networks</div>
         <div class="stack-seg" style="width:2.6%;background:var(--purple)" title="Storage 0.14c"></div>
         <div class="stack-seg" style="width:16.3%;background:var(--red)" title="Tax 0.88c">tax</div>
@@ -673,9 +674,9 @@ body {
         <span class="stack-total">6.70 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:13.1%;background:#334155" title="Raw energy 0.88c">ener</div>
-        <div class="stack-seg" style="width:7.3%;background:#475569" title="Refining 0.49c"></div>
-        <div class="stack-seg" style="width:1.0%;background:#64748b" title="Distrib 0.07c"></div>
+        <div class="stack-seg" style="width:13.1%;background:#c4c4cc" title="Raw energy 0.88c">ener</div>
+        <div class="stack-seg" style="width:7.3%;background:#9a9aa6" title="Refining 0.49c"></div>
+        <div class="stack-seg" style="width:1.0%;background:#6e6e7c" title="Distrib 0.07c"></div>
         <div class="stack-seg" style="width:31.3%;background:var(--amber)" title="Networks 2.10c">networks 🔺</div>
         <div class="stack-seg" style="width:2.7%;background:var(--purple)" title="Storage 0.18c"></div>
         <div class="stack-seg" style="width:26.1%;background:var(--red)" title="Tax 1.75c">govt tax</div>
@@ -690,9 +691,9 @@ body {
         <span class="stack-total">2.80 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:27.5%;background:#334155" title="Raw energy 0.77c">raw energy</div>
-        <div class="stack-seg" style="width:5.0%;background:#475569" title="Refining 0.14c"></div>
-        <div class="stack-seg" style="width:1.8%;background:#64748b" title="Distrib 0.05c"></div>
+        <div class="stack-seg" style="width:27.5%;background:#c4c4cc" title="Raw energy 0.77c">raw energy</div>
+        <div class="stack-seg" style="width:5.0%;background:#9a9aa6" title="Refining 0.14c"></div>
+        <div class="stack-seg" style="width:1.8%;background:#6e6e7c" title="Distrib 0.05c"></div>
         <div class="stack-seg" style="width:20.0%;background:var(--amber)" title="Networks 0.56c">net</div>
         <div class="stack-seg" style="width:1.4%;background:var(--purple)" title="Storage 0.04c"></div>
         <div class="stack-seg" style="width:5.0%;background:var(--red)" title="Tax 0.14c"></div>
@@ -712,9 +713,9 @@ body {
         <span class="stack-total">12.60 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:16.7%;background:#334155">energy</div>
-        <div class="stack-seg" style="width:7.2%;background:#475569"></div>
-        <div class="stack-seg" style="width:6.1%;background:#64748b"></div>
+        <div class="stack-seg" style="width:16.7%;background:#c4c4cc">energy</div>
+        <div class="stack-seg" style="width:7.2%;background:#9a9aa6"></div>
+        <div class="stack-seg" style="width:6.1%;background:#6e6e7c"></div>
         <div class="stack-seg" style="width:2.2%;background:var(--amber)"></div>
         <div class="stack-seg" style="width:54.4%;background:var(--red)">GOVT TAX 54%</div>
         <div class="stack-seg" style="width:8.9%;background:var(--orange)">pol</div>
@@ -728,9 +729,9 @@ body {
         <span class="stack-total">11.20 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:18.8%;background:#334155">energy</div>
-        <div class="stack-seg" style="width:7.5%;background:#475569"></div>
-        <div class="stack-seg" style="width:8.8%;background:#64748b"></div>
+        <div class="stack-seg" style="width:18.8%;background:#c4c4cc">energy</div>
+        <div class="stack-seg" style="width:7.5%;background:#9a9aa6"></div>
+        <div class="stack-seg" style="width:8.8%;background:#6e6e7c"></div>
         <div class="stack-seg" style="width:2.5%;background:var(--amber)"></div>
         <div class="stack-seg" style="width:50.0%;background:var(--red)">GOVT TAX 50%</div>
         <div class="stack-seg" style="width:5.0%;background:var(--orange)"></div>
@@ -744,9 +745,9 @@ body {
         <span class="stack-total">5.40 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:33.7%;background:#334155">raw energy</div>
-        <div class="stack-seg" style="width:13.0%;background:#475569">refin</div>
-        <div class="stack-seg" style="width:15.6%;background:#64748b">distrib</div>
+        <div class="stack-seg" style="width:33.7%;background:#c4c4cc">raw energy</div>
+        <div class="stack-seg" style="width:13.0%;background:#9a9aa6">refin</div>
+        <div class="stack-seg" style="width:15.6%;background:#6e6e7c">distrib</div>
         <div class="stack-seg" style="width:2.6%;background:var(--amber)"></div>
         <div class="stack-seg" style="width:18.1%;background:var(--red)">tax 18%</div>
         <div class="stack-seg" style="width:17.0%;background:var(--cyan)">margin</div>
@@ -764,9 +765,9 @@ body {
         <span class="stack-total">13.10 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:4.8%;background:#334155"></div>
-        <div class="stack-seg" style="width:2.7%;background:#475569"></div>
-        <div class="stack-seg" style="width:0.5%;background:#64748b"></div>
+        <div class="stack-seg" style="width:4.8%;background:#c4c4cc"></div>
+        <div class="stack-seg" style="width:2.7%;background:#9a9aa6"></div>
+        <div class="stack-seg" style="width:0.5%;background:#6e6e7c"></div>
         <div class="stack-seg" style="width:9.4%;background:var(--amber)">net</div>
         <div class="stack-seg" style="width:1.1%;background:var(--purple)"></div>
         <div class="stack-seg" style="width:16.7%;background:var(--red)">tax</div>
@@ -781,9 +782,9 @@ body {
         <span class="stack-total">10.90 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:8.1%;background:#334155"></div>
-        <div class="stack-seg" style="width:4.5%;background:#475569"></div>
-        <div class="stack-seg" style="width:0.6%;background:#64748b"></div>
+        <div class="stack-seg" style="width:8.1%;background:#c4c4cc"></div>
+        <div class="stack-seg" style="width:4.5%;background:#9a9aa6"></div>
+        <div class="stack-seg" style="width:0.6%;background:#6e6e7c"></div>
         <div class="stack-seg" style="width:19.3%;background:var(--amber)">networks</div>
         <div class="stack-seg" style="width:1.7%;background:var(--purple)"></div>
         <div class="stack-seg" style="width:24.1%;background:var(--red)">govt tax</div>
@@ -798,9 +799,9 @@ body {
         <span class="stack-total">6.10 €c/km</span>
       </div>
       <div class="stack-bar">
-        <div class="stack-seg" style="width:5.2%;background:#334155"></div>
-        <div class="stack-seg" style="width:2.3%;background:#475569"></div>
-        <div class="stack-seg" style="width:0.7%;background:#64748b"></div>
+        <div class="stack-seg" style="width:5.2%;background:#c4c4cc"></div>
+        <div class="stack-seg" style="width:2.3%;background:#9a9aa6"></div>
+        <div class="stack-seg" style="width:0.7%;background:#6e6e7c"></div>
         <div class="stack-seg" style="width:6.4%;background:var(--amber)"></div>
         <div class="stack-seg" style="width:0.7%;background:var(--purple)"></div>
         <div class="stack-seg" style="width:18.4%;background:var(--red)">tax</div>
@@ -1061,8 +1062,8 @@ body {
   font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
 }
 #ai-bar {
-  background: linear-gradient(90deg, #06080d 0%, #0d1117 100%);
-  border-top: 1px solid #1e2736;
+  background: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+  border-top: 1px solid #e4e4e8;
   padding: 12px 28px;
   cursor: pointer;
   display: flex;
@@ -1071,16 +1072,16 @@ body {
   user-select: none;
   transition: background 0.2s;
 }
-#ai-bar:hover { background: #0d1117; }
+#ai-bar:hover { background: #ffffff; }
 #ai-expanded {
   display: none;
-  background: #06080d;
-  border-top: 1px solid #1e2736;
+  background: #ffffff;
+  border-top: 1px solid #e4e4e8;
 }
 .ai-key-row {
   padding: 14px 28px;
-  background: #0d1117;
-  border-bottom: 1px solid #1e2736;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e8;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1088,8 +1089,8 @@ body {
 }
 .ai-mode-row {
   padding: 10px 28px;
-  background: #0a0d14;
-  border-bottom: 1px solid #1e2736;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e8;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1098,9 +1099,9 @@ body {
 .ai-mode-btn {
   padding: 4px 14px;
   border-radius: 20px;
-  border: 1px solid #1e2736;
+  border: 1px solid #e4e4e8;
   background: transparent;
-  color: #64748b;
+  color: #6e6e7c;
   font-size: 0.75rem;
   cursor: pointer;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
@@ -1109,20 +1110,20 @@ body {
 }
 .ai-mode-btn.active {
   background: rgba(6,182,212,0.12);
-  border-color: #06b6d4;
-  color: #06b6d4;
+  border-color: #1baf7a;
+  color: #1baf7a;
 }
 .ai-chips-row {
   padding: 12px 28px 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  border-bottom: 1px solid #1e2736;
+  border-bottom: 1px solid #e4e4e8;
 }
 .ai-chip {
-  background: #0d1117;
-  border: 1px solid #1e2736;
-  color: #94a3b8;
+  background: #ffffff;
+  border: 1px solid #e4e4e8;
+  color: #4B4B55;
   padding: 5px 13px;
   border-radius: 20px;
   font-size: 0.76rem;
@@ -1131,29 +1132,29 @@ body {
   transition: all 0.15s;
   white-space: nowrap;
 }
-.ai-chip:hover { background: #131921; color: #e2e8f0; border-color: #06b6d4; }
+.ai-chip:hover { background: #f7f7f8; color: #0b0b0b; border-color: #1baf7a; }
 .ai-input-row {
   padding: 11px 28px;
   display: flex;
   gap: 10px;
-  border-bottom: 1px solid #1e2736;
+  border-bottom: 1px solid #e4e4e8;
 }
 #ai-query-input {
   flex: 1;
-  background: #0d1117;
-  border: 1px solid #1e2736;
+  background: #ffffff;
+  border: 1px solid #e4e4e8;
   border-radius: 6px;
   padding: 9px 14px;
-  color: #e2e8f0;
+  color: #0b0b0b;
   font-size: 0.88rem;
   outline: none;
   font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
   transition: border-color 0.15s;
 }
-#ai-query-input:focus { border-color: #06b6d4; }
+#ai-query-input:focus { border-color: #1baf7a; }
 #ai-send-btn {
-  background: #06b6d4;
-  color: #06080d;
+  background: #0b0b0b;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   padding: 9px 22px;
@@ -1173,27 +1174,27 @@ body {
 }
 #ai-response-inner { padding: 14px 0; }
 .ai-entry {
-  border-left: 2px solid #06b6d4;
+  border-left: 2px solid #1baf7a;
   padding: 11px 16px;
   margin-bottom: 10px;
-  background: #0d1117;
+  background: #ffffff;
   border-radius: 0 6px 6px 0;
 }
 .ai-q-label {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.68rem;
-  color: #06b6d4;
+  color: #1baf7a;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 7px;
 }
-.ai-a-text { color: #e2e8f0; line-height: 1.72; font-size: 0.88rem; }
+.ai-a-text { color: #0b0b0b; line-height: 1.72; font-size: 0.88rem; }
 .ai-a-text p { margin-bottom: 8px; }
 .ai-a-text p:last-child { margin-bottom: 0; }
-.ai-err { color: #ef4444; font-size: 0.84rem; }
-.ai-thinking { color: #475569; font-style: italic; font-size: 0.84rem; display: flex; align-items: center; gap: 8px; }
+.ai-err { color: #e34948; font-size: 0.84rem; }
+.ai-thinking { color: #9a9aa6; font-style: italic; font-size: 0.84rem; display: flex; align-items: center; gap: 8px; }
 .ai-dot { display: inline-flex; gap: 4px; }
-.ai-dot span { width: 5px; height: 5px; border-radius: 50%; background: #06b6d4; display: inline-block; animation: aiDot 1.2s infinite; }
+.ai-dot span { width: 5px; height: 5px; border-radius: 50%; background: #1baf7a; display: inline-block; animation: aiDot 1.2s infinite; }
 .ai-dot span:nth-child(2) { animation-delay: 0.2s; }
 .ai-dot span:nth-child(3) { animation-delay: 0.4s; }
 @keyframes aiDot { 0%,80%,100%{opacity:0.2;transform:scale(0.8)} 40%{opacity:1;transform:scale(1)} }
@@ -1206,26 +1207,26 @@ body {
   margin-left: 8px;
   vertical-align: middle;
 }
-.ai-mode-tag.doc { background: rgba(6,182,212,0.15); color: #06b6d4; }
-.ai-mode-tag.broad { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.ai-mode-tag.doc { background: rgba(6,182,212,0.15); color: #1baf7a; }
+.ai-mode-tag.broad { background: rgba(167,139,250,0.15); color: #4a3aa7; }
 #ai-key-input {
   flex: 1; min-width: 240px; max-width: 400px;
-  background: #06080d; border: 1px solid #1e2736; border-radius: 4px;
-  padding: 7px 12px; color: #e2e8f0;
+  background: #ffffff; border: 1px solid #e4e4e8; border-radius: 4px;
+  padding: 7px 12px; color: #0b0b0b;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.78rem; outline: none;
   transition: border-color 0.15s;
 }
-#ai-key-input:focus { border-color: #06b6d4; }
+#ai-key-input:focus { border-color: #1baf7a; }
 </style>
 
 <div id="ai-panel">
   <!-- Collapsed bar -->
   <div id="ai-bar" onclick="aiToggle()">
-    <div style="width:7px;height:7px;border-radius:50%;background:#06b6d4;box-shadow:0 0 8px #06b6d4;flex-shrink:0"></div>
-    <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.68rem;color:#06b6d4;letter-spacing:0.2em;text-transform:uppercase">Ask AI</span>
-    <span style="color:#475569;font-size:0.8rem">— query this document or go beyond it</span>
-    <span id="ai-icon" style="margin-left:auto;color:#475569;font-size:1rem;line-height:1">▲</span>
+    <div style="width:7px;height:7px;border-radius:50%;background:#1baf7a;box-shadow:0 0 8px #1baf7a;flex-shrink:0"></div>
+    <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.68rem;color:#1baf7a;letter-spacing:0.2em;text-transform:uppercase">Ask AI</span>
+    <span style="color:#9a9aa6;font-size:0.8rem">— query this document or go beyond it</span>
+    <span id="ai-icon" style="margin-left:auto;color:#9a9aa6;font-size:1rem;line-height:1">▲</span>
   </div>
 
   <!-- Expanded -->
@@ -1233,23 +1234,23 @@ body {
 
     <!-- API key -->
     <div class="ai-key-row">
-      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.66rem;color:#475569;text-transform:uppercase;letter-spacing:0.15em;white-space:nowrap">Anthropic Key</span>
+      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.66rem;color:#9a9aa6;text-transform:uppercase;letter-spacing:0.15em;white-space:nowrap">Anthropic Key</span>
       <input id="ai-key-input" type="password" placeholder="sk-ant-..." oninput="aiSaveKey(this.value)">
-      <span style="font-size:0.74rem;color:#475569">Free at <a href="https://console.anthropic.com" target="_blank" style="color:#3b82f6;text-decoration:none">console.anthropic.com</a></span>
-      <span id="ai-key-ok" style="font-size:0.74rem;color:#22c55e;display:none">✓ saved</span>
+      <span style="font-size:0.74rem;color:#9a9aa6">Free at <a href="https://console.anthropic.com" target="_blank" style="color:#2a78d6;text-decoration:none">console.anthropic.com</a></span>
+      <span id="ai-key-ok" style="font-size:0.74rem;color:#008300;display:none">✓ saved</span>
     </div>
 
     <!-- Mode toggle -->
     <div class="ai-mode-row">
-      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.65rem;color:#475569;text-transform:uppercase;letter-spacing:0.15em">Mode:</span>
+      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.65rem;color:#9a9aa6;text-transform:uppercase;letter-spacing:0.15em">Mode:</span>
       <button class="ai-mode-btn active" id="mode-doc" onclick="aiSetMode('doc')">📄 Document only</button>
       <button class="ai-mode-btn" id="mode-broad" onclick="aiSetMode('broad')">🌐 Document + broader knowledge</button>
-      <span style="font-size:0.74rem;color:#334155;margin-left:8px" id="ai-mode-desc">Answers grounded in this document</span>
+      <span style="font-size:0.74rem;color:#6e6e7c;margin-left:8px" id="ai-mode-desc">Answers grounded in this document</span>
     </div>
 
     <!-- Suggested questions -->
     <div class="ai-chips-row">
-      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.63rem;color:#334155;text-transform:uppercase;letter-spacing:0.15em;align-self:center;margin-right:4px">Ask:</span>
+      <span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.63rem;color:#6e6e7c;text-transform:uppercase;letter-spacing:0.15em;align-self:center;margin-right:4px">Ask:</span>
       <button class="ai-chip" onclick="aiAsk(this)">Why is UK public charging so expensive?</button>
       <button class="ai-chip" onclick="aiAsk(this)">Who captures the most value in EV charging?</button>
       <button class="ai-chip" onclick="aiAsk(this)">What is the Denmark Trap for EVs?</button>

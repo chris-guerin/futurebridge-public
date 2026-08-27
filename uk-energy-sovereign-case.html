@@ -8,25 +8,25 @@
 <style>:root{--font-sans:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;--font-serif:'DM Serif Display',ui-serif,Georgia,serif;}</style>
 <style>
 :root {
-  --bg: #0a0f1a;
-  --surface: #111827;
-  --surface2: #1a2236;
-  --surface3: #1f2b42;
-  --border: #1e293b;
-  --border2: #2d3a52;
-  --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --accent: #f59e0b;
-  --red: #ef4444;
-  --blue: #3b82f6;
-  --green: #10b981;
-  --amber: #f59e0b;
-  --purple: #8b5cf6;
-  --cyan: #06b6d4;
-  --rose: #f43f5e;
-  --teal: #14b8a6;
-  --water: #2563eb;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f7f7f8;
+  --surface3: #f0f0f2;
+  --border: #e4e4e8;
+  --border2: #d0d0d6;
+  --text: #0b0b0b;
+  --text-muted: #4B4B55;
+  --text-dim: #6f6f79;
+  --accent: #eda100;
+  --red: #e34948;
+  --blue: #2a78d6;
+  --green: #008300;
+  --amber: #eda100;
+  --purple: #4a3aa7;
+  --cyan: #1baf7a;
+  --rose: #e87ba4;
+  --teal: #1baf7a;
+  --water: #2a78d6;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +48,7 @@ body {
   padding: 80px 60px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, #05080f 0%, #0c1628 30%, #131a30 60%, #0a0f1a 100%);
+  background: linear-gradient(160deg, #05080f 0%, #f7f7f8 30%, #f0f0f2 60%, #ffffff 100%);
 }
 
 .hero::before {
@@ -288,7 +288,7 @@ tbody td {
   color: var(--text-muted);
 }
 
-tbody tr:hover { background: rgba(255,255,255,0.015); }
+tbody tr:hover { background: rgba(0,0,0,0.028); }
 
 td.num {
   font-family: 'IBM Plex Mono', monospace;
@@ -844,7 +844,7 @@ td.cyan { color: var(--cyan); font-weight: 600; }
     </div>
     <div class="bar-row">
       <div class="bar-label">UK shareholders<br><small style="color:var(--text-dim)">pension funds, retail</small></div>
-      <div class="bar-track"><div class="bar-fill" style="width:12%; background: linear-gradient(90deg, var(--blue), #2563eb)"></div></div>
+      <div class="bar-track"><div class="bar-fill" style="width:12%; background: linear-gradient(90deg, var(--blue), #2a78d6)"></div></div>
       <div class="bar-value">~12%</div>
     </div>
     <div class="bar-row">
@@ -1127,8 +1127,8 @@ td.cyan { color: var(--cyan); font-weight: 600; }
 ">
   <!-- Collapsed bar -->
   <div id="ai-bar" onclick="toggleAI()" style="
-    background: linear-gradient(90deg, #0c1628 0%, #131a30 100%);
-    border-top: 1px solid #1e293b;
+    background: linear-gradient(90deg, #f7f7f8 0%, #f0f0f2 100%);
+    border-top: 1px solid #e4e4e8;
     padding: 12px 24px;
     cursor: pointer;
     display: flex;
@@ -1136,20 +1136,20 @@ td.cyan { color: var(--cyan); font-weight: 600; }
     gap: 12px;
     user-select: none;
   ">
-    <div style="width:8px;height:8px;border-radius:50%;background:#f59e0b;box-shadow:0 0 8px #f59e0b;flex-shrink:0;"></div>
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:#f59e0b;letter-spacing:3px;text-transform:uppercase;">Ask the document</span>
+    <div style="width:8px;height:8px;border-radius:50%;background:#eda100;box-shadow:0 0 8px #eda100;flex-shrink:0;"></div>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:#eda100;letter-spacing:3px;text-transform:uppercase;">Ask the document</span>
     <span style="color:#64748b;font-size:0.8rem;margin-left:4px;">— query this analysis with AI</span>
     <span id="ai-toggle-icon" style="margin-left:auto;color:#64748b;font-size:1.2rem;">▲</span>
   </div>
 
   <!-- Expanded panel -->
-  <div id="ai-expanded" style="display:none;background:#0a0f1a;border-top:1px solid #2d3a52;">
+  <div id="ai-expanded" style="display:none;background:#ffffff;border-top:1px solid #d0d0d6;">
     
     <!-- API key row -->
     <div id="ai-key-row" style="
       padding: 16px 24px;
-      background: #111827;
-      border-bottom: 1px solid #1e293b;
+      background: #ffffff;
+      border-bottom: 1px solid #e4e4e8;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -1158,17 +1158,17 @@ td.cyan { color: var(--cyan); font-weight: 600; }
       <span style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:#64748b;text-transform:uppercase;letter-spacing:2px;white-space:nowrap;">Anthropic API Key</span>
       <input id="ai-key-input" type="password" placeholder="sk-ant-..." style="
         flex:1; min-width:260px; max-width:420px;
-        background:#0a0f1a; border:1px solid #2d3a52; border-radius:4px;
-        padding:7px 12px; color:#e2e8f0; font-family:'IBM Plex Mono',monospace;
+        background:#ffffff; border:1px solid #d0d0d6; border-radius:4px;
+        padding:7px 12px; color:#0b0b0b; font-family:'IBM Plex Mono',monospace;
         font-size:0.8rem; outline:none;
       " oninput="saveKey(this.value)">
-      <span style="font-size:0.75rem;color:#475569;">Free at <a href="https://console.anthropic.com" target="_blank" style="color:#3b82f6;">console.anthropic.com</a></span>
-      <span id="ai-key-status" style="font-size:0.75rem;color:#10b981;display:none;">✓ Key saved</span>
+      <span style="font-size:0.75rem;color:#9a9aa6;">Free at <a href="https://console.anthropic.com" target="_blank" style="color:#2a78d6;">console.anthropic.com</a></span>
+      <span id="ai-key-status" style="font-size:0.75rem;color:#008300;display:none;">✓ Key saved</span>
     </div>
 
     <!-- Suggested questions -->
-    <div style="padding:16px 24px 8px;display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #1e293b;">
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#475569;text-transform:uppercase;letter-spacing:2px;align-self:center;margin-right:4px;">Ask:</span>
+    <div style="padding:16px 24px 8px;display:flex;flex-wrap:wrap;gap:8px;border-bottom:1px solid #e4e4e8;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:#9a9aa6;text-transform:uppercase;letter-spacing:2px;align-self:center;margin-right:4px;">Ask:</span>
       <button class="ai-chip" onclick="askQuestion(this)">What's the UK's core energy problem?</button>
       <button class="ai-chip" onclick="askQuestion(this)">How much would the 7-fix programme cost?</button>
       <button class="ai-chip" onclick="askQuestion(this)">Why can't renewables alone solve this?</button>
@@ -1178,14 +1178,14 @@ td.cyan { color: var(--cyan); font-weight: 600; }
     </div>
 
     <!-- Input row -->
-    <div style="padding:12px 24px;display:flex;gap:10px;border-bottom:1px solid #1e293b;">
+    <div style="padding:12px 24px;display:flex;gap:10px;border-bottom:1px solid #e4e4e8;">
       <input id="ai-query-input" type="text" placeholder="Ask anything about this document…" style="
-        flex:1; background:#111827; border:1px solid #2d3a52; border-radius:4px;
-        padding:10px 14px; color:#e2e8f0; font-size:0.9rem; outline:none;
+        flex:1; background:#ffffff; border:1px solid #d0d0d6; border-radius:4px;
+        padding:10px 14px; color:#0b0b0b; font-size:0.9rem; outline:none;
         font-family:'IBM Plex Sans',sans-serif;
       " onkeydown="if(event.key==='Enter')sendQuery()">
       <button onclick="sendQuery()" id="ai-send-btn" style="
-        background:#f59e0b; color:#0a0f1a; border:none; border-radius:4px;
+        background:#0b0b0b; color:#ffffff; border:none; border-radius:4px;
         padding:10px 22px; font-weight:600; font-size:0.85rem; cursor:pointer;
         font-family:'IBM Plex Sans',sans-serif; white-space:nowrap;
       ">Ask →</button>
@@ -1208,9 +1208,9 @@ td.cyan { color: var(--cyan); font-weight: 600; }
 
 <style>
 .ai-chip {
-  background: #1a2236;
-  border: 1px solid #2d3a52;
-  color: #94a3b8;
+  background: #f7f7f8;
+  border: 1px solid #d0d0d6;
+  color: #4B4B55;
   padding: 5px 12px;
   border-radius: 20px;
   font-size: 0.78rem;
@@ -1220,33 +1220,33 @@ td.cyan { color: var(--cyan); font-weight: 600; }
   white-space: nowrap;
 }
 .ai-chip:hover {
-  background: #1f2b42;
-  color: #e2e8f0;
-  border-color: #f59e0b;
+  background: #f0f0f2;
+  color: #0b0b0b;
+  border-color: #eda100;
 }
 #ai-query-input:focus {
-  border-color: #f59e0b;
+  border-color: #eda100;
 }
 #ai-response-inner p {
-  color: #e2e8f0;
+  color: #0b0b0b;
   line-height: 1.7;
   margin-bottom: 10px;
 }
 #ai-response-inner .ai-q {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
-  color: #f59e0b;
+  color: #eda100;
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 #ai-response-inner .ai-a {
-  color: #e2e8f0;
+  color: #0b0b0b;
   line-height: 1.75;
   font-size: 0.9rem;
 }
 #ai-response-inner .ai-thinking {
-  color: #475569;
+  color: #9a9aa6;
   font-style: italic;
   font-size: 0.85rem;
   display: flex;
@@ -1254,7 +1254,7 @@ td.cyan { color: var(--cyan); font-weight: 600; }
   gap: 8px;
 }
 #ai-response-inner .ai-err {
-  color: #ef4444;
+  color: #e34948;
   font-size: 0.85rem;
 }
 .ai-dot-anim {
@@ -1262,7 +1262,7 @@ td.cyan { color: var(--cyan); font-weight: 600; }
 }
 .ai-dot-anim span {
   width: 5px; height: 5px; border-radius: 50%;
-  background: #f59e0b; display: inline-block;
+  background: #eda100; display: inline-block;
   animation: aiDot 1.2s infinite;
 }
 .ai-dot-anim span:nth-child(2) { animation-delay: 0.2s; }
@@ -1362,7 +1362,7 @@ function showThinking(q) {
   var area = document.getElementById('ai-response-inner');
   var entry = document.createElement('div');
   entry.id = 'ai-thinking-entry';
-  entry.style.cssText = 'border-left:2px solid #f59e0b;padding:12px 16px;margin-bottom:12px;background:#111827;border-radius:0 4px 4px 0;';
+  entry.style.cssText = 'border-left:2px solid #eda100;padding:12px 16px;margin-bottom:12px;background:#ffffff;border-radius:0 4px 4px 0;';
   entry.innerHTML = '<div class="ai-q">' + escHtml(q) + '</div>' +
     '<div class="ai-thinking"><div class="ai-dot-anim"><span></span><span></span><span></span></div> Thinking…</div>';
   area.insertBefore(entry, area.firstChild);
@@ -1375,7 +1375,7 @@ function showResponse(q, answer, err) {
 
   var area = document.getElementById('ai-response-inner');
   var entry = document.createElement('div');
-  entry.style.cssText = 'border-left:2px solid #f59e0b;padding:12px 16px;margin-bottom:12px;background:#111827;border-radius:0 4px 4px 0;';
+  entry.style.cssText = 'border-left:2px solid #eda100;padding:12px 16px;margin-bottom:12px;background:#ffffff;border-radius:0 4px 4px 0;';
 
   var body = err
     ? '<div class="ai-err">⚠ ' + escHtml(err) + '</div>'
