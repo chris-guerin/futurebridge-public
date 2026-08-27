@@ -1347,8 +1347,9 @@ window.aiSend = function() {
       'anthropic-dangerous-direct-browser-access': 'true'
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 800,
+      model: 'claude-opus-5',
+      max_tokens: 4000,
+      output_config: { effort: 'low' },
       system: SYSTEMS[MODE],
       messages: [{ role: 'user', content: q }]
     })
@@ -1356,9 +1357,13 @@ window.aiSend = function() {
   .then(function(r){ return r.json(); })
   .then(function(d) {
     document.getElementById('ai-send-btn').disabled = false;
-    var txt = (d.content && d.content[0] && d.content[0].text)
-      ? d.content[0].text
-      : (d.error ? '⚠ API error: ' + d.error.message : 'No response.');
+    var d_text = null;
+    if (d && d.content) {
+      for (var _i = 0; _i < d.content.length; _i++) {
+        if (d.content[_i].type === 'text' && d.content[_i].text) { d_text = d.content[_i].text; break; }
+      }
+    }
+    var txt = d_text || (d.error ? '⚠ API error: ' + d.error.message : 'No response.');
     aiShowResult(q, txt, null, MODE);
   })
   .catch(function(e) {
