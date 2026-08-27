@@ -4,73 +4,110 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FutureBridge Advisory</title>
-<meta name="description" content="Strategy questions written as falsifiable claims, mapped before the news arrives.">
+<meta name="description" content="We map your strategy to an ontology of technologies, markets, regulations and ecosystem. When something changes, we tell you what it means for your strategy.">
 <style>
   :root{
     --black:#000000;
+    --ink:#0b0b0b;
     --white:#FFFFFF;
     --grey:#4B4B55;
+    --dim:#6f6f79;
     --red:#F84E5D;
     --indigo:#3F43AD;
+    --up:#008300;
+    --down:#e34948;
+    --thresh:#eda100;
     --hair:rgba(0,0,0,0.14);
+    --hair2:rgba(0,0,0,0.07);
     --font:"Circular Std","Circular Std Book",Arial,sans-serif;
-    --maxw:1120px;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --maxw:1180px;
   }
   *{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
-  body{margin:0;background:var(--white);color:var(--black);font-family:var(--font);
+  body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);
        -webkit-font-smoothing:antialiased;line-height:1.5;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
-  section{padding:0 0 96px;}
 
   /* ---------- hero ---------- */
-  .hero{padding:104px 0 72px;}
+  .hero{padding:96px 0 44px;}
   .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 26px;}
-  h1{font-size:clamp(34px,5.6vw,64px);line-height:1.06;letter-spacing:-0.025em;
-     margin:0 0 30px;font-weight:600;max-width:19ch;}
-  .lede{font-size:clamp(17px,1.9vw,21px);color:var(--grey);margin:0;max-width:60ch;}
+  h1{font-size:clamp(32px,5.2vw,58px);line-height:1.07;letter-spacing:-0.025em;
+     margin:0 0 26px;font-weight:600;max-width:17ch;}
+  h1 em{font-style:normal;color:var(--red);}
+  .lede{font-size:clamp(17px,1.85vw,21px);color:var(--grey);margin:0;max-width:64ch;}
+  .lede b{color:var(--ink);font-weight:600;}
 
-  /* ---------- landscape figure ---------- */
-  figure{margin:0;}
-  .svgfig{width:100%;height:auto;display:block;overflow:visible;}
-  .ls-link{stroke:var(--hair);stroke-width:1.4;fill:none;}
-  .ls-node{fill:var(--white);stroke:var(--black);stroke-width:1.6;}
-  .ls-label{font-family:var(--font);font-size:12px;fill:var(--grey);}
-  .ls-sig-link{stroke:var(--indigo);stroke-width:2.2;fill:none;
-               stroke-dasharray:900;stroke-dashoffset:900;}
-  .ls-sig-node{fill:var(--indigo);stroke:var(--indigo);}
-  .in .ls-sig-link{animation:lsdraw 1.5s ease .3s forwards;}
-  .in .ls-sig-node:nth-of-type(1){animation:lspulse 1.6s ease .75s;}
-  .in .ls-sig-node:nth-of-type(2){animation:lspulse 1.6s ease 1.05s;}
-  .in .ls-sig-node:nth-of-type(3){animation:lspulse 1.6s ease 1.35s;}
-  @keyframes lsdraw{to{stroke-dashoffset:0;}}
-  @keyframes lspulse{0%{r:4;}40%{r:9;}100%{r:6;}}
-  .figcap{font-size:0.85rem;color:var(--grey);margin-top:20px;max-width:56ch;line-height:1.55;}
-  .figcap b{color:var(--black);font-weight:600;}
+  /* ---------- demo ---------- */
+  .demo{border-top:1px solid var(--black);margin-bottom:96px;}
+  .demo-head{display:flex;justify-content:space-between;align-items:baseline;
+             gap:16px;flex-wrap:wrap;padding:22px 0 18px;}
+  .demo-head h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+                color:var(--grey);margin:0;font-weight:600;}
+  .demo-head .hint{font-size:13px;color:var(--dim);}
 
-  /* ---------- pillars ---------- */
-  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
-           border-top:1px solid var(--hair);padding-top:44px;}
-  .pillar h3{font-size:15px;margin:0 0 10px;font-weight:600;letter-spacing:-0.01em;}
-  .pillar p{font-size:14.5px;color:var(--grey);margin:0;line-height:1.6;}
-  .pillar .n{font-size:11px;letter-spacing:.18em;color:var(--red);display:block;margin-bottom:14px;}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+  .chip{font-family:var(--font);font-size:14px;line-height:1.35;text-align:left;
+        background:var(--white);color:var(--ink);border:1px solid var(--hair);
+        border-radius:2px;padding:13px 16px;cursor:pointer;flex:1 1 210px;
+        transition:border-color .16s ease,background .16s ease,transform .16s ease;}
+  .chip .lay{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+             text-transform:uppercase;color:var(--dim);margin-bottom:7px;}
+  .chip:hover{border-color:var(--ink);}
+  .chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff;}
+  .chip[aria-pressed="true"] .lay{color:rgba(255,255,255,0.72);}
 
-  /* ---------- index of pieces ---------- */
-  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
-     margin:0 0 28px;font-weight:600;}
-  .pieces{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--black);}
+  .panes{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);
+         border:1px solid var(--hair);}
+  .pane{padding:26px 26px 30px;}
+  .pane + .pane{border-left:1px solid var(--hair);}
+  .pane h3{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+           color:var(--dim);margin:0 0 20px;font-weight:600;}
+
+  /* ontology */
+  .layer{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--hair2);}
+  .layer:last-child{border-bottom:none;}
+  .layer-name{font-size:13.5px;width:108px;flex:none;color:var(--grey);transition:color .25s ease;}
+  .layer.hot .layer-name{color:var(--ink);font-weight:600;}
+  .dots{display:flex;gap:7px;flex-wrap:wrap;}
+  .dot{width:9px;height:9px;border-radius:50%;border:1.4px solid var(--hair);
+       background:var(--white);transition:background .3s ease,border-color .3s ease,transform .3s ease;}
+  .layer.hot .dot.on{background:var(--indigo);border-color:var(--indigo);transform:scale(1.45);}
+
+  /* read-through */
+  .empty{font-size:14.5px;color:var(--dim);line-height:1.6;max-width:40ch;}
+  .bet{border-left:2px solid var(--hair);padding:2px 0 2px 16px;margin-bottom:20px;
+       opacity:0;transform:translateY(6px);}
+  .bet.in{opacity:1;transform:none;transition:opacity .45s ease,transform .45s ease;}
+  .bet:last-child{margin-bottom:0;}
+  .bet-name{font-size:15.5px;font-weight:600;letter-spacing:-0.01em;margin-bottom:5px;}
+  .verdict{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);
+           font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;}
+  .verdict .g{font-size:12px;line-height:1;}
+  .bet-note{font-size:14.5px;color:var(--grey);line-height:1.55;}
+  .bet.up{border-left-color:var(--up);}    .bet.up .verdict{color:var(--up);}
+  .bet.down{border-left-color:var(--down);} .bet.down .verdict{color:var(--down);}
+  .bet.th{border-left-color:var(--thresh);} .bet.th .verdict{color:#8a5e00;}
+
+  .demo-foot{font-size:12.5px;color:var(--dim);padding:14px 0 0;line-height:1.55;}
+
+  /* ---------- writing ---------- */
+  section{padding:0 0 96px;}
+  h2.sec{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
+         margin:0 0 28px;font-weight:600;}
+  .pieces{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--black);}
   .piece{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);}
   .piece:last-child{border-right:none;}
-  .piece a{display:block;padding:30px 26px 34px;text-decoration:none;color:var(--black);height:100%;
+  .piece a{display:block;padding:30px 26px 34px;text-decoration:none;color:var(--ink);height:100%;
            transition:background .18s ease;}
   .piece a:hover{background:rgba(0,0,0,0.028);}
   .piece a:hover .t{color:var(--red);}
   .piece a:hover .go{transform:translateX(4px);color:var(--red);}
-  .num{font-size:11px;letter-spacing:.18em;color:var(--grey);display:block;margin-bottom:20px;}
+  .num{font-size:11px;letter-spacing:.18em;color:var(--dim);display:block;margin-bottom:20px;}
   .t{font-size:21px;font-weight:600;letter-spacing:-0.015em;margin-bottom:9px;
      transition:color .15s ease;line-height:1.2;}
   .d{font-size:14.5px;color:var(--grey);line-height:1.55;}
-  .go{display:inline-block;margin-top:20px;font-size:13px;color:var(--grey);
+  .go{display:inline-block;margin-top:20px;font-size:13px;color:var(--dim);
       transition:transform .18s ease,color .18s ease;}
 
   footer{border-top:1px solid var(--hair);padding:34px 0 64px;font-size:14px;color:var(--grey);
@@ -78,22 +115,21 @@
   footer a{color:var(--grey);text-decoration:none;border-bottom:1px solid var(--hair);}
   footer a:hover{color:var(--red);border-bottom-color:var(--red);}
 
-  /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none;}
-    .in .ls-sig-link{animation:none;stroke-dashoffset:0;}
-    .in .ls-sig-node{animation:none;}
+    .reveal,.bet{opacity:1;transform:none;transition:none;}
+    .dot,.layer-name{transition:none;}
   }
-
-  @media (max-width:860px){
-    .pillars,.pieces{grid-template-columns:1fr;}
-    .pillars{gap:32px;}
+  @media (max-width:900px){
+    .panes{grid-template-columns:1fr;}
+    .pane + .pane{border-left:none;border-top:1px solid var(--hair);}
+    .pieces{grid-template-columns:1fr;}
     .piece{border-right:none;}
     .wrap{padding:0 22px;}
-    .hero{padding:72px 0 52px;}
-    section{padding:0 0 68px;}
+    .hero{padding:70px 0 36px;}
+    section,.demo{padding-bottom:0;margin-bottom:68px;}
+    .layer-name{width:92px;}
   }
 </style>
 </head>
@@ -103,74 +139,46 @@
 
   <header class="hero reveal">
     <p class="eyebrow">FutureBridge Advisory</p>
-    <h1>The method is not new. What is new is that the landscape is mapped.</h1>
-    <p class="lede">Most approaches describe the future. This one tests whether it is arriving &mdash; and reads
-      the impact of each event off a map that already exists.</p>
+    <h1>Something changed. <em>Here is what it means for your strategy.</em></h1>
+    <p class="lede">We map your strategy onto an ontology of <b>technologies, markets, regulations and
+      ecosystem</b>. The map exists before the news does &mdash; so when something moves, you get the
+      consequence for your bets, not another headline to interpret.</p>
   </header>
 
-  <section class="reveal">
-    <figure>
-      <svg class="svgfig" viewBox="0 0 1000 330" role="img"
-           aria-label="A network of hypothesis nodes. An incoming event traces a path through the map and moves three thresholds.">
-        <g class="ls-link">
-          <path d="M120 96 L262 58"/><path d="M120 96 L252 182"/><path d="M262 58 L404 122"/>
-          <path d="M252 182 L404 122"/><path d="M252 182 L392 252"/><path d="M404 122 L548 76"/>
-          <path d="M404 122 L562 202"/><path d="M392 252 L562 202"/><path d="M548 76 L702 136"/>
-          <path d="M562 202 L702 136"/><path d="M562 202 L700 266"/><path d="M702 136 L852 92"/>
-          <path d="M702 136 L858 216"/><path d="M700 266 L858 216"/><path d="M548 76 L852 92"/>
-        </g>
-
-        <path class="ls-sig-link" d="M6 168 L252 182 L404 122 L562 202"/>
-
-        <g class="ls-node">
-          <circle cx="120" cy="96" r="6"/><circle cx="262" cy="58" r="6"/>
-          <circle cx="392" cy="252" r="6"/><circle cx="548" cy="76" r="6"/>
-          <circle cx="702" cy="136" r="6"/><circle cx="700" cy="266" r="6"/>
-          <circle cx="852" cy="92" r="6"/><circle cx="858" cy="216" r="6"/>
-        </g>
-
-        <circle class="ls-sig-node" cx="252" cy="182" r="6"/>
-        <circle class="ls-sig-node" cx="404" cy="122" r="6"/>
-        <circle class="ls-sig-node" cx="562" cy="202" r="6"/>
-
-        <text class="ls-label" x="6" y="150">event</text>
-        <text class="ls-label" x="884" y="94">hypothesis</text>
-        <text class="ls-label" x="588" y="228">threshold moved</text>
-      </svg>
-      <figcaption class="figcap">A story that looks minor in isolation can move <b>three thresholds at once</b>.
-        You only see that if the landscape is already drawn.</figcaption>
-    </figure>
-  </section>
-
-  <section class="pillars reveal">
-    <div class="pillar">
-      <span class="n">01</span>
-      <h3>Assumptions made explicit</h3>
-      <p>Each open question is written as a falsifiable claim with a specific threshold &mdash; what needs to be
-        true, in numbers rather than narrative.</p>
+  <div class="demo reveal">
+    <div class="demo-head">
+      <h2>Try it</h2>
+      <span class="hint">Pick a change &mdash; see what it does to the strategy.</span>
     </div>
-    <div class="pillar">
-      <span class="n">02</span>
-      <h3>Causal structure mapped</h3>
-      <p>Regulation, technology cost, supply chain, competition. Which variables actually drive the
-        outcome, and in what order.</p>
+
+    <div class="chips" id="chips"></div>
+
+    <div class="panes">
+      <div class="pane">
+        <h3>The ontology</h3>
+        <div id="layers"></div>
+      </div>
+      <div class="pane">
+        <h3>What it means for your strategy</h3>
+        <div id="readout" aria-live="polite">
+          <p class="empty">Choose a change above. Every bet it touches is listed here, with the
+            direction it moves and why &mdash; read straight off the map.</p>
+        </div>
+      </div>
     </div>
-    <div class="pillar">
-      <span class="n">03</span>
-      <h3>Evidence read against the map</h3>
-      <p>When an event arrives the work is not to analyse it from scratch. It is to locate it, and to see
-        what it sets off downstream.</p>
-    </div>
-  </section>
+
+    <p class="demo-foot">Illustrative. Bets, thresholds and read-throughs shown here are examples,
+      not client work.</p>
+  </div>
 
   <section class="reveal">
-    <h2>Writing</h2>
+    <h2 class="sec">Writing</h2>
     <div class="pieces">
       <div class="piece"><a href="FutureBridge_Method_Credibility.html">
         <span class="num">01</span>
         <div class="t">The method</div>
-        <div class="d">Three established disciplines, wired together &mdash; and why the connection is the part
-          that does not already exist.</div>
+        <div class="d">Three established disciplines, wired together &mdash; and why the connection is the
+          part that does not already exist.</div>
         <span class="go">Read &rarr;</span>
       </a></div>
       <div class="piece"><a href="uk-energy-sovereign-case.html">
@@ -198,21 +206,145 @@
 </div>
 
 <script>
-  (function(){
-    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-    if(!('IntersectionObserver' in window)){
-      els.forEach(function(e){e.classList.add('in');});
-      return;
+(function(){
+  var LAYERS = [
+    { key:'tech', name:'Technologies', n:9 },
+    { key:'mkt',  name:'Markets',      n:7 },
+    { key:'reg',  name:'Regulations',  n:6 },
+    { key:'eco',  name:'Ecosystem',    n:8 }
+  ];
+
+  var CHANGES = [
+    {
+      layer:'reg', label:'Regulations',
+      title:'Combustion phase-out confirmed for 2035',
+      nodes:[1,3,4],
+      hits:[
+        { bet:'Electrify the light fleet by 2030', dir:'up',
+          note:'Removes the downside case the plan was hedging against. The hedge is now the expensive half of the portfolio.' },
+        { bet:'Hydrogen for heavy haulage', dir:'down',
+          note:'The exemption this bet depended on narrows. The window closes earlier than the investment case assumed.' }
+      ]
+    },
+    {
+      layer:'tech', label:'Technologies',
+      title:'Solid-state cell reaches 400 Wh/kg in production trim',
+      nodes:[0,2,5,7],
+      hits:[
+        { bet:'Retain in-house cell manufacture', dir:'th',
+          note:'Crosses the density threshold the existing line was never specified for. Retooling decision moves forward by two years.' },
+        { bet:'Hydrogen for heavy haulage', dir:'down',
+          note:'Closes most of the range gap hydrogen was meant to cover.' }
+      ]
+    },
+    {
+      layer:'mkt', label:'Markets',
+      title:'Cell prices fall 18% year on year',
+      nodes:[1,2,6],
+      hits:[
+        { bet:'Retain in-house cell manufacture', dir:'down',
+          note:'Buy economics now beat build below your volume floor. The make case rests on a volume you do not yet have.' },
+        { bet:'Electrify the light fleet by 2030', dir:'up',
+          note:'Total cost of ownership crosses parity a full year ahead of the plan.' }
+      ]
+    },
+    {
+      layer:'eco', label:'Ecosystem',
+      title:'Two national charging networks merge',
+      nodes:[0,4,6,7],
+      hits:[
+        { bet:'Own the charging relationship', dir:'down',
+          note:'The customer relationship you planned to own now has a single powerful counterparty in front of it.' },
+        { bet:'Electrify the light fleet by 2030', dir:'up',
+          note:'Coverage consolidates faster, which removes a rollout risk the plan carried.' }
+      ]
     }
+  ];
+
+  var VERDICT = {
+    up:   { g:'▲', t:'Strengthens' },
+    down: { g:'▼', t:'Weakens' },
+    th:   { g:'◆', t:'Threshold crossed' }
+  };
+
+  // build ontology
+  var layersEl = document.getElementById('layers');
+  LAYERS.forEach(function(L){
+    var row = document.createElement('div');
+    row.className = 'layer'; row.setAttribute('data-layer', L.key);
+    var name = document.createElement('span');
+    name.className = 'layer-name'; name.textContent = L.name;
+    var dots = document.createElement('div'); dots.className = 'dots';
+    for (var i = 0; i < L.n; i++){
+      var d = document.createElement('span'); d.className = 'dot'; dots.appendChild(d);
+    }
+    row.appendChild(name); row.appendChild(dots); layersEl.appendChild(row);
+  });
+
+  // build chips
+  var chipsEl = document.getElementById('chips');
+  CHANGES.forEach(function(C, idx){
+    var b = document.createElement('button');
+    b.className = 'chip'; b.type = 'button';
+    b.setAttribute('aria-pressed','false');
+    b.innerHTML = '<span class="lay"></span>';
+    b.querySelector('.lay').textContent = C.label;
+    b.appendChild(document.createTextNode(C.title));
+    b.addEventListener('click', function(){ select(idx); });
+    chipsEl.appendChild(b);
+  });
+
+  var readout = document.getElementById('readout');
+
+  function select(idx){
+    var C = CHANGES[idx];
+
+    Array.prototype.forEach.call(chipsEl.children, function(c,i){
+      c.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+    });
+
+    Array.prototype.forEach.call(layersEl.children, function(row){
+      var hot = row.getAttribute('data-layer') === C.layer;
+      row.classList.toggle('hot', hot);
+      Array.prototype.forEach.call(row.querySelector('.dots').children, function(d,i){
+        d.classList.toggle('on', hot && C.nodes.indexOf(i) !== -1);
+      });
+    });
+
+    readout.innerHTML = '';
+    C.hits.forEach(function(h, i){
+      var v = VERDICT[h.dir];
+      var el = document.createElement('div');
+      el.className = 'bet ' + h.dir;
+      var name = document.createElement('div');
+      name.className = 'bet-name'; name.textContent = h.bet;
+      var ver = document.createElement('div');
+      ver.className = 'verdict';
+      var g = document.createElement('span'); g.className = 'g'; g.textContent = v.g;
+      ver.appendChild(g); ver.appendChild(document.createTextNode(v.t));
+      var note = document.createElement('div');
+      note.className = 'bet-note'; note.textContent = h.note;
+      el.appendChild(name); el.appendChild(ver); el.appendChild(note);
+      readout.appendChild(el);
+      setTimeout(function(){ el.classList.add('in'); }, 60 + i * 130);
+    });
+  }
+
+  // reveal
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');});
+  } else {
     var top = els.filter(function(e){return e.getBoundingClientRect().top < window.innerHeight;});
     top.forEach(function(e,i){ setTimeout(function(){e.classList.add('in');}, 110*i); });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
         if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
       });
-    },{threshold:0.12});
+    },{threshold:0.1});
     els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
-  })();
+  }
+})();
 </script>
 
 </body>
