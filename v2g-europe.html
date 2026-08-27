@@ -177,6 +177,41 @@
   @media (max-width:880px){.stats3{grid-template-columns:1fr;}
     .s3{border-right:none;border-bottom:1px solid var(--hair);}
     .s3:last-child{border-bottom:none;}}
+
+  /* value pools */
+  .pools{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--black);}
+  .pool{border-bottom:1px solid var(--hair);border-right:1px solid var(--hair);padding:18px 18px 20px;}
+  .pool:nth-child(3n){border-right:none;}
+  .pool .pn{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+            color:var(--dim);display:block;margin-bottom:9px;}
+  .pool .pt{font-size:15px;font-weight:600;letter-spacing:-0.012em;margin-bottom:7px;line-height:1.25;}
+  .pool .pw{font-size:13px;color:var(--grey);line-height:1.45;}
+  .pool .pw b{color:var(--ink);}
+  /* comparison bars */
+  .bars{margin:26px 0 10px;}
+  .bar{margin-bottom:16px;}
+  .barlab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+          font-size:13.5px;margin-bottom:6px;}
+  .barlab b{font-size:15px;font-variant-numeric:tabular-nums;letter-spacing:-0.015em;}
+  .bartrack{height:12px;background:#F0F0F2;}
+  .barfill{height:100%;display:block;}
+  .f-v1g{background:#1B8F70;} .f-v2g{background:var(--indigo);} .f-v2gr{background:#c9cae8;}
+  .barnote{font-size:12px;color:var(--dim);margin-top:5px;}
+  /* escape ladder */
+  .ladder{border-top:1px solid var(--black);margin:26px 0 8px;}
+  .rung{display:grid;grid-template-columns:96px 1fr 128px;gap:16px;align-items:start;
+        padding:15px 0;border-bottom:1px solid var(--hair2);}
+  .rung:last-child{border-bottom:none;}
+  .rwhen{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--indigo);
+         font-weight:600;padding-top:2px;}
+  .rwhat{font-size:14.5px;line-height:1.45;}
+  .rwhat b{font-weight:600;}
+  .rwho{font-size:12px;color:var(--dim);line-height:1.4;padding-top:2px;}
+  @media (max-width:880px){
+    .pools{grid-template-columns:1fr;}
+    .pool{border-right:none;}
+    .rung{grid-template-columns:1fr;gap:4px;}
+  }
 </style>
 </head>
 <body>
@@ -190,266 +225,273 @@
 </header>
 
 <div class="wrap hero">
-  <div class="eyebrow reveal">FutureBridge Signal Engine &middot; Vehicle-to-grid &middot; August 2026</div>
-  <h1 class="reveal">Europe just fixed the regulation. The <span class="em-red">cars</span> are now the constraint.</h1>
-  <p class="lede reveal">For a decade the vehicle-to-grid business case died on the same point: the same electron
-    was charged grid fees twice. Germany removed that in November 2025.<sup><a href="#s1">1</a></sup> From
-    <b>1 January 2027</b> every newly installed or refurbished charge point in the EU must support the standard
-    that makes bidirectional power transfer possible.<sup><a href="#s6">6</a></sup></p>
-  <p class="lede reveal">That is the regulatory question closing. It leaves two harder ones open. The
-    <b>vehicle parc</b> is not reached by any mandate before 2032 &mdash; and the parc is what the EU&rsquo;s take-up
-    figures are counted against. And every V2G business case in Europe today quietly assumes two things about the
-    household: a <b>driveway</b>, which roughly a third of UK households do not have, and a car it will
-    <b>still own in four years</b>, which four fifths will not.</p>
+  <div class="eyebrow reveal">FutureBridge Signals &middot; Vehicle-to-grid &middot; August 2026</div>
+  <h1 class="reveal">Europe is fixing vehicle-to-grid. The open question is who gets to <span class="em-red">dispatch</span> it.</h1>
+  <p class="lede reveal">For a decade the business case died on the same point: the same electron was charged
+    network fees twice. Germany removed that in November 2025.<sup><a href="#s1">1</a></sup> From 1 January 2027
+    every newly installed or refurbished EU charge point must support the protocol that carries bidirectional
+    power.<sup><a href="#s6">6</a></sup> The barriers are coming down.</p>
+  <p class="lede reveal">Which makes &ldquo;does V2G work?&rdquo; the wrong question to be asking. On Octopus&rsquo;
+    own published figures, <b>smart one-way charging already saves the household more than their V2G tariff
+    does</b>.<sup><a href="#s20">20</a></sup> The incremental value of reverse flow is not a lower bill. It is
+    <b>&euro;6.4 billion a year of balancing-market revenue</b><sup><a href="#s21">21</a></sup> &mdash; and that
+    accrues to whoever holds market access and dispatch control, not to whoever built the car.</p>
 </div>
 
 <hr class="divider">
 
-<!-- 01 -->
 <section class="row reveal">
   <div class="label"><span class="num">01</span>The barrier</div>
   <div>
     <h2>It was never the technology</h2>
-    <p>Bidirectional hardware has worked since the CHAdeMO Leaf. What did not work was the arithmetic. In most
-      European markets electricity drawn into a car battery paid network charges, and the same electricity paid
-      again on the way back out. On a round trip that is a levy on an asset doing the grid a service.</p>
-    <p>On <b>13 November 2025</b> the Bundestag amended the Energy Industry Act (EnWG) to end double network
-      charging and to treat electricity fed back from an EV battery as storage electricity.<sup><a href="#s1">1</a></sup>
-      The Bundesnetzagentur&rsquo;s <b>MiSpeL</b> determination gives it operational form from
-      <b>1 October 2026</b>, with a transitional period to <b>30 September 2027</b> during which it applies only
-      by agreement with the grid and metering operator.<sup><a href="#s2">2</a></sup><sup><a href="#s3">3</a></sup></p>
+    <p>Bidirectional hardware has worked since the CHAdeMO Leaf. The arithmetic did not. In most European markets
+      electricity drawn into a car battery paid network charges, and the same electricity paid again on the way
+      out &mdash; a levy on an asset doing the grid a service.</p>
+    <p>On <b>13 November 2025</b> the Bundestag amended the Energy Industry Act to end double network charging and
+      treat electricity fed back from an EV battery as storage electricity.<sup><a href="#s1">1</a></sup> The
+      Bundesnetzagentur&rsquo;s <b>MiSpeL</b> determination operationalises it from <b>1 October 2026</b>, with a
+      transitional period to <b>30 September 2027</b> during which it applies only by agreement with the grid and
+      metering operator.<sup><a href="#s2">2</a></sup><sup><a href="#s3">3</a></sup></p>
     <p class="pull">The economics did not improve. The penalty was removed.</p>
-    <p>That distinction matters for anyone sizing this market. Nothing about the value V2G creates changed in
-      November 2025. What changed is that a structural tax on capturing it was lifted &mdash; in one member state,
-      on a timetable that runs into late 2027 before it is unconditional.</p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- 02 -->
 <section class="row reveal">
   <div class="label"><span class="num">02</span>By country</div>
   <div>
     <h2>Four things have to be true at once</h2>
     <p class="sub">Double charging resolved, meters that can settle it, market access for an aggregator, and a
-      product someone can actually buy. Most countries have some. Select a row for detail.</p>
-
+      product someone can buy. Most countries have some. Select a row for detail.</p>
     <div class="matrix" id="matrix"></div>
-
-    <p class="fnote" style="margin-top:16px;">Blank cells are not zeros. Where we could not source a position
-      from public material it is marked <em>not established</em> rather than estimated.</p>
+    <p class="fnote" style="margin-top:16px;">Blank cells are not zeros. Where we could not source a position from
+      public material it is marked <em>not established</em> rather than estimated. For the underlying regulatory
+      enablers and barriers across member states, smartEn&rsquo;s assessment remains the fullest public
+      survey.<sup><a href="#s12">12</a></sup></p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- 03 -->
 <section class="row reveal">
-  <div class="label"><span class="num">03</span>The models</div>
+  <div class="label"><span class="num">03</span>The counterfactual</div>
   <div>
-    <h2>Four commercial models, four different owners of the customer</h2>
-    <p class="sub">The technology is common to all of them. What differs is who holds the billing relationship,
-      and therefore who captures the flexibility margin.</p>
+    <h2>The comparison is not V2G against nothing</h2>
+    <p>Almost every V2G figure in circulation is quoted against a standard variable tariff. That is the wrong
+      baseline. The household&rsquo;s real alternative is <b>intelligent one-way charging</b> &mdash; already mass
+      market, already cheap, already installed.</p>
+    <p>Octopus publishes both. Over May 2025 to April 2026, customers on <b>Intelligent Octopus Go</b> &mdash; a
+      V1G tariff &mdash; typically saved <b>&pound;771</b> against Flexible Octopus.<sup><a href="#s20">20</a></sup>
+      Power Pack, the V2G product, is quoted at around <b>&pound;620</b> against a standard variable tariff, and
+      up to <b>&pound;850</b> on Octopus&rsquo; own modelling.<sup><a href="#s4">4</a></sup></p>
 
-    <div class="cards">
-      <div class="card">
-        <span class="cn">Model 01 &middot; Retailer-led</span>
-        <h3>The energy supplier owns it</h3>
-        <p>The tariff is the product. The car is an input to a portfolio the supplier already optimises. Highest
-          margin capture, because the supplier nets V2G against its own imbalance position rather than selling a
-          service to a third party.</p>
-        <div class="ev">Octopus <b>Power Pack</b>, UK &mdash; reported saving around <b>&pound;620 a year</b> against a
-          standard variable tariff, with Octopus&rsquo; own modelling up to <b>&pound;850</b>.<sup><a href="#s4">4</a></sup></div>
-        <div class="who">Captured by: <b>the retailer.</b> The OEM supplies a compliant vehicle and sees none of the margin.</div>
+    <div class="bars">
+      <div class="bar">
+        <div class="barlab"><span>Intelligent Octopus Go &mdash; smart one-way charging</span><b>&pound;771</b></div>
+        <div class="bartrack"><span class="barfill f-v1g" style="width:90.7%"></span></div>
       </div>
-
-      <div class="card">
-        <span class="cn">Model 02 &middot; OEM-led</span>
-        <h3>The carmaker owns it</h3>
-        <p>Bidirectional charging sold as a vehicle feature with a captive wallbox and an energy partner behind
-          the scenes. Defends the OEM&rsquo;s relationship with the driver and creates a post-sale revenue line, at
-          the cost of building an energy business.</p>
-        <div class="ev">Renault 5 with the PowerBox Verso in France &mdash; first commercially available V2G offer
-          worldwide, October 2024, quoted at up to <b>&euro;600 a year</b>.<sup><a href="#s5">5</a></sup>
-          Volkswagen with Elli, and Mercedes-Benz on the electric GLC and CLA from 2026.<sup><a href="#s5">5</a></sup></div>
-        <div class="who">Captured by: <b>the OEM</b> &mdash; if it can carry the energy-market obligations. Most cannot alone.</div>
-      </div>
-
-      <div class="card">
-        <span class="cn">Model 03 &middot; Paired</span>
-        <h3>OEM plus utility, split economics</h3>
-        <p>The pragmatic middle. The carmaker brings the parc and the warranty position; the utility brings market
-          access, metering and settlement. Fastest route to a live offer, and the model most European launches have
-          actually taken.</p>
-        <div class="ev">BMW with E.ON since February 2026 &mdash; wallbox, tariff and smart meter as one package, with a
-          bonus quoted up to <b>&euro;720 a year</b>.<sup><a href="#s5">5</a></sup> Ford with Octopus from summer 2026;
-          Kia and Hyundai in the Netherlands from late 2025.<sup><a href="#s5">5</a></sup></div>
-        <div class="who">Captured by: <b>split.</b> Whoever owns the tariff tends to own the renewal.</div>
-      </div>
-
-      <div class="card">
-        <span class="cn">Model 04 &middot; Fleet and depot</span>
-        <h3>Aggregation without a consumer</h3>
-        <p>Predictable dwell time, one counterparty, no consumer churn. The only model where V2G economics work
-          today without a retail tariff, because the operator can commit capacity with confidence.</p>
-        <div class="ev">Utrecht&rsquo;s car-sharing deployment &mdash; 50 Renault 5s from June 2025, scaling toward 500.
-          The Johan Cruijff ArenA has run since 2019.<sup><a href="#s5">5</a></sup> Nuvve&rsquo;s revenue remains
-          driven by V2G school-bus hardware rather than by traded flexibility.<sup><a href="#s7">7</a></sup></div>
-        <div class="who">Captured by: <b>the fleet operator or aggregator.</b> The clearest near-term P&amp;L.</div>
+      <div class="bar">
+        <div class="barlab"><span>Power Pack &mdash; vehicle-to-grid, quoted range</span><b>&pound;620&ndash;850</b></div>
+        <div class="bartrack"><span class="barfill f-v2gr" style="width:100%"><span class="barfill f-v2g" style="width:72.9%"></span></span></div>
+        <div class="barnote">Solid bar is the reported &pound;620; the paler extension reaches Octopus&rsquo; modelled &pound;850.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<hr class="divider">
+    <p class="fnote">These are not like-for-like. Different periods, baselines and usage assumptions; Power Pack is
+      an add-on alongside a home tariff and bundles free charging, Intelligent Octopus Go is a full tariff. We are
+      not claiming V1G beats V2G by &pound;151. We are pointing out that <b>the two numbers are the same order of
+      magnitude</b> &mdash; and that no public V2G figure we found is quoted against a smart-charging baseline
+      rather than a standard one.</p>
 
-<!-- 04 -->
-<section class="row reveal">
-  <div class="label"><span class="num">04</span>Competition</div>
-  <div>
-    <h2>&ldquo;Pan-European&rdquo; is a platform claim, not a market position</h2>
-    <p>Electricity markets are national. Balancing products, network tariffs, metering rules, settlement periods
-      and consumer protection all stop at the border. A V2G proposition that works in Rotterdam does not port to
-      Dortmund without re-plumbing, and the German rules do not become unconditional until late 2027.<sup><a href="#s2">2</a></sup></p>
-    <p>So the pan-European players are not competing for a European market. They are competing to amortise one
-      platform across many national markets faster than a national incumbent can build its own. Three postures
-      are visible:</p>
-    <p><b>The vertically integrated retailer.</b> Octopus is the clearest case &mdash; it owns the customer, the tariff,
-      the optimisation stack and increasingly the OEM partnerships, and it exports the stack. Its constraint is
-      that it must win retail energy customers country by country.</p>
-    <p><b>The neutral aggregator.</b> The Mobility House, Jedlix, Virta, Nuvve. They sell the market-access layer to
-      whoever owns the customer. Scales across borders more easily precisely because it does not need the retail
-      relationship &mdash; and captures less per vehicle for the same reason.</p>
-    <p><b>The utility incumbent.</b> E.ON, Enel X and their peers, moving through OEM partnerships in their home
-      territories. Strong where they already hold the meter; weak where they do not.</p>
-    <p class="pull">Nobody is winning Europe. Several are winning the right to be the layer everyone else rents.</p>
-  </div>
-</section>
+    <p style="margin-top:22px;">The system-level literature says the same thing more precisely. Modelling European
+      charging infrastructure and the energy system together, <b>V1G captures the majority of system cost savings
+      &mdash; &euro;19&ndash;42 billion a year</b> &mdash; while V2G adds incremental system savings of <b>up to
+      &euro;2.5 billion</b>. But V2G generates <b>&euro;6.4 billion a year in balancing market
+      revenues</b>.<sup><a href="#s21">21</a></sup></p>
 
-<hr class="divider">
-
-<!-- 05 -->
-<section class="row reveal">
-  <div class="label"><span class="num">05</span>The premise</div>
-  <div>
-    <h2>Every saving figure in this paper is a driveway number</h2>
-    <p>&pound;620 a year. &euro;600. &euro;720. Each of those assumes a car parked for eight hours on private
-      property, plugged into a charger the household controls. That is not an incidental detail of the business
-      case. It <em>is</em> the business case.</p>
-    <p>In the UK, <b>roughly 35% of households &mdash; about 9.6 million &mdash; have no off-street parking at
-      all</b>.<sup><a href="#s13">13</a></sup> Eight million GB households outside London depend on public
-      charging, and <b>around 90% of them are not within a five-minute walk of a public charge
-      point</b>.<sup><a href="#s14">14</a></sup></p>
-    <p class="pull">V2G does not need a car. It needs a parking space you own.</p>
-    <p>Vehicle-to-grid requires three things simultaneously: <b>long dwell</b>, <b>predictable dwell</b>, and a
-      <b>charger under the household&rsquo;s control</b>. On-street charging supplies none of them reliably. A
-      driver who parks wherever there is space cannot commit capacity to a balancing market at 4pm for delivery
-      at 6pm, and an aggregator cannot underwrite what a driver cannot commit.</p>
-    <p>So the ceiling on V2G take-up is not set by EV sales, battery chemistry or even the regulation this paper
-      opened with. It is set by <b>housing tenure</b> &mdash; a variable no energy policy in Europe is currently
-      pointing at.</p>
-
-    <div class="stats3">
-      <div class="s3"><div class="s3v">~35%</div><div class="s3k">of UK households have no off-street parking &mdash; about 9.6 million<sup><a href="#s13">13</a></sup></div></div>
-      <div class="s3"><div class="s3v">~90%</div><div class="s3k">of on-street households outside London are over five minutes&rsquo; walk from a public charger<sup><a href="#s14">14</a></sup></div></div>
-      <div class="s3"><div class="s3v">0</div><div class="s3k">EU or UK requirements found for bidirectional <em>power hardware</em> on public charge points</div></div>
+    <div class="bars">
+      <div class="bar">
+        <div class="barlab"><span>V1G &mdash; system cost savings</span><b>&euro;19&ndash;42bn</b></div>
+        <div class="bartrack"><span class="barfill f-v1g" style="width:100%"></span></div>
+      </div>
+      <div class="bar">
+        <div class="barlab"><span>V2G &mdash; <em>incremental</em> system cost savings</span><b>&euro;2.5bn</b></div>
+        <div class="bartrack"><span class="barfill f-v2g" style="width:6%"></span></div>
+      </div>
+      <div class="bar">
+        <div class="barlab"><span>V2G &mdash; balancing market revenues</span><b>&euro;6.4bn</b></div>
+        <div class="bartrack"><span class="barfill f-v2g" style="width:15.2%"></span></div>
+      </div>
     </div>
 
-    <h3 style="margin-top:34px;">The 2027 mandate creates the handshake, not the hardware</h3>
-    <p>It is widely read as though AFIR makes public charge points V2G-capable from 1 January 2027. It does not.
-      The requirement is that they support <b>EN ISO 15118-20:2022</b><sup><a href="#s6">6</a></sup> &mdash; the
-      communication standard whose scope <em>includes</em> bidirectional power transfer. Mandating the protocol
-      mandates the conversation. It does not mandate the inverter, the export metering or the settlement
-      arrangement that would let a lamppost buy power back from a car.</p>
+    <p class="pull">V2G&rsquo;s incremental value is not a cheaper bill. It is a trading position.</p>
+    <p>That single fact reorganises the whole market. If the extra value of reverse flow shows up as balancing
+      revenue rather than consumer savings, it is captured by whoever can <b>register in the market, forecast the
+      pool and dispatch it</b> &mdash; not by whoever manufactured the battery. An OEM selling bidirectional
+      capability as a vehicle feature is selling an input to someone else&rsquo;s trading book.</p>
+    <p>It also explains the physics of why anyone bothers. Smart charging moves a connection between +7 kW and
+      0 kW. Bidirectional moves it between +7 kW and &minus;7 kW &mdash; <b>a 14 kW controllable swing on the same
+      connection</b>. The incremental grid asset is real and large. The incremental <em>consumer</em> asset is
+      close to nil. Those two facts together are the story.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal">
+  <div class="label"><span class="num">04</span>Value pools</div>
+  <div>
+    <h2>&ldquo;Who captures the margin&rdquo; is the wrong question</h2>
+    <p class="sub">There is no single pot. There are at least nine, and they are separable &mdash; which is why
+      BMW and E.ON can both win from the same customer.</p>
+
+    <div class="pools">
+      <div class="pool"><span class="pn">Pool 01</span><div class="pt">Energy procurement arbitrage</div><div class="pw">Buying low, storing, using high. Needs a <b>supply licence and a book</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 02</span><div class="pt">Balancing &amp; flexibility revenue</div><div class="pw">The &euro;6.4bn pool. Needs <b>market registration and dispatch</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 03</span><div class="pt">Tariff margin</div><div class="pw">The spread on supplying the household at all. <b>Retailer</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 04</span><div class="pt">Charger hardware margin</div><div class="pw">Wallbox and installation. <b>OEM, retailer or CPO</b> &mdash; genuinely contested.</div></div>
+      <div class="pool"><span class="pn">Pool 05</span><div class="pt">Software &amp; platform fees</div><div class="pw">Optimisation sold to whoever owns the customer. <b>Neutral aggregator</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 06</span><div class="pt">Customer acquisition value</div><div class="pw">A bundled V2G offer acquires an energy customer cheaply. <b>Retailer</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 07</span><div class="pt">Vehicle differentiation</div><div class="pw">Closes a sale. <b>OEM</b> &mdash; and it erodes as capability becomes standard.</div></div>
+      <div class="pool"><span class="pn">Pool 08</span><div class="pt">Residual value</div><div class="pw">A battery with a demonstrated second income may hold value &mdash; or lose it to cycling. <b>Captive finance</b>.</div></div>
+      <div class="pool"><span class="pn">Pool 09</span><div class="pt">Retention</div><div class="pw">A household earning from its car changes supplier less. <b>Whoever holds the contract</b>.</div></div>
+    </div>
+
+    <p style="margin-top:26px;">Read that way, the live European partnerships stop looking like a single race.
+      BMW with E.ON, Ford with Octopus, Kia and Hyundai in the Netherlands, Renault with its own
+      wallbox, Volkswagen through Elli:<sup><a href="#s5">5</a></sup> each is a different split of nine pools, and
+      several are plausibly positive for both parties. <b>We do not know the commercial terms of any of them</b>
+      &mdash; they are not public, and this paper does not guess at them.</p>
+    <p>What is observable is <em>posture</em>. Volkswagen through Elli is attempting to hold more pools in-house.
+      Ford with Octopus is the opposite trade: concede the electricity pools, keep the vehicle. Both are coherent.
+      They imply completely different answers to the section that follows.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal">
+  <div class="label"><span class="num">05</span>The driveway</div>
+  <div>
+    <h2>When does V2G escape the driveway?</h2>
+    <p>Every retail V2G saving quoted in this paper assumes a car parked for long predictable hours on private
+      property at a charger the household controls. Power Pack asks for <b>12 hours a day, 20 days a
+      month</b>.<sup><a href="#s17">17</a></sup> That is a duty obligation, not a tariff preference.</p>
+    <p>In the UK, <b>roughly 35% of households &mdash; about 9.6 million &mdash; have no off-street
+      parking</b>,<sup><a href="#s13">13</a></sup> and around <b>90% of on-street households outside London are not
+      within a five-minute walk of a public charge point</b>.<sup><a href="#s14">14</a></sup></p>
+    <p>It would be easy, and wrong, to conclude from that that V2G is structurally a driveway product. Utrecht
+      already runs bidirectional car-sharing on public infrastructure.<sup><a href="#s5">5</a></sup> The driveway is
+      not the ceiling.</p>
+    <p class="pull">The driveway is the current boundary of the commercially addressable retail market. The
+      strategic question is when it moves.</p>
+
+    <div class="ladder">
+      <div class="rung"><div class="rwhen">Today</div><div class="rwhat"><b>Home charger, private driveway.</b> Long dwell, one owner, one meter. The only place retail V2G economics presently close.</div><div class="rwho">Retailer or OEM</div></div>
+      <div class="rung"><div class="rwhen">2026&ndash;28</div><div class="rwhat"><b>Fleets, depots, workplaces, controlled car parks.</b> Predictable dwell and a single counterparty who can commit capacity. Already working.</div><div class="rwho">Fleet, employer, aggregator</div></div>
+      <div class="rung"><div class="rwhen">2027+</div><div class="rwhat"><b>ISO 15118-20 normalises the conversation.</b> AFIR requires the protocol on new EU charge points.<sup><a href="#s6">6</a></sup> Identity and authorisation stop being bespoke.</div><div class="rwho">Standards, not a firm</div></div>
+      <div class="rung"><div class="rwhen">Next</div><div class="rwhat"><b>Public car parks and destination charging.</b> Hours of dwell, a site owner who can invest, and a commercial reason to. The realistic first escape.</div><div class="rwho">Site owner + CPO</div></div>
+      <div class="rung"><div class="rwhen">Hardest</div><div class="rwhat"><b>Kerbside and lamppost.</b> Needs export-capable hardware, export metering, settlement, and an identity that follows the driver to any post.</div><div class="rwho">Unfunded &mdash; nobody&rsquo;s roadmap</div></div>
+      <div class="rung"><div class="rwhen">End state</div><div class="rwhat"><b>Car + any compatible connection + aggregator identity.</b> The vehicle becomes a roaming battery with a portable contract.</div><div class="rwho">Whoever owns identity</div></div>
+    </div>
+
+    <h3 style="margin-top:30px;">The mandate creates the handshake, not the hardware</h3>
+    <p>The 1 January 2027 AFIR requirement is widely read as making public charge points V2G-capable. It requires
+      support for <b>EN ISO 15118-20:2022</b><sup><a href="#s6">6</a></sup> &mdash; the communication standard whose
+      scope includes bidirectional transfer. That is the conversation. Not the inverter, not export metering, not
+      the settlement arrangement that lets a lamppost buy power back from a car.</p>
     <p>We could find <b>no UK legislation</b> requiring bidirectional capability on on-street or lamppost charge
-      points. Claims that V2G became mandatory for UK commercial chargers above 22 kW in March 2025 appear in
-      secondary sources and are contradicted by others;<sup><a href="#s15">15</a></sup> we could not substantiate
-      them and do not rely on them here. The UK sits outside AFIR in any case.</p>
-    <p>Compounding it, bidirectional hardware is not yet fungible. Deployments split across CHAdeMO and CCS, and
-      the strongest products are deliberately closed &mdash; Enphase around IQ8, SolarEdge around its DC bus, GM
-      through GM Energy.<sup><a href="#s16">16</a></sup> A federated on-street V2G network needs any car to
-      transact with any post. Today most bidirectional pairings are one car to one wallbox by design.</p>
-    <p class="pull">The distributional consequence is the part nobody says out loud.</p>
-    <p>As structured today, V2G pays households that already own a driveway to provide a grid service, and
-      charges the households that do not &mdash; through network costs socialised across all bills &mdash; to
-      receive it. It is a transfer from the terraced street to the semi-detached one. That is not an argument
-      against V2G. It is an argument that the on-street case is a <b>separate product</b>, needing separate
-      economics, and it is currently nobody&rsquo;s roadmap.</p>
+      points, and the widely repeated claim of a March 2025 UK obligation above 22 kW is contradicted between
+      secondary sources; we do not rely on it.<sup><a href="#s15">15</a></sup> Hardware is also not yet fungible
+      &mdash; CHAdeMO and CCS split the base, and the strongest products are deliberately closed: Enphase around
+      IQ8, SolarEdge around its DC bus, GM Energy.<sup><a href="#s16">16</a></sup></p>
+    <p><b>So the question worth funding is: who pays for the escape, and who captures it?</b> Kerbside export
+      hardware benefits the distribution network, the aggregator and the on-street household &mdash; three parties,
+      none of whom currently holds the investment case alone. That is a policy gap, and it is the single largest
+      swing factor in this paper.</p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- 06 -->
 <section class="row reveal">
   <div class="label"><span class="num">06</span>The churn</div>
   <div>
-    <h2>The contract does not follow the car</h2>
-    <p>A V2G proposition is an agreement between an energy supplier and a household about a specific vehicle.
-      Octopus Power Pack, for example, asks the household to plug in for <b>12 hours a day, 20 days a
-      month</b>.<sup><a href="#s17">17</a></sup> That is not a tariff preference. It is a duty obligation, and it
-      is only deliverable while that household has that car.</p>
-    <p>Now set it against how Europeans actually hold cars. <b>Roughly four in five UK new-car finance deals are
-      PCP</b>, on terms of two to four years &mdash; and only about <b>15&ndash;20% of PCP customers settle the
-      final payment and keep the vehicle</b>.<sup><a href="#s18">18</a></sup> Four fifths hand the car back or
-      roll into a new agreement.</p>
-    <p class="pull">The asset churns every three years. The grid commitments sold against it do not.</p>
-    <p>An aggregator bidding a fleet of V2G vehicles into a flexibility or capacity market is selling forward
-      availability. The vehicles underneath that promise turn over on a two-to-four year cycle, and at every
-      turnover three separate things have to be re-established at once:</p>
-
-    <div class="stats3">
-      <div class="s3"><div class="s3v">1</div><div class="s3k">The <b>household</b> holds the energy contract and the wallbox &mdash; and may keep both</div></div>
-      <div class="s3"><div class="s3v">2</div><div class="s3k">The <b>car</b> holds the bidirectional capability &mdash; and leaves</div></div>
-      <div class="s3"><div class="s3v">3</div><div class="s3k">The <b>financier</b> holds the asset &mdash; and often neither of the other two</div></div>
-    </div>
-
-    <p style="margin-top:28px;">Three parties, three clocks, none synchronised. The replacement car may not be
-      bidirectional at all &mdash; on current model availability it probably is not. The next driver of the
-      outgoing car inherits a capable vehicle with no contract, no wallbox and no reason to seek one. Each
-      turnover is a fresh acquisition cost against a customer the aggregator had already paid to acquire.</p>
-
-    <h3 style="margin-top:32px;">What we could not find</h3>
-    <p>We searched for published contract terms covering exactly this &mdash; term length, transferability, and
-      what happens when a Power Pack household changes vehicle. <b>We could not find them.</b> Not in the product
-      pages, the smart-tariff terms, or the EV FAQ.<sup><a href="#s19">19</a></sup></p>
-    <p>We are not asserting the terms are bad, or absent. We are recording that the flagship mass-market V2G
-      product in Europe does not publicly answer the question that will affect four fifths of its customers
-      inside four years. That silence is itself the finding. Anyone underwriting a V2G portfolio should ask for
-      it in writing before modelling a single year of retention.</p>
-
-    <h3 style="margin-top:32px;">Which points somewhere unexpected</h3>
-    <p>If the binding problem is that contracts break when cars change hands, then the natural counterparty is
-      not the driver. It is <b>whoever owns the car across many drivers</b>: the leasing company, the fleet, the
-      captive finance arm. They hold thousands of vehicles on rolling terms, they already reassign assets as a
-      core competence, and they can move a V2G capability from an outgoing car to an incoming one without
-      renegotiating with a household at all.</p>
-    <p class="pull">V2G may not be a consumer product that fleets also buy. It may be a fleet product that
-      consumers are currently being sold.</p>
-    <p>That reading is consistent with what section 03 already showed: the fleet and depot model is the only one
-      producing clean economics today. The usual explanation is dwell-time predictability. Contract durability
-      may matter more &mdash; and it points the OEM captive finance arms, not the retailers, at the centre of
-      this market.</p>
+    <h2>Churn is a cost line, not an existential threat</h2>
+    <p><b>Roughly four in five UK new-car finance deals are PCP</b>, on two-to-four year terms, and only about
+      <b>15&ndash;20% of customers settle the final payment and keep the vehicle</b>.<sup><a href="#s18">18</a></sup>
+      A retail V2G portfolio therefore turns over most of its vehicles inside four years.</p>
+    <p>It is tempting to call that fatal. It is not. An aggregator does not need a <em>particular</em> car for four
+      years; it needs enough qualifying batteries in the pool. One leaves, another joins. A portfolio of a million
+      vehicles absorbs very large individual churn provided replacement rates are predictable. That is what
+      aggregation is for.</p>
+    <p class="pull">The asymmetry is the point, not the churn.</p>
+    <p>Churn is <b>neutral for smart charging and negative-selecting for V2G</b>. Any replacement EV rejoins a V1G
+      portfolio. Only a <em>bidirectional</em> replacement rejoins a V2G one &mdash; and on current model
+      availability most replacements will not be. So the right hypothesis is not that churn breaks contracts. It
+      is:</p>
+    <p style="font-weight:600;">Does vehicle churn materially raise V2G acquisition, requalification and
+      hardware-friction cost per delivered MW, relative to V1G?</p>
+    <p>That is measurable, and it resolves to one observable: the <b>V2G-to-V2G replacement rate</b>. It sits below
+      100% until bidirectional is standard, and every point below 100% is a re-acquisition the V1G competitor does
+      not pay for.</p>
+    <p>We searched for published Power Pack term length, transferability and vehicle-change provisions and found
+      none.<sup><a href="#s19">19</a></sup> We record that as an absence, not as a claim about the terms. It is the
+      first thing to ask for when underwriting a portfolio.</p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- 07 -->
 <section class="row reveal">
-  <div class="label"><span class="num">07</span>Take-up</div>
+  <div class="label"><span class="num">07</span>The layer</div>
   <div>
-    <h2>When does this map to the EU&rsquo;s figures?</h2>
-    <p>The reference point most often used is that <b>30% of EVs are V2G-capable by 2030</b>, the figure in the
-      Coalition of the Willing on Bidirectional Charging.<sup><a href="#s8">8</a></sup> Europe&rsquo;s passenger EV
-      parc is projected to pass <b>40 million by 2030</b>.<sup><a href="#s9">9</a></sup> Thirty per cent of that is
-      roughly twelve million cars able to export power.</p>
-    <p>Set against that: of 146 EV models scheduled for release in 2024, <b>four</b> supported ISO 15118-20
-      Plug&amp;Charge.<sup><a href="#s10">10</a></sup> Transport &amp; Environment&rsquo;s proposal is for a voluntary
-      &ldquo;V2G-ready&rdquo; label now and mandatory type approval only by <b>2032</b><sup><a href="#s11">11</a></sup> &mdash;
-      two years <em>after</em> the date the 30% figure is set against.</p>
-    <p>The arithmetic below is a model, not a forecast. Set the assumptions yourself and see what the parc does.</p>
+    <h2>Nobody is winning Europe. Several are winning the right to be the layer everyone else rents.</h2>
+    <p>Electricity markets are national. Balancing products, network tariffs, metering rules and settlement all
+      stop at the border, and the German rules are not unconditional until late 2027.<sup><a href="#s2">2</a></sup>
+      So the pan-European players are not competing for a European market. They are competing to amortise one
+      platform across many national markets faster than a national incumbent can build its own.</p>
+    <p>And if the barriers keep falling, <b>bidirectional capability itself commoditises</b>. Once most OEMs
+      support ISO 15118-20 and compatible hardware, having a V2G-capable car is not differentiation. The contest
+      moves up a layer, to five questions that have nothing to do with vehicles:</p>
+    <p><b>Who owns the customer? Who controls dispatch? Who aggregates the batteries? Who holds market access?
+      And who can see the household&rsquo;s other flexible assets?</b></p>
+    <p>That last one is the asymmetry an OEM cannot fix by building a better car. Volkswagen through Elli can see a
+      70 kWh car. A domestic energy supplier can see the car <em>plus</em> a home battery, solar, a heat pump,
+      and the household load curve. It optimises across all of them.</p>
+    <p class="pull">Which means the OEM&rsquo;s asset does not merely fail to earn. It gets ranked.</p>
+    <p>An optimiser holding a home battery and a car will cycle the cheapest asset first &mdash; and a home battery
+      has no warranty exposure, no degradation argument with a manufacturer, and no risk of driving away at 6pm.
+      Inside someone else&rsquo;s stack, the vehicle is the marginal asset, dispatched last and earning least. The
+      OEM does not get to see that happening.</p>
+    <p>Three postures are visible today. <b>The vertically integrated retailer</b> &mdash; owns customer, tariff,
+      optimisation and increasingly the OEM partnerships, and exports the stack; constrained by having to win
+      retail customers market by market. <b>The neutral aggregator</b> &mdash; The Mobility House, Jedlix, Virta,
+      Nuvve &mdash; sells market access to whoever owns the customer, scales across borders more easily precisely
+      because it does not need the retail relationship, and captures less per vehicle for the same reason. Worth
+      noting how early this still is: Nuvve&rsquo;s revenue, up 268% year on year, remains driven principally by
+      selling V2G hardware rather than by traded flexibility.<sup><a href="#s7">7</a></sup>
+      <b>The utility incumbent</b> &mdash; strong where it already holds the meter, weak where it does not.</p>
+    <p>For a carmaker the strategic question is therefore not whether V2G works. It is whether the answer to
+      &ldquo;who dispatches this battery&rdquo; is settled before it has decided which pools in section 04 it
+      intends to hold.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal">
+  <div class="label"><span class="num">08</span>Take-up</div>
+  <div>
+    <h2>The parc arithmetic, whoever wins</h2>
+    <p>The common reference is that <b>30% of EVs are V2G-capable by 2030</b>.<sup><a href="#s8">8</a></sup>
+      Europe&rsquo;s passenger EV parc is projected past <b>40 million by 2030</b><sup><a href="#s9">9</a></sup>
+      &mdash; roughly twelve million capable cars. Against that: of 146 EV models scheduled for 2024 release,
+      <b>four</b> supported ISO 15118-20 Plug&amp;Charge,<sup><a href="#s10">10</a></sup> and T&amp;E proposes
+      mandatory type approval only by <b>2032</b><sup><a href="#s11">11</a></sup> &mdash; two years after the date
+      the figure is set against.</p>
+    <p>The model below is a model, not a forecast. Set the assumptions and see what the parc does.</p>
 
     <div class="tmodel">
       <div class="tctrls">
@@ -495,71 +537,54 @@
     </div>
 
     <p class="fnote" style="margin-top:14px;">Model, not forecast. Assumes a European passenger EV parc of about
-      12 million in 2026 rising to 40 million by 2030<sup><a href="#s9">9</a></sup> and continuing on the same
-      trajectory, a negligible V2G-capable base today, and no scrappage of capable vehicles. Retirement of older
-      non-capable EVs would pull the crossing earlier; slower parc growth would push it later. The point of the
-      model is the shape, not the decimal.</p>
+      12 million in 2026 rising to 40 million by 2030<sup><a href="#s9">9</a></sup> and continuing on that
+      trajectory, a negligible capable base today, and no scrappage of capable vehicles. The point is the shape,
+      not the decimal.</p>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- 06 -->
 <section class="row reveal">
-  <div class="label"><span class="num">08</span>Thresholds</div>
+  <div class="label"><span class="num">09</span>What to watch</div>
   <div>
-    <h2>What would prove this wrong</h2>
-    <p class="sub">Written as claims with thresholds, so the evidence can break them.</p>
+    <h2>Six things that would tell you the answer early</h2>
+    <p class="sub">Written as observable thresholds rather than opinions, so the evidence can settle them.</p>
 
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">The binding constraint moves from regulation to the vehicle parc during 2027</div>
-      <p>Falsified if, by the end of 2027, more than three major EU markets still charge network fees on
-        exported EV electricity. Germany&rsquo;s transitional regime running to 30 September 2027 is the thing to
-        watch.<sup><a href="#s2">2</a></sup></p>
+      <div class="tv">Public V2G</div>
+      <div class="tt">First European market with more than 10,000 genuinely public or kerbside bidirectional connections</div>
+      <p>Not chargers that speak ISO 15118-20 &mdash; connections that can actually export and settle. The moment
+        the driveway boundary in section 05 moves.</p>
     </div>
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">V2G-capable share of new EU EV sales exceeds 25% by 2029</div>
-      <p>The AFIR charge-point mandate from 1 January 2027<sup><a href="#s6">6</a></sup> creates the socket. It does
-        not create the car. Falsified if OEM model announcements through 2027&ndash;28 keep bidirectional confined to
-        flagship trims.</p>
+      <div class="tv">Vehicle penetration</div>
+      <div class="tt">More than 25% of new BEVs sold in Europe are bidirectional-capable</div>
+      <p>The parc arithmetic in section 08 is entirely governed by this number. Today it is close to nil.</p>
     </div>
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">Median V2G customer retention is shorter than the forward period of the flexibility contracts sold against it</div>
-      <p>With four fifths of UK new-car finance on PCP and only 15&ndash;20% keeping the
-        vehicle,<sup><a href="#s18">18</a></sup> a retail V2G portfolio re-acquires most of itself every three
-        to four years. Falsified by a published V2G product whose terms transfer cleanly across a vehicle change,
-        or by a disclosed retention curve beating four years.</p>
+      <div class="tv">Interoperability</div>
+      <div class="tt">First third-party supplier commercially controlling V2G across three or more unrelated OEMs on non-proprietary hardware</div>
+      <p>The test of whether capability commoditises. Until it happens, every deployment is a closed pairing and
+        the layer thesis is unproven.</p>
     </div>
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">Captive finance and leasing become the primary V2G channel before retail does</div>
-      <p>Follows from section 06. Falsified if a retail V2G proposition reaches scale with durable retention
-        before any major lessor or OEM captive launches a fleet-wide bidirectional programme.</p>
+      <div class="tv">V1G / V2G economics</div>
+      <div class="tt">Reverse-flow flexibility earns more than twice the incremental cost of enabling V2G over smart charging</div>
+      <p>The question section 03 raises and cannot yet answer. Until this clears, V2G is a balancing-revenue play
+        subsidised by a consumer proposition that V1G already delivers.</p>
     </div>
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">Retail tariff models out-earn neutral aggregation per vehicle by 2028</div>
-      <p>If the neutral aggregators match retailer economics per vehicle, the vertical integration thesis is
-        wrong and the market layers rather than consolidates. Watch the per-vehicle figures quoted in successive
-        Octopus, E.ON and Mobility House offers.</p>
+      <div class="tv">Aggregation</div>
+      <div class="tt">First 1 GW commercially dispatchable multi-OEM V2G portfolio</div>
+      <p>The scale at which the orchestration layer becomes a real asset rather than a pilot. Watch who announces
+        it, and whether they build cars.</p>
     </div>
     <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">No European market legislates bidirectional power hardware on public charge points before 2028</div>
-      <p>The 2027 AFIR requirement covers the communication standard, not the inverter.<sup><a href="#s6">6</a></sup>
-        Falsified by any member state or the UK mandating export-capable on-street hardware with a settlement
-        route. That would be the single largest expansion of the addressable base in this paper &mdash; and would
-        break the driveway ceiling in section 05.</p>
-    </div>
-    <div class="thr">
-      <div class="tv">Threshold &middot; breaks if false</div>
-      <div class="tt">Fleet and depot V2G remains the only profitable segment through 2027</div>
-      <p>Falsified by a retail V2G proposition reaching six figures of connected vehicles in any single European
-        market. Nuvve&rsquo;s revenue mix &mdash; still hardware-led rather than flexibility-led &mdash; is the current
-        counter-evidence.<sup><a href="#s7">7</a></sup></p>
+      <div class="tv">OEM disintermediation</div>
+      <div class="tt">An independent retailer or aggregator controls more V2G-connected vehicles than any OEM-owned energy platform</div>
+      <p>The falsification of the OEM-led model. If it happens before the parc reaches scale, the carmakers will
+        have supplied the asset and rented the layer.</p>
     </div>
   </div>
 </section>
@@ -571,29 +596,28 @@
   <div>
     <div class="srcs">
       <ol>
-        <li id="s1">The Mobility House, <em>German Parliament removes key barrier to bidirectional charging</em> &mdash;
-          EnWG amendment adopted 13 November 2025.
+        <li id="s1">The Mobility House, <em>German Parliament removes key barrier to bidirectional charging</em> &mdash; EnWG amendment adopted 13 November 2025.
           <a href="https://www.mobilityhouse.com/int_en/our-company/newsroom/article/german-parliament-removes-key-barrier-to-bidirectional-charging-vehicle-to-grid-becomes-possible" target="_blank" rel="noopener">mobilityhouse.com</a></li>
         <li id="s2">Bundesnetzagentur, <em>Festlegung zur Marktintegration von Speichern und Ladepunkten (MiSpeL)</em>.
           <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EEG_Aufsicht/MiSpeL/artikel.html" target="_blank" rel="noopener">bundesnetzagentur.de</a></li>
-        <li id="s3">electrive.net, <em>AgNes und MiSpeL: Neue Regeln f&uuml;r Ladeparks und bidirektionales Laden</em>, 6 August 2026.
+        <li id="s3">electrive.net, <em>AgNes und MiSpeL</em>, 6 August 2026.
           <a href="https://www.electrive.net/2026/08/06/agnes-und-mispel-neue-regeln-fuer-ladeparks-und-bidirektionales-laden/" target="_blank" rel="noopener">electrive.net</a></li>
         <li id="s4">Octopus Energy, <em>Octopus Power Pack</em>.
           <a href="https://octopus.energy/power-pack/" target="_blank" rel="noopener">octopus.energy</a></li>
         <li id="s5">The Mobility House, <em>V2G status quo &mdash; which country is how far along?</em>
           <a href="https://mobilityhouse-energy.com/int_en/knowledge-center/article/v2g-progress-in-each-country" target="_blank" rel="noopener">mobilityhouse-energy.com</a></li>
-        <li id="s6">Smappee, <em>AFIR &amp; ISO 15118-20 explained</em>, and Bender, <em>AFIR &amp; ISO 15118: new obligation for AC charging stations</em> &mdash; EN ISO 15118-20:2022 required for newly installed or refurbished charge points from 1 January 2027.
+        <li id="s6">Smappee and Bender on AFIR &mdash; EN ISO 15118-20:2022 required for newly installed or refurbished charge points from 1 January 2027.
           <a href="https://www.smappee.com/eu/insights/afir-iso-15118-charging-explained" target="_blank" rel="noopener">smappee.com</a> &middot;
           <a href="https://www.bender.de/en/know-how/applications/emobility/alternative-fuels-infrastructure-regulation-afir-2025/" target="_blank" rel="noopener">bender.de</a></li>
         <li id="s7">Nuvve Holding Corp, Q2 2026 financial update &mdash; revenue up 268% year on year, still driven principally by V2G school-bus hardware delivery.
           <a href="https://www.stocktitan.net/news/NVVE/nuvve-provides-second-quarter-2026-financial-q3t4vbijf2q5.html" target="_blank" rel="noopener">stocktitan.net</a></li>
-        <li id="s8">Coalition of the Willing on Bidirectional Charging, cited in EU flexibility modelling &mdash; 30% of EVs assumed V2G-capable by 2030, 50% smart-charging enabled.
+        <li id="s8">Coalition of the Willing on Bidirectional Charging, cited in EU flexibility modelling &mdash; 30% of EVs assumed V2G-capable by 2030.
           <a href="https://smarten.eu/wp-content/uploads/2023/12/V2X-Enables-and-Barriers-Study_11-2023_DIGITAL.pdf" target="_blank" rel="noopener">smarten.eu</a></li>
         <li id="s9">Consultancy.eu, <em>Europe&rsquo;s electric vehicle fleet to reach 40 million by 2030</em>.
           <a href="https://www.consultancy.eu/news/5766/europes-electric-vehicles-fleet-to-reach-40-million-by-2030" target="_blank" rel="noopener">consultancy.eu</a></li>
         <li id="s10">Reported ISO 15118-20 Plug&amp;Charge support: 4 of 146 EV models scheduled for 2024 release.
           <a href="https://www.evb.com/iso-15118-the-complete-guide-to-ev-charging-communication-standards-2026-edition/" target="_blank" rel="noopener">evb.com</a></li>
-        <li id="s11">Transport &amp; Environment, <em>Unlocking Vehicle-to-Grid at scale</em>, 6 March 2026 &mdash; voluntary &ldquo;V2G-ready&rdquo; label now, mandatory type approval by 2032.
+        <li id="s11">Transport &amp; Environment, <em>Unlocking Vehicle-to-Grid at scale</em>, 6 March 2026.
           <a href="https://www.transportenvironment.org/articles/unlocking-vehicle-to-grid-at-scale" target="_blank" rel="noopener">transportenvironment.org</a></li>
         <li id="s12">smartEn, <em>Assessment of the regulatory framework of bidirectional EV charging in Europe</em>.
           <a href="https://smarten.eu/wp-content/uploads/2023/12/V2X-Enables-and-Barriers-Study_11-2023_DIGITAL.pdf" target="_blank" rel="noopener">smarten.eu</a></li>
@@ -602,18 +626,23 @@
           <a href="https://uk.mer.eco/news/ev-charging-with-no-driveway-whats-the-solution/" target="_blank" rel="noopener">mer.eco</a></li>
         <li id="s14">Field Dynamics, public charger catchment research &mdash; 8 million GB households outside London rely on public charging; about 90% sit outside a five-minute walk of a public charger.
           <a href="https://www.field-dynamics.co.uk/research/public-charger-catchment-research/" target="_blank" rel="noopener">field-dynamics.co.uk</a></li>
-        <li id="s15">Conflicting secondary claims regarding a March 2025 UK V2G obligation for commercial chargers above 22 kW; asserted in some guides and explicitly disputed in others. Not relied upon in this paper.
+        <li id="s15">Conflicting secondary claims regarding a March 2025 UK V2G obligation for commercial chargers above 22 kW; asserted in some guides and disputed in others. Not relied upon.
           <a href="https://teslacharger.co.uk/blog/v2g-vehicle-to-home-charging-uk-explained/" target="_blank" rel="noopener">teslacharger.co.uk</a></li>
-        <li id="s17">Octopus Energy, <em>Octopus Power Pack</em> &mdash; participation requires plugging in around 12 hours a day, 20 days a month.
+        <li id="s16">Clean Energy Reviews, <em>Bidirectional EV chargers review</em> &mdash; CHAdeMO/CCS split and closed vendor ecosystems.
+          <a href="https://www.cleanenergyreviews.info/blog/bidirectional-ev-chargers-review" target="_blank" rel="noopener">cleanenergyreviews.info</a></li>
+        <li id="s17">Octopus Energy, <em>Power Pack</em> &mdash; participation requires plugging in around 12 hours a day, 20 days a month.
           <a href="https://octopus.energy/power-pack/" target="_blank" rel="noopener">octopus.energy</a></li>
-        <li id="s18">UK car finance structure: PCP accounts for roughly four in five new-car finance deals, typically on two-to-four year terms, with an estimated 15&ndash;20% of PCP customers settling the final payment and keeping the vehicle.
+        <li id="s18">UK car finance: PCP accounts for roughly four in five new-car finance deals, typically two-to-four year terms, with an estimated 15&ndash;20% settling the final payment and keeping the vehicle.
           <a href="https://www.startrescue.co.uk/breakdown-cover/motoring-advice/motoring-costs/is-car-finance-still-worth-it-in-2026-pcp-vs-leasing-vs-buying" target="_blank" rel="noopener">startrescue.co.uk</a> &middot;
           <a href="https://www.moneymeister.co.uk/guides/hp-vs-pcp-vs-leasing-guide-uk" target="_blank" rel="noopener">moneymeister.co.uk</a></li>
-        <li id="s19">Searched for published Power Pack contract term, transferability and vehicle-change provisions across the product page, smart-tariff terms and EV FAQ; none found at the time of writing. Recorded as an absence, not as an assertion about the terms themselves.
-          <a href="https://octopus.energy/policies/smart-tariffs-terms-and-condition/" target="_blank" rel="noopener">octopus.energy smart tariff terms</a> &middot;
+        <li id="s19">Searched for published Power Pack contract term, transferability and vehicle-change provisions across the product page, smart-tariff terms and EV FAQ; none found at the time of writing. Recorded as an absence.
+          <a href="https://octopus.energy/policies/smart-tariffs-terms-and-condition/" target="_blank" rel="noopener">smart tariff terms</a> &middot;
           <a href="https://octopusev.com/frequently-asked-questions" target="_blank" rel="noopener">octopusev.com FAQ</a></li>
-        <li id="s16">Clean Energy Reviews, <em>Bidirectional EV chargers review</em> &mdash; CHAdeMO/CCS split and closed vendor ecosystems (Enphase IQ8, SolarEdge DC bus, GM Energy).
-          <a href="https://www.cleanenergyreviews.info/blog/bidirectional-ev-chargers-review" target="_blank" rel="noopener">cleanenergyreviews.info</a></li>
+        <li id="s20">Octopus Energy / energy-stats.uk, <em>Intelligent Octopus Go</em> &mdash; customers typically saved &pound;771 against Flexible Octopus over May 2025 to April 2026.
+          <a href="https://octopus.energy/smart/intelligent-octopus-go/" target="_blank" rel="noopener">octopus.energy</a> &middot;
+          <a href="https://energy-stats.uk/intelligent-octopus-go/" target="_blank" rel="noopener">energy-stats.uk</a></li>
+        <li id="s21"><em>Coordinated planning of European charging infrastructure and energy system for optimal V1G and V2G deployment</em>, Nature Energy &mdash; V1G captures the majority of system cost savings (&euro;19&ndash;42bn/yr, 2.2&ndash;4.5%); V2G adds up to &euro;2.5bn/yr in system savings and generates &euro;6.4bn/yr in balancing market revenues.
+          <a href="https://www.nature.com/articles/s41560-026-02107-5" target="_blank" rel="noopener">nature.com</a></li>
       </ol>
     </div>
   </div>
@@ -621,7 +650,7 @@
 
 <div class="wrap">
   <footer>
-    <span>FutureBridge Advisory &middot; August 2026</span>
+    <span>FutureBridge Signals &middot; August 2026</span>
     <a href="mailto:christopher.guerin@futurebridge.com">christopher.guerin@futurebridge.com</a>
   </footer>
 </div>
