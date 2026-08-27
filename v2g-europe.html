@@ -198,8 +198,9 @@
     that makes bidirectional power transfer possible.<sup><a href="#s6">6</a></sup></p>
   <p class="lede reveal">That is the regulatory question closing. It leaves two harder ones open. The
     <b>vehicle parc</b> is not reached by any mandate before 2032 &mdash; and the parc is what the EU&rsquo;s take-up
-    figures are counted against. And every V2G business case in Europe today quietly assumes a driveway, which
-    <b>roughly a third of UK households do not have</b>.</p>
+    figures are counted against. And every V2G business case in Europe today quietly assumes two things about the
+    household: a <b>driveway</b>, which roughly a third of UK households do not have, and a car it will
+    <b>still own in four years</b>, which four fifths will not.</p>
 </div>
 
 <hr class="divider">
@@ -382,7 +383,62 @@
 
 <!-- 06 -->
 <section class="row reveal">
-  <div class="label"><span class="num">06</span>Take-up</div>
+  <div class="label"><span class="num">06</span>The churn</div>
+  <div>
+    <h2>The contract does not follow the car</h2>
+    <p>A V2G proposition is an agreement between an energy supplier and a household about a specific vehicle.
+      Octopus Power Pack, for example, asks the household to plug in for <b>12 hours a day, 20 days a
+      month</b>.<sup><a href="#s17">17</a></sup> That is not a tariff preference. It is a duty obligation, and it
+      is only deliverable while that household has that car.</p>
+    <p>Now set it against how Europeans actually hold cars. <b>Roughly four in five UK new-car finance deals are
+      PCP</b>, on terms of two to four years &mdash; and only about <b>15&ndash;20% of PCP customers settle the
+      final payment and keep the vehicle</b>.<sup><a href="#s18">18</a></sup> Four fifths hand the car back or
+      roll into a new agreement.</p>
+    <p class="pull">The asset churns every three years. The grid commitments sold against it do not.</p>
+    <p>An aggregator bidding a fleet of V2G vehicles into a flexibility or capacity market is selling forward
+      availability. The vehicles underneath that promise turn over on a two-to-four year cycle, and at every
+      turnover three separate things have to be re-established at once:</p>
+
+    <div class="stats3">
+      <div class="s3"><div class="s3v">1</div><div class="s3k">The <b>household</b> holds the energy contract and the wallbox &mdash; and may keep both</div></div>
+      <div class="s3"><div class="s3v">2</div><div class="s3k">The <b>car</b> holds the bidirectional capability &mdash; and leaves</div></div>
+      <div class="s3"><div class="s3v">3</div><div class="s3k">The <b>financier</b> holds the asset &mdash; and often neither of the other two</div></div>
+    </div>
+
+    <p style="margin-top:28px;">Three parties, three clocks, none synchronised. The replacement car may not be
+      bidirectional at all &mdash; on current model availability it probably is not. The next driver of the
+      outgoing car inherits a capable vehicle with no contract, no wallbox and no reason to seek one. Each
+      turnover is a fresh acquisition cost against a customer the aggregator had already paid to acquire.</p>
+
+    <h3 style="margin-top:32px;">What we could not find</h3>
+    <p>We searched for published contract terms covering exactly this &mdash; term length, transferability, and
+      what happens when a Power Pack household changes vehicle. <b>We could not find them.</b> Not in the product
+      pages, the smart-tariff terms, or the EV FAQ.<sup><a href="#s19">19</a></sup></p>
+    <p>We are not asserting the terms are bad, or absent. We are recording that the flagship mass-market V2G
+      product in Europe does not publicly answer the question that will affect four fifths of its customers
+      inside four years. That silence is itself the finding. Anyone underwriting a V2G portfolio should ask for
+      it in writing before modelling a single year of retention.</p>
+
+    <h3 style="margin-top:32px;">Which points somewhere unexpected</h3>
+    <p>If the binding problem is that contracts break when cars change hands, then the natural counterparty is
+      not the driver. It is <b>whoever owns the car across many drivers</b>: the leasing company, the fleet, the
+      captive finance arm. They hold thousands of vehicles on rolling terms, they already reassign assets as a
+      core competence, and they can move a V2G capability from an outgoing car to an incoming one without
+      renegotiating with a household at all.</p>
+    <p class="pull">V2G may not be a consumer product that fleets also buy. It may be a fleet product that
+      consumers are currently being sold.</p>
+    <p>That reading is consistent with what section 03 already showed: the fleet and depot model is the only one
+      producing clean economics today. The usual explanation is dwell-time predictability. Contract durability
+      may matter more &mdash; and it points the OEM captive finance arms, not the retailers, at the centre of
+      this market.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 07 -->
+<section class="row reveal">
+  <div class="label"><span class="num">07</span>Take-up</div>
   <div>
     <h2>When does this map to the EU&rsquo;s figures?</h2>
     <p>The reference point most often used is that <b>30% of EVs are V2G-capable by 2030</b>, the figure in the
@@ -450,7 +506,7 @@
 
 <!-- 06 -->
 <section class="row reveal">
-  <div class="label"><span class="num">07</span>Thresholds</div>
+  <div class="label"><span class="num">08</span>Thresholds</div>
   <div>
     <h2>What would prove this wrong</h2>
     <p class="sub">Written as claims with thresholds, so the evidence can break them.</p>
@@ -468,6 +524,20 @@
       <p>The AFIR charge-point mandate from 1 January 2027<sup><a href="#s6">6</a></sup> creates the socket. It does
         not create the car. Falsified if OEM model announcements through 2027&ndash;28 keep bidirectional confined to
         flagship trims.</p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">Median V2G customer retention is shorter than the forward period of the flexibility contracts sold against it</div>
+      <p>With four fifths of UK new-car finance on PCP and only 15&ndash;20% keeping the
+        vehicle,<sup><a href="#s18">18</a></sup> a retail V2G portfolio re-acquires most of itself every three
+        to four years. Falsified by a published V2G product whose terms transfer cleanly across a vehicle change,
+        or by a disclosed retention curve beating four years.</p>
+    </div>
+    <div class="thr">
+      <div class="tv">Threshold &middot; breaks if false</div>
+      <div class="tt">Captive finance and leasing become the primary V2G channel before retail does</div>
+      <p>Follows from section 06. Falsified if a retail V2G proposition reaches scale with durable retention
+        before any major lessor or OEM captive launches a fleet-wide bidirectional programme.</p>
     </div>
     <div class="thr">
       <div class="tv">Threshold &middot; breaks if false</div>
@@ -534,6 +604,14 @@
           <a href="https://www.field-dynamics.co.uk/research/public-charger-catchment-research/" target="_blank" rel="noopener">field-dynamics.co.uk</a></li>
         <li id="s15">Conflicting secondary claims regarding a March 2025 UK V2G obligation for commercial chargers above 22 kW; asserted in some guides and explicitly disputed in others. Not relied upon in this paper.
           <a href="https://teslacharger.co.uk/blog/v2g-vehicle-to-home-charging-uk-explained/" target="_blank" rel="noopener">teslacharger.co.uk</a></li>
+        <li id="s17">Octopus Energy, <em>Octopus Power Pack</em> &mdash; participation requires plugging in around 12 hours a day, 20 days a month.
+          <a href="https://octopus.energy/power-pack/" target="_blank" rel="noopener">octopus.energy</a></li>
+        <li id="s18">UK car finance structure: PCP accounts for roughly four in five new-car finance deals, typically on two-to-four year terms, with an estimated 15&ndash;20% of PCP customers settling the final payment and keeping the vehicle.
+          <a href="https://www.startrescue.co.uk/breakdown-cover/motoring-advice/motoring-costs/is-car-finance-still-worth-it-in-2026-pcp-vs-leasing-vs-buying" target="_blank" rel="noopener">startrescue.co.uk</a> &middot;
+          <a href="https://www.moneymeister.co.uk/guides/hp-vs-pcp-vs-leasing-guide-uk" target="_blank" rel="noopener">moneymeister.co.uk</a></li>
+        <li id="s19">Searched for published Power Pack contract term, transferability and vehicle-change provisions across the product page, smart-tariff terms and EV FAQ; none found at the time of writing. Recorded as an absence, not as an assertion about the terms themselves.
+          <a href="https://octopus.energy/policies/smart-tariffs-terms-and-condition/" target="_blank" rel="noopener">octopus.energy smart tariff terms</a> &middot;
+          <a href="https://octopusev.com/frequently-asked-questions" target="_blank" rel="noopener">octopusev.com FAQ</a></li>
         <li id="s16">Clean Energy Reviews, <em>Bidirectional EV chargers review</em> &mdash; CHAdeMO/CCS split and closed vendor ecosystems (Enphase IQ8, SolarEdge DC bus, GM Energy).
           <a href="https://www.cleanenergyreviews.info/blog/bidirectional-ev-chargers-review" target="_blank" rel="noopener">cleanenergyreviews.info</a></li>
       </ol>
