@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who dispatches Europe&rsquo;s batteries? &middot; FutureBridge Signals</title>
+<meta name="description" content="Europe needs 200 GW of storage by 2030 and will reach about 160. The shortfall is already parked outside, in cars Europe increasingly does not manufacture. The strategic question is not who owns the batteries but who holds the right to dispatch them.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FutureBridge Advisory">
+<meta property="og:title" content="Who dispatches Europe's batteries? · FutureBridge Signals">
+<meta property="og:description" content="Europe needs 200 GW of storage by 2030 and will reach about 160. The shortfall is already parked outside, in cars Europe increasingly does not manufacture. The question is not who owns the batteries but who holds the right to dispatch them.">
+<meta property="og:url" content="https://chris-guerin.github.io/futurebridge-public/europe-storage-dispatch.html">
+<style>
+  :root{
+    --black:#000;--ink:#0b0b0b;--white:#fff;--grey:#4B4B55;--dim:#6f6f79;
+    --red:#F84E5D;--indigo:#3F43AD;--indigo-pale:#c9cae8;--green:#1B8F70;--amber:#8A5E00;
+    --hair:rgba(0,0,0,0.14);--hair2:rgba(0,0,0,0.07);--panel:#F7F7F8;
+    --font:"Circular Std","Circular Std Book",Arial,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;--maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font);
+       -webkit-font-smoothing:antialiased;line-height:1.62;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  .backbar{position:sticky;top:0;z-index:130;background:#fff;border-bottom:1px solid rgba(0,0,0,.10);}
+  .backbar a{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;font-size:13px;
+             line-height:1;color:var(--grey);text-decoration:none;transition:color .15s;}
+  .backbar a:hover{color:var(--red);}
+  .backbar .ar{font-size:15px;transition:transform .15s;}
+  .backbar a:hover .ar{transform:translateX(-3px);}
+
+  /* ---------- section nav ---------- */
+  .secnav{position:sticky;top:41px;z-index:120;background:rgba(255,255,255,.96);
+          backdrop-filter:blur(6px);border-bottom:1px solid var(--hair);}
+  .secnav-in{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:flex;gap:2px;
+             overflow-x:auto;scrollbar-width:none;}
+  .secnav-in::-webkit-scrollbar{display:none;}
+  .secnav a{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
+            text-decoration:none;padding:12px 12px 11px;white-space:nowrap;
+            border-bottom:2px solid transparent;transition:color .15s,border-color .15s;}
+  .secnav a:hover{color:var(--ink);}
+  .secnav a.on{color:var(--red);border-bottom-color:var(--red);}
+
+  header.bar{max-width:var(--maxw);margin:0 auto;padding:30px 32px 0;
+             display:flex;justify-content:space-between;align-items:flex-start;}
+  .device rect{fill:var(--black);}
+  .logotype{font-weight:500;font-size:21px;letter-spacing:-.01em;}
+
+  .hero{padding:52px 0 18px;}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 24px;}
+  h1{font-size:clamp(31px,4.9vw,55px);line-height:1.06;letter-spacing:-.028em;margin:0 0 28px;
+     font-weight:600;max-width:21ch;}
+  h1 .r{color:var(--red);}
+  .lede{font-size:clamp(17px,1.8vw,20px);color:var(--grey);margin:0 0 18px;max-width:68ch;}
+  .lede b{color:var(--ink);font-weight:600;}
+
+  hr.divider{border:none;border-top:1px solid var(--hair);margin:52px 0 0;}
+  section{padding:54px 0;scroll-margin-top:96px;}
+  .row{display:grid;grid-template-columns:180px minmax(0,1fr);gap:40px;
+       max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);padding-top:6px;}
+  .label .num{display:block;font-size:26px;letter-spacing:-.02em;color:var(--black);
+              margin-bottom:10px;font-weight:600;text-transform:none;}
+  h2{font-size:clamp(23px,2.9vw,33px);line-height:1.16;letter-spacing:-.022em;margin:0 0 20px;font-weight:600;}
+  h3{font-size:17px;letter-spacing:-.015em;margin:0 0 8px;font-weight:600;}
+  p{margin:0 0 18px;} p:last-child{margin-bottom:0;}
+  .sub{color:var(--grey);margin-top:-8px;margin-bottom:24px;}
+  .pull{font-size:clamp(18px,2.1vw,24px);line-height:1.32;letter-spacing:-.018em;font-weight:600;
+        border-left:2px solid var(--red);padding-left:20px;margin:26px 0;max-width:36ch;}
+  .fnote{font-size:12.5px;color:var(--dim);line-height:1.55;}
+  sup a{color:var(--indigo);text-decoration:none;font-size:10px;font-weight:600;padding-left:2px;}
+
+  /* ---------- layer stack ---------- */
+  .stack{border:1px solid var(--hair);display:grid;grid-template-columns:1fr 1fr;}
+  .stack-list{border-right:1px solid var(--hair);}
+  .lyr{display:grid;grid-template-columns:24px 1fr 74px;gap:10px;align-items:center;
+       padding:12px 14px;border-bottom:1px solid var(--hair2);cursor:pointer;
+       transition:background .15s;font-size:13.5px;}
+  .lyr:last-child{border-bottom:none;}
+  .lyr:hover{background:rgba(0,0,0,.025);}
+  .lyr.on{background:var(--indigo);color:#fff;}
+  .lyr .n{font-family:var(--mono);font-size:10px;color:var(--dim);}
+  .lyr.on .n{color:rgba(255,255,255,.65);}
+  .lyr .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+            text-align:right;white-space:nowrap;}
+  .w-cn{color:var(--red);} .w-uk{color:var(--green);} .w-mix{color:var(--amber);}
+  .lyr.on .who{color:rgba(255,255,255,.9);}
+  .stack-det{padding:22px 22px 24px;}
+  .stack-det .dt{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:10px;}
+  .stack-det h3{margin-bottom:10px;}
+  .stack-det p{font-size:14px;color:var(--grey);margin-bottom:12px;}
+  .stack-det .now{font-size:13px;border-top:1px solid var(--hair2);padding-top:12px;color:var(--ink);}
+  .stack-det .now b{font-weight:600;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:var(--dim);margin-top:14px;}
+  .legend i{display:inline-block;width:9px;height:9px;margin-right:6px;border-radius:50%;}
+
+  /* ---------- doors timeline ---------- */
+  .doors{border-top:1px solid var(--black);}
+  .door{display:grid;grid-template-columns:104px 1fr 150px;gap:18px;padding:17px 0;
+        border-bottom:1px solid var(--hair2);align-items:start;}
+  .door:last-child{border-bottom:none;}
+  .door .when{font-family:var(--mono);font-size:11px;color:var(--indigo);font-weight:600;padding-top:2px;}
+  .door .what{font-size:14.5px;line-height:1.45;}
+  .door .stat{font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-align:right;padding-top:3px;}
+  .s-open{color:var(--red);font-weight:600;} .s-done{color:var(--green);font-weight:600;}
+
+  /* ---------- checklist ---------- */
+  .chk{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--black);}
+  .ck{display:flex;gap:12px;padding:13px 16px 13px 0;border-bottom:1px solid var(--hair2);font-size:14px;}
+  .ck .m{font-size:15px;line-height:1.3;flex:none;width:18px;}
+  .ck.has .m{color:var(--green);} .ck.no .m{color:var(--red);}
+  .ck .t{line-height:1.4;} .ck .t small{display:block;color:var(--dim);font-size:12px;margin-top:2px;}
+
+  /* ---------- scoreboard ---------- */
+  .score{border-top:1px solid var(--black);}
+  .sc{display:grid;grid-template-columns:190px 1fr 92px;gap:16px;align-items:center;
+      padding:12px 0;border-bottom:1px solid var(--hair2);}
+  .sc:last-child{border-bottom:none;}
+  .sc .nm{font-size:14px;font-weight:600;letter-spacing:-.01em;}
+  .sc .nm small{display:block;font-weight:400;color:var(--dim);font-size:12px;letter-spacing:0;}
+  .sc .track{height:11px;background:#F0F0F2;}
+  .sc .fill{display:block;height:100%;background:var(--indigo);}
+  .sc .fill.uk{background:var(--green);}
+  .sc .v{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;}
+  .sc .v.na{color:var(--dim);font-weight:400;font-size:12px;}
+
+  /* ---------- storage model ---------- */
+  .model{border:1px solid var(--hair);padding:22px;}
+  .ctrls{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;margin-bottom:20px;}
+  .ctrl{display:flex;align-items:center;gap:12px;}
+  .ctrl label{font-size:12.5px;color:var(--grey);width:184px;flex:none;line-height:1.3;}
+  .ctrl input[type=range]{flex:1;min-width:0;accent-color:#3F43AD;}
+  .ctrl output{font-size:13px;font-weight:600;width:56px;flex:none;text-align:right;
+               font-variant-numeric:tabular-nums;}
+  .chart{width:100%;height:auto;display:block;}
+  .c-axis{stroke:var(--hair);stroke-width:1;}
+  .c-target{stroke:var(--red);stroke-width:1.4;stroke-dasharray:5 4;}
+  .c-lab{font-family:var(--font);font-size:11px;fill:var(--grey);}
+  .c-labr{font-family:var(--font);font-size:11px;fill:var(--red);font-weight:600;}
+  .c-stat{fill:#c9cae8;} .c-mob{fill:rgba(63,67,173,.85);} .c-cn{fill:var(--red);opacity:.85;}
+  .mout{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid var(--hair);
+        padding-top:18px;margin-top:14px;}
+  .mo .k{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
+  .mo .v{font-size:34px;font-weight:600;letter-spacing:-.035em;line-height:1;
+         font-variant-numeric:tabular-nums;margin-bottom:6px;}
+  .mo .v.red{color:var(--red);} .mo .n{font-size:12.5px;color:var(--grey);line-height:1.45;}
+
+  .thr{border-left:2px solid var(--hair);padding:4px 0 4px 18px;margin-bottom:20px;}
+  .thr:last-child{margin-bottom:0;}
+  .thr .tv{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+           color:var(--indigo);margin-bottom:5px;}
+  .thr .tt{font-size:15.5px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em;}
+  .thr p{font-size:14px;color:var(--grey);margin:0;}
+
+  .srcs{border-top:1px solid var(--hair);padding-top:20px;}
+  .srcs ol{margin:0;padding-left:22px;}
+  .srcs li{font-size:12.5px;color:var(--grey);margin-bottom:8px;line-height:1.5;}
+  .srcs a{color:var(--indigo);text-decoration:none;word-break:break-word;}
+  footer{border-top:1px solid var(--hair);margin-top:18px;padding:28px 0 58px;font-size:13.5px;
+         color:var(--grey);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  footer a{color:var(--grey);text-decoration:none;border-bottom:1px solid var(--hair);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s,transform .7s;}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+  @media (max-width:900px){
+    .row{grid-template-columns:1fr;gap:16px;}
+    .label{padding-top:0;} .label .num{display:inline-block;margin-right:10px;margin-bottom:0;}
+    .stack,.chk,.ctrls,.mout{grid-template-columns:1fr;}
+    .stack-list{border-right:none;border-bottom:1px solid var(--hair);}
+    .door,.sc{grid-template-columns:1fr;gap:6px;}
+    .door .stat,.sc .v{text-align:left;}
+    .wrap,.row,.secnav-in{padding-left:22px;padding-right:22px;}
+  }
+  @media print{.backbar,.secnav{display:none;}.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+<div class="backbar"><a href="index.html"><span class="ar" aria-hidden="true">&larr;</span>FutureBridge Advisory</a></div>
+<nav class="secnav" aria-label="Sections"><div class="secnav-in" id="secnav"></div></nav>
+
+<header class="bar reveal">
+  <svg class="device" width="50" height="34" viewBox="0 0 50 34" aria-label="FutureBridge graphic device">
+    <rect x="0" y="0" width="50" height="7"/><rect x="0" y="13" width="35" height="7"/><rect x="0" y="26" width="22" height="7"/>
+  </svg>
+  <div class="logotype">FutureBridge</div>
+</header>
+
+<div class="wrap hero">
+  <div class="eyebrow reveal">FutureBridge Signals &middot; Storage &amp; dispatch &middot; August 2026</div>
+  <h1 class="reveal">Europe&rsquo;s storage shortfall is already parked outside. The question is who gets to <span class="r">dispatch</span> it.</h1>
+  <p class="lede reveal">The EU needs <b>200 GW of storage by 2030</b> and holds about 55 today. Its own medium
+    scenario reaches roughly <b>160 GW</b>.<sup><a href="#s1">1</a></sup> The gap is real, it is late, and there
+    is no procurement mechanism attached to it.</p>
+  <p class="lede reveal">Meanwhile a second storage estate is assembling itself on driveways and in car parks,
+    paid for by consumers, at a scale that dwarfs the shortfall. Europe increasingly does not manufacture it. And
+    the layer that decides what it is worth &mdash; the right to dispatch it &mdash; is being settled now, quietly,
+    by commercial deals rather than policy.</p>
+</div>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-question">
+  <div class="label"><span class="num">01</span>The question</div>
+  <div>
+    <h2>Not who owns the batteries. Who dispatches them.</h2>
+    <p>The instinctive worry about Chinese vehicles in Europe is ownership, and it is the wrong worry. The
+      electricity never leaves. A battery in a Birmingham driveway charges from the British grid and discharges
+      into it, whoever built the cell.</p>
+    <p>What can move is the <b>economics, the data and the control</b>. A flexibility asset earns when someone
+      registers it in a market, forecasts it, and dispatches it. That party sets the split, sees the household&rsquo;s
+      consumption, and owns the relationship. Everything upstream &mdash; cell, vehicle, charger, finance &mdash; is
+      a supply contract.</p>
+    <p class="pull">The electrons stay British. The margin, the data and the control need not.</p>
+    <p>So the useful question is not how many EV batteries become available to the system. It is <b>who will hold
+      the commercial rights to Europe&rsquo;s mobile storage estate</b> when it matters. Section 02 is the stack that
+      question resolves into.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-stack">
+  <div class="label"><span class="num">02</span>The stack</div>
+  <div>
+    <h2>Seven layers, and they are separable</h2>
+    <p class="sub">This is why the debate keeps stalling: &ldquo;who wins&rdquo; has no answer, because there is no
+      single pot. Select a layer.</p>
+    <div class="stack">
+      <div class="stack-list" id="layers"></div>
+      <div class="stack-det" id="layerdet"></div>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--red)"></i>Chinese-supplied or plausibly moving</span>
+      <span><i style="background:var(--amber)"></i>Contested</span>
+      <span><i style="background:var(--green)"></i>Currently European</span>
+    </div>
+    <p class="fnote" style="margin-top:14px;">Positions describe where value is <em>structurally</em> captured, not
+      the commercial terms of any specific deal. Those terms are not public and are not guessed at here.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-doors">
+  <div class="label"><span class="num">03</span>The doors</div>
+  <div>
+    <h2>Nobody needs to build an Octopus. The ingredients are for sale.</h2>
+    <p>The reflexive question is whether a Chinese-owned Octopus equivalent exists in Britain. It does not
+      &mdash; the Ofgem licensee register shows no Chinese-controlled domestic supplier and aggregator.
+      <b>That is the point.</b> Building one is slow. Acquiring the parts is not, and three doors are demonstrably
+      open.</p>
+
+    <div class="doors">
+      <div class="door">
+        <div class="when">Mar 2026</div>
+        <div class="what"><b>The supply licence.</b> Ofgem granted Tesla Energy Ventures a GB electricity supply
+          licence, domestic and non-domestic. The assessment ran July 2025 to March 2026.<sup><a href="#s2">2</a></sup></div>
+        <div class="stat s-done">Done &middot; 8 months</div>
+      </div>
+      <div class="door">
+        <div class="when">Aug 2025 &rarr;</div>
+        <div class="what"><b>The charging estate.</b> EDF &mdash; French state-owned &mdash; completed its
+          acquisition of Pod Point. Be.ev absorbed Norwegian-backed Mer. EO Charging entered administration in
+          April 2026 having failed to find a buyer. Industry expects consolidation to five or six
+          operators.<sup><a href="#s3">3</a></sup></div>
+        <div class="stat s-done">Precedent set</div>
+      </div>
+      <div class="door">
+        <div class="when">Mar 2025</div>
+        <div class="what"><b>The diplomatic channel.</b> The UK&ndash;China Clean Energy MoU names power market
+          reform, grid and battery storage, with charging infrastructure explicitly flagged as a wider area of
+          shared interest.<sup><a href="#s4">4</a></sup></div>
+        <div class="stat s-done">Signed</div>
+      </div>
+      <div class="door">
+        <div class="when">Not yet</div>
+        <div class="what"><b>A Chinese-owned GB supplier or aggregator.</b> No evidence of one today. This is the
+          open door, and the only one that would move the bottom three layers of the stack.</div>
+        <div class="stat s-open">Open</div>
+      </div>
+    </div>
+
+    <p style="margin-top:22px;">Read together: a carmaker becoming a British electricity supplier is now a proven
+      eight-month regulatory path, foreign state-linked energy capital buying distressed British charging
+      infrastructure is a <em>completed transaction</em>, and there is a signed bilateral channel naming the
+      sector. The move nobody has made is the cheapest one left.</p>
+    <p class="pull">The precedent for this play is already set. It is French.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-byd">
+  <div class="label"><span class="num">04</span>The ingredients</div>
+  <div>
+    <h2>BYD is already a European energy company</h2>
+    <p class="sub">Not a carmaker with energy ambitions. Count what is already built.<sup><a href="#s9">9</a></sup></p>
+    <div class="chk" id="chk"></div>
+    <p style="margin-top:22px;">Two ingredients are missing, and Tesla has just shown one of them takes eight
+      months. That is the whole distance between &ldquo;BYD sells cars in Britain&rdquo; and <b>BYD Energy UK</b>.</p>
+    <p style="margin-top:20px;">Worth noting how deliberately China is pacing this at home. The NDRC has stood
+      up 30 large-scale V2G pilots across nine cities, targeting <b>5,000 bidirectional charging facilities by
+      end-2027 &mdash; within an estate of 28 million charging points</b>.<sup><a href="#s11">11</a></sup> That is
+      0.02%. China is learning vehicle-to-grid slowly and at small scale domestically, while exporting the
+      capability at volume. Whether that ordering is caution or sequencing is the interesting question.</p>
+    <p class="fnote">No BYD electricity supply licence or own aggregator was found in any European market at the
+      time of writing. Recorded as absent, not as intent.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-utilities">
+  <div class="label"><span class="num">05</span>The incumbents</div>
+  <div>
+    <h2>What the utilities have, and whether it is enough</h2>
+    <p class="sub">Aggregated flexibility capacity, where a figure is publicly sourced.</p>
+    <div class="score" id="score"></div>
+    <p style="margin-top:24px;"><b>Is it enough?</b> Against today&rsquo;s market, comfortably. Against the estate
+      arriving in section 06, no. Kraken is the largest residential VPP in the world at 2 GW across 500,000
+      devices.<sup><a href="#s5">5</a></sup> A European passenger EV parc of 40 million cars, on conservative
+      availability assumptions, is an order of magnitude larger than every VPP listed above combined.</p>
+    <p>The incumbents are not losing a race they are running. They are being outgrown by an asset class none of
+      them manufactures &mdash; and most are positioned as buyers of that flexibility, not owners of it. EDF bought
+      the charging estate. E.ON partnered with an OEM. Shell owns sonnen. Each is a claim on one layer.</p>
+    <p class="pull">For most European utilities this is a spectator sport with a ticket price.</p>
+    <p>And the flow runs both ways, which is the part the alarmed version of this argument misses. In January 2026
+      Octopus formed <b>Bitong Energy</b> with China&rsquo;s PCG Power, taking Kraken into Chinese power trading with
+      an ambition of <b>140 TWh a year by 2030</b> &mdash; roughly the UK&rsquo;s entire current green output &mdash;
+      and about &pound;50m of annual profit, half of it returning to Britain.<sup><a href="#s6">6</a></sup>
+      Britain is acquiring a dispatch position in China at the same moment China is acquiring a supply position in
+      Britain. This is a trade in layers, not a raid.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-model">
+  <div class="label"><span class="num">06</span>The arithmetic</div>
+  <div>
+    <h2>The shortfall, and the estate that dwarfs it</h2>
+    <p>The EU needs <b>200 GW</b> of storage by 2030 against about <b>55 GW</b> today, and its own medium scenario
+      lands near <b>160 GW</b> &mdash; a shortfall around <b>40 GW</b>. Twenty-two member states have committed
+      only 30&ndash;35 GW of new capacity by 2028, and the plan carries <b>no procurement mechanism, no auction
+      framework and no mandatory obligation</b>.<sup><a href="#s1">1</a></sup> Britain sits inside the same
+      physics: about 7.5 GW installed, a Clean Power 2030 target of 23&ndash;27 GW, and a connections queue of
+      221 GW &mdash; roughly three times what the target implies.<sup><a href="#s7">7</a></sup></p>
+    <p>Now set the mobile estate beside it. Set your own assumptions.</p>
+
+    <div class="model">
+      <div class="ctrls">
+        <div class="ctrl"><label for="m-cap">V2G-capable share of the EV parc</label>
+          <input id="m-cap" type="range" min="0" max="60" step="5" value="25"><output id="o-cap">25%</output></div>
+        <div class="ctrl"><label for="m-av">Plugged in and available at peak</label>
+          <input id="m-av" type="range" min="5" max="60" step="5" value="30"><output id="o-av">30%</output></div>
+        <div class="ctrl"><label for="m-kw">Export power per vehicle</label>
+          <input id="m-kw" type="range" min="3" max="11" step="1" value="7"><output id="o-kw">7 kW</output></div>
+        <div class="ctrl"><label for="m-cn">Chinese-built share of capable cars</label>
+          <input id="m-cn" type="range" min="0" max="80" step="5" value="40"><output id="o-cn">40%</output></div>
+      </div>
+
+      <svg class="chart" id="chart" viewBox="0 0 640 300" role="img"
+           aria-label="EU stationary storage against modelled mobile storage capacity to 2035, with the 200 GW target marked.">
+        <line class="c-axis" x1="54" y1="20" x2="54" y2="240"/>
+        <line class="c-axis" x1="54" y1="240" x2="620" y2="240"/>
+        <line class="c-target" id="tgt" x1="54" y1="0" x2="620" y2="0"/>
+        <text class="c-labr" id="tgtlab" x="58" y="0">EU target 200 GW</text>
+        <g id="bars"></g><g id="ticks"></g>
+      </svg>
+      <div class="legend" style="margin-top:4px;">
+        <span><i style="background:#c9cae8"></i>EU stationary storage (projected)</span>
+        <span><i style="background:rgba(63,67,173,.85)"></i>Mobile, European-built</span>
+        <span><i style="background:var(--red)"></i>Mobile, Chinese-built</span>
+      </div>
+
+      <div class="mout">
+        <div class="mo"><div class="k">Mobile capacity 2030</div><div class="v" id="v-mob">&mdash;</div>
+          <div class="n">dispatchable GW from cars, on your assumptions</div></div>
+        <div class="mo"><div class="k">Covers the 40 GW gap</div><div class="v" id="v-gap">&mdash;</div>
+          <div class="n" id="n-gap"></div></div>
+        <div class="mo"><div class="k">Of that, Chinese-built</div><div class="v red" id="v-cn">&mdash;</div>
+          <div class="n">GW sitting in vehicles Europe did not manufacture</div></div>
+      </div>
+    </div>
+
+    <p class="fnote" style="margin-top:14px;">Model, not forecast. EU passenger EV parc taken as ~40 million by
+      2030<sup><a href="#s8">8</a></sup> growing to ~68 million by 2035, stationary storage on the ~160 GW medium
+      path. Mobile capacity = parc &times; capable share &times; availability &times; per-vehicle power. It measures
+      <em>power</em> at a moment, not energy over a day, and assumes contracted access that does not yet exist for
+      most of the parc. The point is the order of magnitude, not the decimal.</p>
+
+    <p style="margin-top:22px;">On mid-range assumptions the mobile estate is not a supplement to the stationary
+      target. It is <b>larger than the entire shortfall</b>, and it arrives without a procurement mechanism,
+      without an auction, and without anyone having decided who may dispatch it.</p>
+    <p class="pull">Europe is about to miss a target it could meet with assets it has already paid for &mdash; and
+      does not control.</p>
+    <p>That is the forcing function. Not ownership, not tariffs, not sovereignty rhetoric. A concrete gap between
+      what the grid needs and what the plan delivers, closable by an estate that is privately owned, mostly
+      foreign-manufactured, and contractually unattached. Whoever attaches it first sets the terms.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-watch">
+  <div class="label"><span class="num">07</span>What to watch</div>
+  <div>
+    <h2>Six observable thresholds</h2>
+    <p class="sub">Written so the evidence can settle them.</p>
+    <div class="thr"><div class="tv">Licence</div>
+      <div class="tt">A Chinese-owned entity obtains a GB or EU electricity supply licence</div>
+      <p>The single move that shifts the bottom three layers of the stack. Tesla&rsquo;s eight-month path is the clock.</p></div>
+    <div class="thr"><div class="tv">Estate</div>
+      <div class="tt">A Chinese buyer acquires a UK or EU charge point operator</div>
+      <p>The distressed window is open now &mdash; EO into administration, Mer sold, consolidation to five or six
+        expected. EDF has already shown the move works.</p></div>
+    <div class="thr"><div class="tv">Parc</div>
+      <div class="tt">Chinese-built cars exceed 30% of new V2G-capable EV registrations in any large European market</div>
+      <p>Drives the red band in section 06. Britain&rsquo;s only live retail V2G product is already a Chinese car.</p></div>
+    <div class="thr"><div class="tv">Aggregation</div>
+      <div class="tt">Any OEM-owned platform dispatches more than 1 GW of third-party vehicles in Europe</div>
+      <p>The test of whether carmakers can hold the flexibility layer at all, or remain suppliers into someone
+        else&rsquo;s book.</p></div>
+    <div class="thr"><div class="tv">Policy</div>
+      <div class="tt">The EU or UK attaches a dispatch-access condition to vehicle or charger type approval</div>
+      <p>The obvious policy response to section 06, and nobody has proposed it. Its absence is the story; its
+        arrival would be the turn.</p></div>
+    <div class="thr"><div class="tv">Counter-flow</div>
+      <div class="tt">Bitong Energy reaches material traded volume in Guangdong</div>
+      <p>Tests whether the layer trade is genuinely two-way, or whether European software exports while European
+        hardware share falls.</p></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="row reveal" id="sec-sources">
+  <div class="label">Sources</div>
+  <div><div class="srcs"><ol>
+    <li id="s1">EU storage: 200 GW needed by 2030 against ~55 GW today; medium scenario reaches ~160 GW; 22 member states committed 30&ndash;35 GW new by 2028; AccelerateEU carries no procurement mechanism, auction framework or mandatory obligation.
+      <a href="https://www.energy-storage.news/leaked-eu-electrification-action-plan-recognises-need-for-200gw-of-energy-storage-by-2030/" target="_blank" rel="noopener">energy-storage.news</a> &middot;
+      <a href="https://www.ess-news.com/2026/04/27/europe-accelerateeu-supports-a-200-gw-storage-target-but-omits-financing-mechanism/" target="_blank" rel="noopener">ess-news.com</a></li>
+    <li id="s2">Tesla Energy Ventures granted a GB electricity supply licence, Ofgem approval 11 March 2026; assessment July 2025 to March 2026.
+      <a href="https://electrek.co/2026/03/12/tesla-energy-ventures-wins-ofgem-licence-supply-electricity-uk/" target="_blank" rel="noopener">electrek.co</a></li>
+    <li id="s3">UK charging consolidation: EDF completed its Pod Point acquisition August 2025; Be.ev absorbed Mer Charging; EO Charging (Juuce Ltd) entered administration April 2026; industry expects consolidation to five or six operators.
+      <a href="https://www.evcharging-infrastructure.com/news/scale-wins-as-ev-charging-firms-consolidate" target="_blank" rel="noopener">evcharging-infrastructure.com</a></li>
+    <li id="s4">UK&ndash;China Clean Energy Partnership MoU, March 2025 &mdash; power market reform, grid, battery storage, offshore wind, CCUS and hydrogen, with charging infrastructure named as a wider area of shared interest.
+      <a href="https://www.solarpowerportal.co.uk/battery-storage/uk-and-china-sign-clean-energy-memorandum-of-understanding" target="_blank" rel="noopener">solarpowerportal.co.uk</a></li>
+    <li id="s5">VPP scale: Kraken at 2 GW across 500,000 devices, the largest residential VPP in the world; Next Kraftwerke ~10 GW aggregated; Statkraft over 10 GW; 1KOMMA5&deg; ~500 MW across 50,000 systems.
+      <a href="https://www.enlit.world/library/virtual-power-plants-momentum-builds-in-europe-and-us" target="_blank" rel="noopener">enlit.world</a></li>
+    <li id="s6">Octopus Energy and PCG Power form Bitong Energy, announced 30 January 2026; target up to 140 TWh traded a year by 2030, ~&pound;50m annual profit with half returning to the UK, launching in Guangdong.
+      <a href="https://octopus.energy/press/more-news-press-releases/octopus-energy-announces-major-china-joint-venturet/" target="_blank" rel="noopener">octopus.energy</a> &middot;
+      <a href="https://www.pv-magazine.com/2026/01/30/octopus-energy-to-set-up-joint-venture-to-trade-renewables-in-china/" target="_blank" rel="noopener">pv-magazine.com</a></li>
+    <li id="s7">UK storage: ~7.5 GW installed end 2025; NESO Clean Power 2030 target 23&ndash;27 GW; 221 GW of BESS in the full connections queue, roughly three times the capacity the 2030 target implies.
+      <a href="https://www.cornwall-insight.com/press-releases/battery-storage-connection-queue-double-the-grids-requirement-for-2030/" target="_blank" rel="noopener">cornwall-insight.com</a></li>
+    <li id="s8">European passenger EV parc projected past 40 million by 2030.
+      <a href="https://www.consultancy.eu/news/5766/europes-electric-vehicles-fleet-to-reach-40-million-by-2030" target="_blank" rel="noopener">consultancy.eu</a></li>
+    <li id="s9">BYD in European energy: Residential Energy Ecosystem launched at The Smarter E Europe 2026 (Smart Ecobox, Backup-Box, AC Charging Box); Battery-Box Mega 62.4 kWh to 5.24 MWh; Greenvolt Poland BESS 600 MW / 2.4 GWh operational end-2027.
+      <a href="https://cnevpost.com/2026/06/25/byd-broadens-energy-storage-lineup-europe/" target="_blank" rel="noopener">cnevpost.com</a> &middot;
+      <a href="https://cnevpost.com/2026/07/02/byd-signs-poland-largest-battery-storage-project/" target="_blank" rel="noopener">cnevpost.com</a></li>
+    <li id="s10">Octopus and BYD Power Pack Bundle &mdash; leased BYD Dolphin, bidirectional charger and tariff; the Dolphin described as the first UK-market vehicle with native V2G compatibility.
+      <a href="https://octopus.energy/press/octopus-byd-turbocharge-ev-revolution-with-all-inclusive-car-and-charging-bundle/" target="_blank" rel="noopener">octopus.energy</a></li>
+    <li id="s11">China domestic V2G: NDRC 30 large-scale pilot projects across nine cities; target of 5,000 bidirectional charging facilities by end-2027 within 28 million charging points.
+      <a href="https://carnewschina.com/2026/01/31/china-sets-28-million-charging-facility-target-by-2027-including-v2g-expansion/" target="_blank" rel="noopener">carnewschina.com</a></li>
+    <li id="s12">Chinese charging hardware and the divergent policy posture: Star Charge, Autel Energy, XCharge and peers hold major global share; the US House Select Committee on the CCP has urged a national-security review of a Chinese EV charging firm.
+      <a href="https://chinaselectcommittee.house.gov/media/press-releases/moolenaar-blackburn-urge-review-of-chinese-ev-charging-firm-over-national-security-risks" target="_blank" rel="noopener">chinaselectcommittee.house.gov</a></li>
+  </ol></div></div>
+</section>
+
+<div class="wrap"><footer>
+  <span>FutureBridge Signals &middot; August 2026</span>
+  <a href="mailto:christopher.guerin@futurebridge.com">christopher.guerin@futurebridge.com</a>
+</footer></div>
+
+<script>
+(function(){
+  /* ---------- section nav ---------- */
+  var SECS=[['sec-question','The question'],['sec-stack','The stack'],['sec-doors','The doors'],
+            ['sec-byd','Ingredients'],['sec-utilities','Incumbents'],['sec-model','Arithmetic'],
+            ['sec-watch','What to watch'],['sec-sources','Sources']];
+  var nav=document.getElementById('secnav');
+  SECS.forEach(function(s){
+    var a=document.createElement('a'); a.href='#'+s[0]; a.textContent=s[1];
+    a.setAttribute('data-t',s[0]); nav.appendChild(a);
+  });
+  var navls=Array.prototype.slice.call(nav.children);
+  var spy=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        navls.forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-t')===e.target.id); });
+      }
+    });
+  },{rootMargin:'-25% 0px -65% 0px'});
+  SECS.forEach(function(s){ var el=document.getElementById(s[0]); if(el) spy.observe(el); });
+
+  /* ---------- layer stack ---------- */
+  var LAYERS=[
+    {n:'01',t:'Cell and battery',w:'China',c:'w-cn',
+     d:'The physical asset. Chinese manufacturers dominate cell supply and increasingly the pack.',
+     now:'Already settled. Nothing in European policy meaningfully contests this before 2030.'},
+    {n:'02',t:'Vehicle',w:'Shifting',c:'w-cn',
+     d:'The wrapper the battery arrives in, and the channel it reaches households through.',
+     now:'Britain’s only live retail V2G product is a leased BYD Dolphin, described as the first UK-market car with native V2G compatibility.<sup><a href="#s10">10</a></sup>'},
+    {n:'03',t:'Charger hardware',w:'Shifting',c:'w-cn',
+     d:'The bidirectional inverter and the socket. Low margin, high strategic position — it decides interoperability.',
+     now:'Star Charge, Autel, XCharge and peers hold major global share. The US has urged a security review of a Chinese charging firm; the UK signed an MoU naming charging as cooperation.<sup><a href="#s12">12</a></sup>'},
+    {n:'04',t:'Financing',w:'Contested',c:'w-mix',
+     d:'Who owns the car across many drivers. The lease is the route to market for most Chinese entrants.',
+     now:'Genuinely open. The captive finance arm is the only party able to reassign V2G capability as vehicles rotate.'},
+    {n:'05',t:'Flexibility and dispatch',w:'Europe',c:'w-uk',
+     d:'Registering the pool in a balancing market, forecasting it, and dispatching it. Where the incremental value of reverse flow actually lands.',
+     now:'Kraken, Next Kraftwerke, Statkraft, 1KOMMA5°. European today — and the layer a supply licence would open.'},
+    {n:'06',t:'Energy trading',w:'Europe',c:'w-uk',
+     d:'Netting the flexibility against a supply book rather than selling it as a service.',
+     now:'Requires a licence. Tesla obtained one in eight months; no Chinese-owned GB supplier exists today.<sup><a href="#s2">2</a></sup>'},
+    {n:'07',t:'Customer relationship',w:'Europe',c:'w-uk',
+     d:'The tariff, the billing relationship, and sight of every other flexible asset in the home.',
+     now:'The most defensible layer and the least discussed. It is also the one that makes the vehicle the marginal asset in someone else’s stack.'}
+  ];
+  var ll=document.getElementById('layers'), ld=document.getElementById('layerdet');
+  LAYERS.forEach(function(L,i){
+    var r=document.createElement('div'); r.className='lyr'; r.setAttribute('role','button'); r.tabIndex=0;
+    r.innerHTML='<span class="n"></span><span class="tt"></span><span class="who '+L.c+'"></span>';
+    r.querySelector('.n').textContent=L.n; r.querySelector('.tt').textContent=L.t;
+    r.querySelector('.who').textContent=L.w;
+    function pick(){ show(i); }
+    r.addEventListener('click',pick);
+    r.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();pick();} });
+    ll.appendChild(r);
+  });
+  function show(i){
+    var L=LAYERS[i];
+    Array.prototype.forEach.call(ll.children,function(c,k){ c.classList.toggle('on',k===i); });
+    ld.innerHTML='<div class="dt">Layer '+L.n+'</div><h3>'+L.t+'</h3><p>'+L.d+'</p>'+
+                 '<div class="now"><b>Where it stands:</b> '+L.now+'</div>';
+  }
+  show(4);
+
+  /* ---------- ingredient checklist ---------- */
+  var CHK=[
+    [1,'Cells and packs at scale','Global leader'],
+    [1,'Residential storage','Battery-Box Mega, 62.4 kWh to 5.24 MWh'],
+    [1,'Home energy ecosystem','Smart Ecobox, Backup-Box, AC Charging Box'],
+    [1,'Home charging hardware','Shipped inside the residential ecosystem'],
+    [1,'Grid-scale BESS in the EU','Greenvolt Poland, 600 MW / 2.4 GWh, end-2027'],
+    [1,'VPP-compatible batteries','Via GoodWe, SMA and Sungrow inverter APIs'],
+    [1,'A UK route to market','The Octopus lease bundle'],
+    [0,'An electricity supply licence','Tesla: eight months'],
+    [0,'Its own aggregator','The last missing layer']
+  ];
+  var ck=document.getElementById('chk');
+  CHK.forEach(function(c){
+    var d=document.createElement('div'); d.className='ck '+(c[0]?'has':'no');
+    d.innerHTML='<span class="m"></span><span class="t"></span>';
+    d.querySelector('.m').textContent=c[0]?'●':'○';
+    d.querySelector('.t').innerHTML='<b>'+c[1]+'</b><small>'+c[2]+'</small>';
+    ck.appendChild(d);
+  });
+
+  /* ---------- utility scoreboard ---------- */
+  var SCORE=[
+    ['Statkraft','Norwegian state-owned',10000,'uk'],
+    ['Next Kraftwerke','Shell-owned, Germany',10000,'uk'],
+    ['Kraken / Octopus','500,000 devices — largest residential VPP',2000,'uk'],
+    ['1KOMMA5°','50,000 systems, Germany',500,'uk'],
+    ['EDF','Bought Pod Point Aug 2025',null,'uk'],
+    ['E.ON','BMW V2G package, Feb 2026',null,'uk'],
+    ['sonnen / Shell','Residential VPP pioneer',null,'uk']
+  ];
+  var sc=document.getElementById('score'), mx=10000;
+  SCORE.forEach(function(s){
+    var d=document.createElement('div'); d.className='sc';
+    var v = s[2]===null ? '<span class="v na">not established</span>'
+                        : '<span class="v">'+(s[2]>=1000?(s[2]/1000)+' GW':s[2]+' MW')+'</span>';
+    d.innerHTML='<div class="nm">'+s[0]+'<small>'+s[1]+'</small></div>'+
+                '<div class="track"><span class="fill '+s[3]+'" style="width:'+
+                (s[2]===null?0:Math.max(1.5,(s[2]/mx)*100))+'%"></span></div>'+v;
+    sc.appendChild(d);
+  });
+
+  /* ---------- storage arithmetic ---------- */
+  var YR=[2026,2028,2030,2032,2035];
+  function parc(y){ return y<=2030 ? 12+(40-12)*((y-2026)/4) : 40+(y-2030)*5.6; }   // million
+  function stat(y){ return y<=2030 ? 55+(160-55)*((y-2026)/4) : 160+(y-2030)*14; }  // GW
+  var X0=54,X1=620,YB=240,YT=20,VMAX=420;
+  function PY(v){ return YB-(v/VMAX)*(YB-YT); }
+  var el={cap:'m-cap',av:'m-av',kw:'m-kw',cn:'m-cn'}, S={};
+  Object.keys(el).forEach(function(k){ S[k]=document.getElementById(el[k]); });
+  var bars=document.getElementById('bars'), ticks=document.getElementById('ticks');
+  var NS='http://www.w3.org/2000/svg';
+  YR.forEach(function(y,i){
+    var t=document.createElementNS(NS,'text'); t.setAttribute('class','c-lab');
+    t.setAttribute('x',X0+((X1-X0)/YR.length)*(i+0.5)); t.setAttribute('y',258);
+    t.setAttribute('text-anchor','middle'); t.textContent=y; ticks.appendChild(t);
+  });
+  document.getElementById('tgt').setAttribute('y1',PY(200));
+  document.getElementById('tgt').setAttribute('y2',PY(200));
+  document.getElementById('tgtlab').setAttribute('y',PY(200)-6);
+
+  function run(){
+    var cap=+S.cap.value/100, av=+S.av.value/100, kw=+S.kw.value, cn=+S.cn.value/100;
+    document.getElementById('o-cap').textContent=S.cap.value+'%';
+    document.getElementById('o-av').textContent=S.av.value+'%';
+    document.getElementById('o-kw').textContent=kw+' kW';
+    document.getElementById('o-cn').textContent=S.cn.value+'%';
+
+    bars.innerHTML='';
+    var bw=(X1-X0)/YR.length, m2030=0, cn2030=0;
+    YR.forEach(function(y,i){
+      var st=stat(y), mob=parc(y)*1e6*cap*av*kw/1e6;   // GW
+      var mcn=mob*cn, meu=mob-mcn;
+      if(y===2030){ m2030=mob; cn2030=mcn; }
+      var x=X0+bw*i+bw*0.22, w=bw*0.56, base=YB;
+      [[st,'c-stat'],[meu,'c-mob'],[mcn,'c-cn']].forEach(function(seg){
+        var h=Math.max(0,(seg[0]/VMAX)*(YB-YT));
+        if(h<=0) return;
+        var r=document.createElementNS(NS,'rect'); r.setAttribute('class',seg[1]);
+        r.setAttribute('x',x); r.setAttribute('width',w);
+        r.setAttribute('y',base-h); r.setAttribute('height',h);
+        bars.appendChild(r); base-=h+1.5;
+      });
+    });
+
+    document.getElementById('v-mob').textContent=m2030.toFixed(0)+' GW';
+    document.getElementById('v-cn').textContent=cn2030.toFixed(0)+' GW';
+    var cov=m2030/40, g=document.getElementById('v-gap');
+    g.textContent=cov>=10?'10x+':(cov).toFixed(1)+'x';
+    g.className='v'+(cov<1?' red':'');
+    document.getElementById('n-gap').textContent = cov<1
+      ? 'Falls short of the 40 GW shortfall on these assumptions.'
+      : 'Times over. The mobile estate exceeds the gap the EU cannot close.';
+  }
+  Object.keys(S).forEach(function(k){ S[k].addEventListener('input',run); });
+  run();
+
+  /* ---------- reveal ---------- */
+  var els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); }
+  else{
+    els.filter(function(e){return e.getBoundingClientRect().top<window.innerHeight;})
+       .forEach(function(e,i){ setTimeout(function(){e.classList.add('in');},100*i); });
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target);} });
+    },{threshold:0.08});
+    els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
+  }
+})();
+</script>
+</body>
+</html>
