@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FutureBridge Advisory</title>
-<meta name="description" content="We map your strategy to an ontology of technologies, markets, regulations and ecosystem. When something changes, we tell you what it means for your strategy.">
+<meta name="description" content="We read around 3,000 articles a week against a mapped ontology of technologies, markets, regulations and ecosystem, and tell you what each change means for your strategy.">
 <style>
   :root{
     --black:#000000;
@@ -14,11 +14,13 @@
     --dim:#6f6f79;
     --red:#F84E5D;
     --indigo:#3F43AD;
+    --indigo-soft:#c9cae8;
     --up:#008300;
     --down:#e34948;
     --thresh:#eda100;
     --hair:rgba(0,0,0,0.14);
     --hair2:rgba(0,0,0,0.07);
+    --cell:#e6e6ea;
     --font:"Circular Std","Circular Std Book",Arial,sans-serif;
     --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
     --maxw:1180px;
@@ -30,7 +32,7 @@
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
 
   /* ---------- hero ---------- */
-  .hero{padding:96px 0 44px;}
+  .hero{padding:92px 0 40px;}
   .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin:0 0 26px;}
   h1{font-size:clamp(32px,5.2vw,58px);line-height:1.07;letter-spacing:-0.025em;
      margin:0 0 26px;font-weight:600;max-width:17ch;}
@@ -38,10 +40,20 @@
   .lede{font-size:clamp(17px,1.85vw,21px);color:var(--grey);margin:0;max-width:64ch;}
   .lede b{color:var(--ink);font-weight:600;}
 
+  /* ---------- scale band ---------- */
+  .scale{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+         border-top:1px solid var(--black);border-bottom:1px solid var(--hair);
+         margin-bottom:64px;}
+  .stat{padding:30px 24px 32px;border-right:1px solid var(--hair);}
+  .stat:last-child{border-right:none;}
+  .stat .v{font-size:clamp(34px,4.6vw,54px);font-weight:600;letter-spacing:-0.035em;
+           line-height:1;font-variant-numeric:tabular-nums;margin-bottom:12px;}
+  .stat .k{font-size:13.5px;color:var(--grey);line-height:1.45;max-width:22ch;}
+
   /* ---------- demo ---------- */
-  .demo{border-top:1px solid var(--black);margin-bottom:96px;}
+  .demo{margin-bottom:96px;}
   .demo-head{display:flex;justify-content:space-between;align-items:baseline;
-             gap:16px;flex-wrap:wrap;padding:22px 0 18px;}
+             gap:16px;flex-wrap:wrap;border-top:1px solid var(--black);padding:22px 0 18px;}
   .demo-head h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;
                 color:var(--grey);margin:0;font-weight:600;}
   .demo-head .hint{font-size:13px;color:var(--dim);}
@@ -50,29 +62,39 @@
   .chip{font-family:var(--font);font-size:14px;line-height:1.35;text-align:left;
         background:var(--white);color:var(--ink);border:1px solid var(--hair);
         border-radius:2px;padding:13px 16px;cursor:pointer;flex:1 1 210px;
-        transition:border-color .16s ease,background .16s ease,transform .16s ease;}
+        transition:border-color .16s ease,background .16s ease;}
   .chip .lay{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
              text-transform:uppercase;color:var(--dim);margin-bottom:7px;}
   .chip:hover{border-color:var(--ink);}
   .chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff;}
   .chip[aria-pressed="true"] .lay{color:rgba(255,255,255,0.72);}
 
-  .panes{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);
+  .panes{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
          border:1px solid var(--hair);}
-  .pane{padding:26px 26px 30px;}
+  .pane{padding:24px 24px 26px;min-width:0;}
   .pane + .pane{border-left:1px solid var(--hair);}
   .pane h3{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-           color:var(--dim);margin:0 0 20px;font-weight:600;}
+           color:var(--dim);margin:0 0 18px;font-weight:600;}
 
-  /* ontology */
-  .layer{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--hair2);}
-  .layer:last-child{border-bottom:none;}
-  .layer-name{font-size:13.5px;width:108px;flex:none;color:var(--grey);transition:color .25s ease;}
-  .layer.hot .layer-name{color:var(--ink);font-weight:600;}
-  .dots{display:flex;gap:7px;flex-wrap:wrap;}
-  .dot{width:9px;height:9px;border-radius:50%;border:1.4px solid var(--hair);
-       background:var(--white);transition:background .3s ease,border-color .3s ease,transform .3s ease;}
-  .layer.hot .dot.on{background:var(--indigo);border-color:var(--indigo);transform:scale(1.45);}
+  /* the week's intake */
+  .field{display:grid;grid-template-columns:repeat(50,1fr);gap:2px;margin-bottom:16px;}
+  .cell{aspect-ratio:1;background:var(--cell);border-radius:1px;}
+  .cell.sweep{animation:sweep .5s ease both;}
+  .cell.hit{background:var(--indigo);animation:pop .45s ease both;}
+  @keyframes sweep{0%{background:var(--cell);}35%{background:var(--indigo-soft);}100%{background:var(--cell);}}
+  @keyframes pop{0%{transform:scale(1);}45%{transform:scale(1.9);}100%{transform:scale(1);}}
+
+  .tally{display:flex;align-items:baseline;gap:10px;font-family:var(--mono);font-size:11.5px;
+         letter-spacing:.06em;color:var(--dim);border-top:1px solid var(--hair2);padding-top:14px;
+         margin-bottom:20px;flex-wrap:wrap;}
+  .tally b{font-family:var(--font);font-size:15px;letter-spacing:-0.01em;color:var(--ink);font-weight:600;}
+  .tally .arrow{color:var(--indigo);}
+
+  .layers{display:flex;gap:7px;flex-wrap:wrap;}
+  .pill{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+        border:1px solid var(--hair);border-radius:2px;padding:6px 9px;color:var(--dim);
+        transition:all .25s ease;}
+  .pill.hot{border-color:var(--indigo);color:var(--indigo);background:rgba(63,67,173,0.06);font-weight:600;}
 
   /* read-through */
   .empty{font-size:14.5px;color:var(--dim);line-height:1.6;max-width:40ch;}
@@ -85,7 +107,7 @@
            font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;}
   .verdict .g{font-size:12px;line-height:1;}
   .bet-note{font-size:14.5px;color:var(--grey);line-height:1.55;}
-  .bet.up{border-left-color:var(--up);}    .bet.up .verdict{color:var(--up);}
+  .bet.up{border-left-color:var(--up);}     .bet.up .verdict{color:var(--up);}
   .bet.down{border-left-color:var(--down);} .bet.down .verdict{color:var(--down);}
   .bet.th{border-left-color:var(--thresh);} .bet.th .verdict{color:#8a5e00;}
 
@@ -119,17 +141,21 @@
   .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){
     .reveal,.bet{opacity:1;transform:none;transition:none;}
-    .dot,.layer-name{transition:none;}
+    .cell.sweep,.cell.hit{animation:none;}
+    .cell.hit{background:var(--indigo);}
   }
   @media (max-width:900px){
+    .scale{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:none;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--hair);}
     .panes{grid-template-columns:1fr;}
     .pane + .pane{border-left:none;border-top:1px solid var(--hair);}
     .pieces{grid-template-columns:1fr;}
     .piece{border-right:none;}
     .wrap{padding:0 22px;}
-    .hero{padding:70px 0 36px;}
-    section,.demo{padding-bottom:0;margin-bottom:68px;}
-    .layer-name{width:92px;}
+    .hero{padding:70px 0 32px;}
+    .field{grid-template-columns:repeat(30,1fr);}
+    section,.demo{padding-bottom:0;margin-bottom:64px;}
   }
 </style>
 </head>
@@ -140,23 +166,38 @@
   <header class="hero reveal">
     <p class="eyebrow">FutureBridge Advisory</p>
     <h1>Something changed. <em>Here is what it means for your strategy.</em></h1>
-    <p class="lede">We map your strategy onto an ontology of <b>technologies, markets, regulations and
-      ecosystem</b>. The map exists before the news does &mdash; so when something moves, you get the
-      consequence for your bets, not another headline to interpret.</p>
+    <p class="lede">We read around <b>3,000 articles a week</b> against a mapped ontology of technologies,
+      markets, regulations and ecosystem. The map exists before the news does &mdash; so when something
+      moves, you get the consequence for your bets, not another headline to interpret.</p>
   </header>
+
+  <div class="scale reveal">
+    <div class="stat"><div class="v" data-to="3000" data-fmt="1">0</div>
+      <div class="k">articles read every week</div></div>
+    <div class="stat"><div class="v" data-to="200">0</div>
+      <div class="k">technologies in the ontology</div></div>
+    <div class="stat"><div class="v" data-to="400">0</div>
+      <div class="k">client strategies mapped against it</div></div>
+    <div class="stat"><div class="v" data-to="50">0</div>
+      <div class="k">client organisations</div></div>
+  </div>
 
   <div class="demo reveal">
     <div class="demo-head">
       <h2>Try it</h2>
-      <span class="hint">Pick a change &mdash; see what it does to the strategy.</span>
+      <span class="hint">Pick a change &mdash; watch it come out of the week&rsquo;s reading.</span>
     </div>
 
     <div class="chips" id="chips"></div>
 
     <div class="panes">
       <div class="pane">
-        <h3>The ontology</h3>
-        <div id="layers"></div>
+        <h3>This week&rsquo;s reading</h3>
+        <div class="field" id="field" aria-hidden="true"></div>
+        <div class="tally" id="tally">
+          <b>3,000</b> articles &middot; 600 marks, 5 articles each
+        </div>
+        <div class="layers" id="layers"></div>
       </div>
       <div class="pane">
         <h3>What it means for your strategy</h3>
@@ -207,139 +248,189 @@
 
 <script>
 (function(){
-  var LAYERS = [
-    { key:'tech', name:'Technologies', n:9 },
-    { key:'mkt',  name:'Markets',      n:7 },
-    { key:'reg',  name:'Regulations',  n:6 },
-    { key:'eco',  name:'Ecosystem',    n:8 }
-  ];
+  var COLS = 50, ROWS = 12, TOTAL = COLS * ROWS, PER = 5;   // 600 marks x 5 = 3,000
+
+  var LAYERS = ['Technologies','Markets','Regulations','Ecosystem'];
 
   var CHANGES = [
-    {
-      layer:'reg', label:'Regulations',
+    { layer:'Regulations', matched:4, seed:17,
       title:'Combustion phase-out confirmed for 2035',
-      nodes:[1,3,4],
       hits:[
         { bet:'Electrify the light fleet by 2030', dir:'up',
           note:'Removes the downside case the plan was hedging against. The hedge is now the expensive half of the portfolio.' },
         { bet:'Hydrogen for heavy haulage', dir:'down',
           note:'The exemption this bet depended on narrows. The window closes earlier than the investment case assumed.' }
-      ]
-    },
-    {
-      layer:'tech', label:'Technologies',
+      ]},
+    { layer:'Technologies', matched:11, seed:43,
       title:'Solid-state cell reaches 400 Wh/kg in production trim',
-      nodes:[0,2,5,7],
       hits:[
         { bet:'Retain in-house cell manufacture', dir:'th',
           note:'Crosses the density threshold the existing line was never specified for. Retooling decision moves forward by two years.' },
         { bet:'Hydrogen for heavy haulage', dir:'down',
           note:'Closes most of the range gap hydrogen was meant to cover.' }
-      ]
-    },
-    {
-      layer:'mkt', label:'Markets',
+      ]},
+    { layer:'Markets', matched:23, seed:71,
       title:'Cell prices fall 18% year on year',
-      nodes:[1,2,6],
       hits:[
         { bet:'Retain in-house cell manufacture', dir:'down',
           note:'Buy economics now beat build below your volume floor. The make case rests on a volume you do not yet have.' },
         { bet:'Electrify the light fleet by 2030', dir:'up',
           note:'Total cost of ownership crosses parity a full year ahead of the plan.' }
-      ]
-    },
-    {
-      layer:'eco', label:'Ecosystem',
+      ]},
+    { layer:'Ecosystem', matched:6, seed:29,
       title:'Two national charging networks merge',
-      nodes:[0,4,6,7],
       hits:[
         { bet:'Own the charging relationship', dir:'down',
           note:'The customer relationship you planned to own now has a single powerful counterparty in front of it.' },
         { bet:'Electrify the light fleet by 2030', dir:'up',
           note:'Coverage consolidates faster, which removes a rollout risk the plan carried.' }
-      ]
-    }
+      ]}
   ];
 
-  var VERDICT = {
-    up:   { g:'▲', t:'Strengthens' },
-    down: { g:'▼', t:'Weakens' },
-    th:   { g:'◆', t:'Threshold crossed' }
-  };
+  var VERDICT = { up:{g:'▲',t:'Strengthens'}, down:{g:'▼',t:'Weakens'}, th:{g:'◆',t:'Threshold crossed'} };
 
-  // build ontology
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- build the field ---- */
+  var fieldEl = document.getElementById('field'), cells = [];
+  for (var i = 0; i < TOTAL; i++){
+    var c = document.createElement('span');
+    c.className = 'cell';
+    fieldEl.appendChild(c); cells.push(c);
+  }
+
+  /* ---- build layer pills ---- */
   var layersEl = document.getElementById('layers');
-  LAYERS.forEach(function(L){
-    var row = document.createElement('div');
-    row.className = 'layer'; row.setAttribute('data-layer', L.key);
-    var name = document.createElement('span');
-    name.className = 'layer-name'; name.textContent = L.name;
-    var dots = document.createElement('div'); dots.className = 'dots';
-    for (var i = 0; i < L.n; i++){
-      var d = document.createElement('span'); d.className = 'dot'; dots.appendChild(d);
-    }
-    row.appendChild(name); row.appendChild(dots); layersEl.appendChild(row);
+  LAYERS.forEach(function(name){
+    var p = document.createElement('span');
+    p.className = 'pill'; p.setAttribute('data-layer', name); p.textContent = name;
+    layersEl.appendChild(p);
   });
 
-  // build chips
+  /* ---- build chips ---- */
   var chipsEl = document.getElementById('chips');
   CHANGES.forEach(function(C, idx){
     var b = document.createElement('button');
-    b.className = 'chip'; b.type = 'button';
-    b.setAttribute('aria-pressed','false');
-    b.innerHTML = '<span class="lay"></span>';
-    b.querySelector('.lay').textContent = C.label;
-    b.appendChild(document.createTextNode(C.title));
+    b.className = 'chip'; b.type = 'button'; b.setAttribute('aria-pressed','false');
+    var lay = document.createElement('span'); lay.className = 'lay'; lay.textContent = C.layer;
+    b.appendChild(lay); b.appendChild(document.createTextNode(C.title));
     b.addEventListener('click', function(){ select(idx); });
     chipsEl.appendChild(b);
   });
 
-  var readout = document.getElementById('readout');
+  var readout = document.getElementById('readout'), tally = document.getElementById('tally');
+  var timers = [];
+
+  function pick(seed, n){
+    // deterministic scatter so the same change always lights the same marks
+    var out = [], s = seed;
+    while (out.length < n){
+      s = (s * 1103515245 + 12345) & 0x7fffffff;
+      var v = s % TOTAL;
+      if (out.indexOf(v) === -1) out.push(v);
+    }
+    return out;
+  }
 
   function select(idx){
     var C = CHANGES[idx];
+    timers.forEach(clearTimeout); timers = [];
 
     Array.prototype.forEach.call(chipsEl.children, function(c,i){
       c.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
     });
-
-    Array.prototype.forEach.call(layersEl.children, function(row){
-      var hot = row.getAttribute('data-layer') === C.layer;
-      row.classList.toggle('hot', hot);
-      Array.prototype.forEach.call(row.querySelector('.dots').children, function(d,i){
-        d.classList.toggle('on', hot && C.nodes.indexOf(i) !== -1);
-      });
+    Array.prototype.forEach.call(layersEl.children, function(p){
+      p.classList.toggle('hot', p.getAttribute('data-layer') === C.layer);
     });
 
+    cells.forEach(function(c){ c.className = 'cell'; });
+
+    var marks = pick(C.seed, Math.max(1, Math.round(C.matched / PER)));
+    var articles = C.matched;
+
+    if (reduced){
+      marks.forEach(function(m){ cells[m].className = 'cell hit'; });
+      showTally(articles);
+      render(C);
+      return;
+    }
+
+    // sweep the week's reading left to right, then leave the matches lit
+    cells.forEach(function(c, i){
+      var col = i % COLS;
+      c.style.animationDelay = (col * 11) + 'ms';
+      c.classList.add('sweep');
+    });
+
+    timers.push(setTimeout(function(){
+      cells.forEach(function(c){ c.classList.remove('sweep'); c.style.animationDelay = ''; });
+      marks.forEach(function(m, k){
+        timers.push(setTimeout(function(){ cells[m].classList.add('hit'); }, k * 55));
+      });
+      showTally(articles);
+      render(C);
+    }, COLS * 11 + 320));
+  }
+
+  function showTally(n){
+    tally.innerHTML = '';
+    var a = document.createElement('b'); a.textContent = '3,000';
+    var mid = document.createElement('span'); mid.className = 'arrow'; mid.textContent = '→';
+    var b = document.createElement('b'); b.textContent = n;
+    tally.appendChild(a);
+    tally.appendChild(document.createTextNode(' read'));
+    tally.appendChild(mid);
+    tally.appendChild(b);
+    tally.appendChild(document.createTextNode(' touched this strategy'));
+  }
+
+  function render(C){
     readout.innerHTML = '';
     C.hits.forEach(function(h, i){
       var v = VERDICT[h.dir];
-      var el = document.createElement('div');
-      el.className = 'bet ' + h.dir;
-      var name = document.createElement('div');
-      name.className = 'bet-name'; name.textContent = h.bet;
-      var ver = document.createElement('div');
-      ver.className = 'verdict';
+      var el = document.createElement('div'); el.className = 'bet ' + h.dir;
+      var name = document.createElement('div'); name.className = 'bet-name'; name.textContent = h.bet;
+      var ver = document.createElement('div'); ver.className = 'verdict';
       var g = document.createElement('span'); g.className = 'g'; g.textContent = v.g;
       ver.appendChild(g); ver.appendChild(document.createTextNode(v.t));
-      var note = document.createElement('div');
-      note.className = 'bet-note'; note.textContent = h.note;
+      var note = document.createElement('div'); note.className = 'bet-note'; note.textContent = h.note;
       el.appendChild(name); el.appendChild(ver); el.appendChild(note);
       readout.appendChild(el);
-      setTimeout(function(){ el.classList.add('in'); }, 60 + i * 130);
+      timers.push(setTimeout(function(){ el.classList.add('in'); }, 60 + i * 130));
     });
   }
 
-  // reveal
+  /* ---- counters ---- */
+  function countUp(el){
+    var to = parseInt(el.getAttribute('data-to'), 10);
+    var fmt = el.getAttribute('data-fmt') === '1';
+    if (reduced){ el.textContent = fmt ? to.toLocaleString('en-GB') : to; return; }
+    var t0 = null, dur = 1100;
+    function step(ts){
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      var v = Math.round(to * e);
+      el.textContent = fmt ? v.toLocaleString('en-GB') : v;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---- reveal ---- */
   var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  function activate(e){
+    e.classList.add('in');
+    Array.prototype.forEach.call(e.querySelectorAll('.v[data-to]'), countUp);
+  }
   if(!('IntersectionObserver' in window)){
-    els.forEach(function(e){e.classList.add('in');});
+    els.forEach(activate);
   } else {
     var top = els.filter(function(e){return e.getBoundingClientRect().top < window.innerHeight;});
-    top.forEach(function(e,i){ setTimeout(function(){e.classList.add('in');}, 110*i); });
+    top.forEach(function(e,i){ setTimeout(function(){ activate(e); }, 110*i); });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        if(en.isIntersecting){ activate(en.target); io.unobserve(en.target); }
       });
     },{threshold:0.1});
     els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
