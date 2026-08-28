@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Three markets that could decide whether V2G matters &middot; FutureBridge Signals</title>
-<meta name="description" content="Britain could prove it. Europe may need it. India could make it worth far more. One chain, three markets, and a kerbside estate being built unidirectional right now.">
+<meta name="description" content="Britain is spending heavily on charging for people without driveways, and installing almost all of it one-way. Europe is trying to scale its own V2G before it needs it. India already pays for distributed storage twice.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FutureBridge Advisory">
 <meta property="og:title" content="Three markets that could decide whether V2G matters">
-<meta property="og:description" content="Britain could prove it. Europe may need it. India could make it worth far more. The stranded third of British motorists, Europe's fragmented clock, and the empty strategic space for the car in India.">
+<meta property="og:description" content="Britain could show whether V2G escapes the driveway. Europe will show whether home-grown solutions scale in time. India shows what happens when the value of the battery extends well beyond electricity trading.">
 <meta property="og:url" content="https://chris-guerin.github.io/futurebridge-public/v2g-three-markets.html">
 <style>
   :root{
@@ -48,13 +48,9 @@
 
   .hero{padding:52px 0 18px;}
   .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 24px;}
-  h1{font-size:clamp(31px,4.9vw,55px);line-height:1.06;letter-spacing:-.028em;margin:0 0 24px;
-     font-weight:600;max-width:20ch;}
+  h1{font-size:clamp(31px,4.9vw,55px);line-height:1.06;letter-spacing:-.028em;margin:0 0 26px;
+     font-weight:600;max-width:21ch;}
   h1 .r{color:var(--red);}
-  .deck{font-size:clamp(18px,2vw,23px);line-height:1.3;letter-spacing:-.02em;font-weight:600;
-        margin:0 0 26px;max-width:30ch;}
-  .deck span{display:block;color:var(--grey);}
-  .deck span b{color:var(--ink);font-weight:600;}
   .lede{font-size:clamp(17px,1.8vw,20px);color:var(--grey);margin:0 0 18px;max-width:68ch;}
   .lede b{color:var(--ink);font-weight:600;}
 
@@ -65,61 +61,37 @@
   .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);padding-top:6px;}
   .label .num{display:block;font-size:26px;letter-spacing:-.02em;color:var(--black);
               margin-bottom:10px;font-weight:600;text-transform:none;}
-  .label .mkt{display:block;font-size:11px;letter-spacing:.13em;color:var(--indigo);margin-top:8px;}
   h2{font-size:clamp(23px,2.9vw,33px);line-height:1.16;letter-spacing:-.022em;margin:0 0 20px;font-weight:600;}
-  h3{font-size:17px;letter-spacing:-.015em;margin:0 0 8px;font-weight:600;}
+  h3{font-size:17.5px;letter-spacing:-.015em;margin:34px 0 10px;font-weight:600;}
   p{margin:0 0 18px;} p:last-child{margin-bottom:0;}
   .sub{color:var(--grey);margin-top:-8px;margin-bottom:24px;}
   .pull{font-size:clamp(18px,2.1vw,24px);line-height:1.32;letter-spacing:-.018em;font-weight:600;
-        border-left:2px solid var(--red);padding-left:20px;margin:26px 0;max-width:38ch;}
+        border-left:2px solid var(--red);padding-left:20px;margin:28px 0;max-width:40ch;}
   .fnote{font-size:12.5px;color:var(--dim);line-height:1.55;}
   sup a{color:var(--indigo);text-decoration:none;font-size:10px;font-weight:600;padding-left:2px;}
 
-  /* ---------- the chain ---------- */
-  .chain{border:1px solid var(--hair);}
-  .lnk{display:grid;grid-template-columns:112px 1fr;gap:22px;padding:20px 22px;
-       border-bottom:1px solid var(--hair);}
-  .lnk:last-child{border-bottom:none;}
-  .lnk .mk{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
-           color:var(--indigo);padding-top:3px;}
-  .lnk .mk b{display:block;font-family:var(--font);font-size:19px;letter-spacing:-.02em;
-             color:var(--ink);font-weight:600;text-transform:none;margin-bottom:4px;}
-  .lnk .q{font-size:16px;font-weight:600;line-height:1.36;letter-spacing:-.014em;margin-bottom:8px;}
-  .lnk .w{font-size:13.5px;color:var(--grey);line-height:1.5;}
-  .arrowrow{text-align:center;padding:0;margin:0;font-size:17px;color:var(--red);line-height:1;
-            position:relative;height:0;}
-  .arrowrow span{position:relative;top:-9px;background:#fff;padding:0 9px;}
+  /* ---------- tables ---------- */
+  .scroller{overflow-x:auto;margin:26px 0;}
+  table.t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px;}
+  table.t th,table.t td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--hair2);
+                        vertical-align:top;line-height:1.45;}
+  table.t thead th{border-bottom:1px solid var(--black);font-size:11px;letter-spacing:.12em;
+                   text-transform:uppercase;color:var(--dim);font-weight:600;}
+  table.t tbody th{font-weight:400;color:var(--ink);font-size:13.5px;text-transform:none;letter-spacing:0;}
+  table.t td b,table.t th b{font-weight:600;}
+  table.t .one{color:var(--red);font-weight:600;}
+  table.t .bi{color:var(--green);font-weight:600;}
+  table.t .num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;}
+  table.t tr.tot th,table.t tr.tot td{border-top:1px solid var(--black);border-bottom:none;font-weight:600;}
+  table.cmp{min-width:700px;}
+  table.cmp tbody th{color:var(--dim);font-size:12px;letter-spacing:.04em;text-transform:uppercase;width:170px;}
+  table.cmp tr.hi td{font-weight:600;color:var(--ink);font-size:14.5px;}
+  table.cmp tr.hi th{color:var(--ink);}
+  table.cmp tr.hi th,table.cmp tr.hi td{border-top:1px solid var(--black);border-bottom:none;padding-top:14px;}
 
-  /* ---------- break test ---------- */
-  .brk{border:1px solid var(--hair);border-left:3px solid var(--ink);padding:20px 22px;margin:28px 0 0;
-       background:var(--panel);}
-  .brk .bh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
-  .brk .bt{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);font-weight:600;}
-  .brk .vd{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;padding:3px 9px;}
-  .v-sv{background:rgba(27,143,112,.13);color:var(--green);}
-  .v-rl{background:rgba(63,67,173,.11);color:var(--indigo);}
-  .v-bk{background:rgba(248,78,93,.13);color:var(--red);}
-  .brk p{font-size:14px;color:var(--grey);margin-bottom:12px;}
-  .brk p:last-child{margin-bottom:0;}
-  .brk p b{color:var(--ink);font-weight:600;}
-  .brk .att{font-size:13px;color:var(--ink);border-bottom:1px solid var(--hair);
-            padding-bottom:11px;margin-bottom:12px;}
-  .brk .att i{font-style:normal;color:var(--dim);font-family:var(--mono);font-size:10px;
-              letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px;}
-
-  /* ---------- split bar (stranded market) ---------- */
-  .split{border:1px solid var(--hair);padding:20px 22px;}
-  .splitbar{display:flex;height:46px;border:1px solid var(--hair);margin-bottom:12px;}
-  .splitbar div{display:flex;align-items:center;justify-content:center;font-size:12px;
-                font-weight:600;letter-spacing:-.01em;}
-  .sp-drive{background:var(--indigo-pale);color:var(--ink);}
-  .sp-street{background:var(--red);color:#fff;}
-  .splitkey{display:flex;gap:22px;flex-wrap:wrap;font-size:12.5px;color:var(--grey);}
-  .splitkey i{display:inline-block;width:9px;height:9px;margin-right:6px;border-radius:50%;}
-
-  /* ---------- scoreboard ---------- */
-  .score{border-top:1px solid var(--black);}
-  .sc{display:grid;grid-template-columns:230px 1fr 104px;gap:16px;align-items:center;
+  /* ---------- programme scoreboard ---------- */
+  .score{border-top:1px solid var(--black);margin-top:6px;}
+  .sc{display:grid;grid-template-columns:250px 1fr 108px;gap:16px;align-items:center;
       padding:13px 0;border-bottom:1px solid var(--hair2);}
   .sc:last-child{border-bottom:none;}
   .sc .nm{font-size:14px;font-weight:600;letter-spacing:-.01em;}
@@ -130,41 +102,17 @@
   .sc .v{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;}
   .sc .v.na{color:var(--dim);font-weight:400;font-size:12px;}
 
-  /* ---------- calculator ---------- */
-  .calc{border:1px solid var(--hair);padding:22px;}
-  .ctrls{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;margin-bottom:22px;}
-  .ctrl{display:flex;align-items:center;gap:12px;}
-  .ctrl label{font-size:12.5px;color:var(--grey);width:190px;flex:none;line-height:1.3;}
-  .ctrl input[type=range]{flex:1;min-width:0;accent-color:#3F43AD;}
-  .ctrl output{font-size:13px;font-weight:600;width:66px;flex:none;text-align:right;
-               font-variant-numeric:tabular-nums;}
-  .mout{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;border-top:1px solid var(--black);
-        padding-top:18px;margin-top:6px;}
-  .mo .k{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
-  .mo .v{font-size:36px;font-weight:600;letter-spacing:-.035em;line-height:1;
-         font-variant-numeric:tabular-nums;margin-bottom:6px;}
-  .mo .v.grn{color:var(--green);} .mo .v.red{color:var(--red);}
-  .mo .n{font-size:12.5px;color:var(--grey);line-height:1.45;}
+  /* ---------- split bar ---------- */
+  .splitbar{display:flex;height:44px;border:1px solid var(--hair);margin:26px 0 12px;}
+  .splitbar div{display:flex;align-items:center;justify-content:center;font-size:12px;
+                font-weight:600;letter-spacing:-.01em;text-align:center;padding:0 8px;}
+  .sp-drive{background:var(--indigo-pale);color:var(--ink);}
+  .sp-street{background:var(--red);color:#fff;}
 
-  /* ---------- comparison table ---------- */
-  .cmp{width:100%;border-collapse:collapse;font-size:13.5px;min-width:640px;}
-  .cmp th,.cmp td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--hair2);
-                  vertical-align:top;line-height:1.45;}
-  .cmp thead th{border-bottom:1px solid var(--black);font-size:11px;letter-spacing:.12em;
-                text-transform:uppercase;color:var(--dim);font-weight:600;}
-  .cmp tbody th{font-weight:400;color:var(--dim);font-size:12px;width:160px;
-                letter-spacing:.04em;text-transform:uppercase;}
-  .cmp td b{font-weight:600;}
-  .cmp tr.hi td{font-weight:600;color:var(--ink);}
-  .cmp tr.hi th{color:var(--ink);}
-  .scroller{overflow-x:auto;}
-
-  .thr{border-left:2px solid var(--hair);padding:4px 0 4px 18px;margin-bottom:20px;}
-  .thr:last-child{margin-bottom:0;}
-  .thr .tvl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-            color:var(--indigo);margin-bottom:5px;}
-  .thr .ttl{font-size:15.5px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em;}
-  .thr p{font-size:14px;color:var(--grey);margin:0;}
+  .watch{border-left:2px solid var(--hair);padding:2px 0 2px 20px;margin-bottom:24px;}
+  .watch:last-child{margin-bottom:0;}
+  .watch h4{font-size:15.5px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em;}
+  .watch p{font-size:14px;color:var(--grey);margin:0;}
 
   .srcs{border-top:1px solid var(--hair);padding-top:20px;}
   .srcs ol{margin:0;padding-left:22px;}
@@ -182,9 +130,6 @@
   @media (max-width:900px){
     .row{grid-template-columns:1fr;gap:16px;}
     .label{padding-top:0;} .label .num{display:inline-block;margin-right:10px;margin-bottom:0;}
-    .label .mkt{display:inline-block;margin-top:0;}
-    .ctrls,.mout{grid-template-columns:1fr;}
-    .lnk{grid-template-columns:1fr;gap:8px;}
     .sc{grid-template-columns:1fr;gap:6px;} .sc .v{text-align:left;}
     .wrap,.row,.secnav-in{padding-left:22px;padding-right:22px;}
   }
@@ -203,148 +148,109 @@
 </header>
 
 <div class="wrap hero">
-  <div class="eyebrow reveal">FutureBridge Signals &middot; V2G in three markets &middot; August 2026</div>
+  <div class="eyebrow reveal">FutureBridge Signals &middot; Vehicle-to-grid &middot; August 2026</div>
   <h1 class="reveal">Three markets that could decide whether V2G <span class="r">matters</span>.</h1>
-  <p class="deck reveal"><span><b>Britain</b> could prove it.</span><span><b>Europe</b> may need it.</span><span><b>India</b> could make it worth far more.</span></p>
-  <p class="lede reveal">Vehicle-to-grid keeps being judged as a consumer arbitrage product and keeps testing
-    badly. That is because the interesting question is not whether a motorist earns enough. It is
-    <b>whether anyone can make V2G work for the drivers who have nowhere to plug in</b> &mdash; and what happens
-    to two much larger markets if somebody does.</p>
-  <p class="lede reveal">These three are not independent cases. <b>They are a chain.</b> Britain is where a
-    mass-market model beyond the driveway could be proved. Europe is where a proved model would immediately
-    matter, because its own storage plan is short and its own V2G is fragmented. And India is where the same
-    capability would be worth the most, because it is the one large market with no incumbent passenger EV
-    answer at all. China runs through all three &mdash; not as a threat, but as the party with the fewest
-    reasons not to try.</p>
+  <p class="lede reveal">Vehicle-to-grid has spent most of a decade being assessed as a consumer product:
+    whether a motorist earns enough selling electricity back from a parked car. Judged that way it has always
+    looked marginal, and it still does. <b>The more interesting questions are being asked somewhere else.</b></p>
+  <p class="lede reveal">Three markets expose different parts of the same question. <b>Britain</b> could show
+    whether V2G can escape the driveway. <b>Europe</b> will show whether home-grown solutions can scale quickly
+    enough to matter. <b>India</b> shows what happens when the value of the battery extends well beyond
+    electricity trading.</p>
+  <p class="lede reveal">China sits awkwardly across all three. It has the cars, the batteries, the charging
+    hardware and the domestic standardisation to assemble a complete proposition, but <b>has not yet done so
+    outside China</b>. Britain may be the easiest place to find out what happens if it does.</p>
 </div>
-
-<hr class="divider">
-
-<!-- ============================================ 01 -->
-<section class="row reveal" id="sec-chain">
-  <div class="label"><span class="num">01</span>The chain</div>
-  <div>
-    <h2>One story, read in order</h2>
-    <p class="sub">Each link is a question the next link depends on. That dependency is the argument; the
-      individual markets are only the evidence.</p>
-
-    <div class="chain">
-      <div class="lnk">
-        <div class="mk"><b>Britain</b>Could prove it</div>
-        <div>
-          <div class="q">Can anyone make V2G work beyond the driveway &mdash; at mass-market scale, for cars
-            people own rather than share?</div>
-          <div class="w">About a third of British households have no off-street parking. Every commercial V2G
-            product on sale assumes a private charger. Britain has the on-street population, the market access
-            and the electricity markets to settle this, and it is installing the kerbside estate right now.</div>
-        </div>
-      </div>
-      <div class="arrowrow"><span>&darr;</span></div>
-      <div class="lnk">
-        <div class="mk"><b>Europe</b>May need it</div>
-        <div>
-          <div class="q">Can Europe&rsquo;s fragmented, home-grown V2G reach scale before a proven model next
-            door makes importing one irresistible?</div>
-          <div class="w">The EU needs 200 GW of storage by 2030 and its own medium scenario reaches about 160.
-            Its V2G is real, well-engineered, national, OEM-locked and measured in hundreds of vehicles. The
-            requirement is not.</div>
-        </div>
-      </div>
-      <div class="arrowrow"><span>&darr;</span></div>
-      <div class="lnk">
-        <div class="mk"><b>India</b>Could make it worth far more</div>
-        <div>
-          <div class="q">Could an integrated car-plus-charger-plus-backup proposition enter the one big market
-            with no incumbent answer &mdash; and be worth more there than anywhere?</div>
-          <div class="w">India is electrifying around batteries too small to matter nationally, while needing
-            208 GWh of grid storage and facing the steepest evening ramp of the three. That leaves an unusually
-            empty strategic space for the car.</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="pull">Britain is the laboratory. Europe is the market. India is the prize.</p>
-
-    <p class="fnote">Method: each case is stated at its strongest, then attacked. The attack is the point &mdash;
-      a case that survives a serious attempt to break it is worth acting on; one that has never been attacked is
-      an advocacy position. Verdicts are <b>survives</b>, <b>relocates</b> (holds, but the constraint is not
-      where it is usually placed) and <b>not proven</b> (the case rests on something that has not happened, and
-      we say so).</p>
-  </div>
-</section>
 
 <hr class="divider">
 
 <!-- ============================================ 02 -->
 <section class="row reveal" id="sec-uk">
-  <div class="label"><span class="num">02</span>Could prove it<span class="mkt">Britain</span></div>
+  <div class="label"><span class="num">01</span>Britain</div>
   <div>
     <h2>The market beyond the driveway</h2>
-    <p class="sub">Every V2G product on sale in Europe today is a driveway product. That is not a technology
-      boundary. It is a commercial one, and it strands about a third of the market.</p>
+    <p class="sub">Britain is spending heavily to build charging for people who have nowhere to park a car of
+      their own &mdash; and installing almost all of it one-way.</p>
 
-    <p>Estimates of British households without off-street parking cluster around <b>a third</b> &mdash; roughly
-      32% in England, about 35% on the RAC Foundation&rsquo;s figure, some surveys higher &mdash; which is on the
-      order of <b>9 to 10 million households</b>.<sup><a href="#s1">1</a></sup> Whatever the precise number,
-      it is not a niche, and it is the part of the market that home-charger economics cannot reach.</p>
+    <p>Europe&rsquo;s emerging retail V2G products have overwhelmingly been designed around a predictable
+      private connection: a car returning to the same charger at a home or a depot. That leaves an awkward
+      question for Britain, where <b>roughly one in three households &mdash; around 9 to 10 million &mdash; has
+      no off-street parking</b>.<sup><a href="#s1">1</a></sup></p>
 
-    <div class="split">
-      <div class="splitbar">
-        <div class="sp-drive" style="width:66%">Driveway &mdash; every V2G product on sale serves this</div>
-        <div class="sp-street" style="width:34%">No off-street parking</div>
-      </div>
-      <div class="splitkey">
-        <span><i style="background:var(--indigo-pale)"></i>Private charger &mdash; BMW/E.ON, VW/Elli, Renault/Mobilize all assume it</span>
-        <span><i style="background:var(--red)"></i>~9&ndash;10 m UK households, served by a kerbside estate with no bidirectional product</span>
-      </div>
+    <p>It is not a niche, and it is not a technology problem. It is the part of the market that home-charger
+      economics has never had to reach, because until recently there was no product to sell it.</p>
+
+    <div class="splitbar">
+      <div class="sp-drive" style="width:66%">Off-street parking &mdash; where retail V2G has been built</div>
+      <div class="sp-street" style="width:34%">No off-street parking</div>
+    </div>
+    <p class="fnote">Roughly one in three UK households. Estimates vary by source and by survey method; the
+      range is set out in the sources.<sup><a href="#s1">1</a></sup></p>
+
+    <h3>What Utrecht settled, and what it did not</h3>
+    <p>Utrecht has been running public bidirectional AC charging since June 2025, now scaling to <b>500
+      bidirectional Renault 5 E-Techs against 500 bidirectional chargers</b>, past 120,000 charging
+      transactions and reported as supplying roughly a tenth of the region&rsquo;s grid
+      flexibility.<sup><a href="#s2">2</a></sup></p>
+    <p>That has removed one important uncertainty: <b>public bidirectional charging is no longer a laboratory
+      proposition.</b> The harder question is whether it can work with privately owned cars, mixed brands and
+      ordinary kerbside parking &mdash; where dwell times are unpredictable, the vehicle mix is whatever people
+      happen to have bought, and nobody controls the fleet. Utrecht is a managed car-sharing operation. That is
+      a demonstrator, and a good one, rather than a market.</p>
+
+    <h3>Two infrastructure decisions, made separately</h3>
+    <p>Meanwhile the kerbside estate is going in. char.gy passed its <b>5,000th public charge point</b> in May
+      2026, with Brighton &amp; Hove alone planning around <b>6,000 sockets</b> &mdash; the largest on-street
+      programme outside London &mdash; against a national public estate above 80,000
+      chargepoints.<sup><a href="#s3">3</a></sup> We could find <b>no bidirectional public on-street charging
+      programme anywhere in the UK</b>. The kerbside rollouts we examined are one-way; the bidirectional
+      products on sale in Britain are home wallboxes.<sup><a href="#s4">4</a></sup></p>
+
+    <div class="scroller">
+      <table class="t">
+        <thead><tr><th>What Britain is building</th><th>What it can currently do</th></tr></thead>
+        <tbody>
+          <tr><th>Home V2G wallboxes</th><td class="bi">Bidirectional</td></tr>
+          <tr><th>Depot and fleet charging</th><td>Can be engineered bidirectionally</td></tr>
+          <tr><th>Kerbside and lamppost charging</th><td class="one">Almost entirely one-way</td></tr>
+          <tr class="tot"><th>Households with no off-street parking</th><td>~9&ndash;10 million</td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <p style="margin-top:24px;"><b>The critical thing is that public V2G is not speculative. It has been
-      proved.</b> Utrecht has run a public bidirectional AC system since June 2025, now scaling to <b>500
-      bidirectional Renault 5 E-Techs against 500 bidirectional chargers</b>, past 120,000 charging transactions,
-      and reported as supplying roughly a tenth of the region&rsquo;s grid flexibility.<sup><a href="#s2">2</a></sup>
-      The engineering question is closed. What is open is whether it works for privately owned cars, in a mixed
-      fleet, at a scale past four hundred.</p>
+    <p><b>Britain is therefore making two infrastructure decisions at once: how millions of cars without
+      driveways will charge, and whether those connections will ever be able to work in reverse.</b> Today,
+      those decisions are largely being made separately.</p>
 
-    <p><b>And here is the thing worth noticing about Britain: the kerbside estate is being built right now, and
-      it is being built one-way.</b> char.gy passed its <b>5,000th public charge point</b> in May 2026, with
-      Brighton &amp; Hove alone planning around <b>6,000 kerbside sockets</b> &mdash; the largest on-street
-      programme outside London &mdash; against a national estate of more than 80,000 public
-      chargepoints.<sup><a href="#s3">3</a></sup> <b>We could find no bidirectional public on-street charging
-      programme in the UK at all.</b> Kerbside rollouts surfaced in search are unidirectional; the bidirectional
-      UK products are home wallboxes.<sup><a href="#s4">4</a></sup></p>
+    <p>The significance is timing rather than permanence. Thousands of kerbside connections are being specified
+      now. Retrofitting bidirectionality later will almost certainly be harder and more expensive than deciding
+      whether to accommodate it while the estate is being built.</p>
 
-    <p class="pull">Concrete poured once lasts a decade. This is the window, and it is open now.</p>
+    <h3>Where China actually has an advantage</h3>
+    <p>It is tempting to look at Chinese market share &mdash; <b>15% of UK new car registrations in the first
+      half of 2026</b>, almost 175,000 cars, up 121% year on year<sup><a href="#s6">6</a></sup> &mdash; and
+      conclude that the answer will simply arrive from China. The reality is more particular, and worth
+      separating carefully.</p>
 
-    <p><b>Why China is the party most likely to walk through it.</b> China has by mandate the single thing
-      European V2G most conspicuously lacks: one charging architecture across every car it sells at home.
-      <b>GB/T 20234 is mandatory and 100% of China-sold EVs use it</b>, and its Part 3 update carries V2G
-      support.<sup><a href="#s5">5</a></sup> Add cheap V2G-capable vehicles, a domestic charging-hardware
-      industry, and a UK market with rapidly rising Chinese share &mdash; <b>15% of new car registrations in
-      H1 2026</b><sup><a href="#s6">6</a></sup> &mdash; no tariff wall, permissive procurement, and the most
-      sophisticated flexibility markets in Europe.</p>
+    <p>China&rsquo;s advantage is not that it can export its charging standard to Britain. <b>It cannot.</b>
+      Chinese cars sold in Europe conform to European charging interfaces &mdash; Type 2 and CCS2, not
+      GB/T.<sup><a href="#s7">7</a></sup> Nor does a common connector amount to a working V2G market: the
+      physical interface, the communication protocol and a commercially interoperable bidirectional service are
+      three different things, and only the first is settled by a plug.</p>
 
-    <div class="brk">
-      <div class="bh"><span class="bt">Attempt to break it</span><span class="vd v-rl">Not proven &mdash; and one specific thing would have to change</span></div>
-      <div class="att"><i>The attack</i>The premise is that Chinese manufacturers will standardise a common
-        bidirectional architecture across their European vehicles and pair it with cheap public charging. Check
-        whether that is happening.</div>
-      <p><b>It is not happening, and this is the correction the case needs.</b> Chinese OEMs have not brought
-        their bidirectional architecture to Europe. In the UK and EU today, <b>only BYD&rsquo;s Dolphin offers
-        V2G; MG offers vehicle-to-load only; XPeng offers V2L only</b>.<sup><a href="#s7">7</a></sup> Worse for
-        the thesis, cars sold into Europe use Type 2 and CCS2, not GB/T &mdash; <b>so the mandatory-standard
-        advantage does not automatically travel with the vehicle</b>. The thing that makes China structurally
-        well placed at home is precisely the thing it leaves at the border.</p>
-      <p><b>So the strong form of the case fails. What survives is more useful, because it is actionable.</b>
-        The stranded third is real. The public bidirectional technology is proved. The British kerbside estate
-        is being installed unidirectional at thousands of sockets a year. <b>Nobody &mdash; Chinese or European
-        &mdash; is currently building for this market</b>, and the opportunity is open rather than being taken.</p>
-      <p><b>That makes this a live commercial question rather than a prediction.</b> The party best placed to
-        answer it is whoever can put a single bidirectional architecture behind a large, cheap, growing vehicle
-        parc and pair it with kerbside hardware. China has all the ingredients and has not assembled them
-        outside its own market. Europe has assembled them, for driveways only. The first to do both, in
-        Britain, sets the reference design for everyone else.</p>
-    </div>
+    <p><b>The advantage is institutional.</b> China has already demonstrated that it can impose common technical
+      requirements across an enormous vehicle and charging market: GB/T 20234 is mandatory, effectively all
+      China-sold EVs use it, and its Part 3 update carries V2G support.<sup><a href="#s5">5</a></sup> If Chinese
+      manufacturers chose to converge on a single European-compatible bidirectional implementation, they would
+      begin with unusual scale in vehicles, cells and charger manufacturing, and with a habit of coordinating
+      that European industry does not have.</p>
+
+    <p><b>There is an obvious objection, however: nothing we found shows Chinese manufacturers doing this
+      today.</b> In the UK and EU, only BYD&rsquo;s Dolphin offers V2G; MG offers vehicle-to-load only, and
+      XPeng offers V2L only.<sup><a href="#s7">7</a></sup> BYD is the important exception rather than evidence
+      of a coordinated Chinese strategy. The ingredients exist; the dish has not been cooked.</p>
+
+    <p class="pull">Nobody is currently building for the third of the market that has nowhere to plug in.</p>
   </div>
 </section>
 
@@ -352,67 +258,68 @@
 
 <!-- ============================================ 03 -->
 <section class="row reveal" id="sec-eu">
-  <div class="label"><span class="num">03</span>May need it<span class="mkt">European Union</span></div>
+  <div class="label"><span class="num">02</span>Europe</div>
   <div>
-    <h2>The clock, not the capability</h2>
-    <p class="sub">Whether V2G can help Europe is settled. Whether Europe&rsquo;s own version of it can get big
-      enough, fast enough, is not.</p>
+    <h2>Whether the home-grown answer scales in time</h2>
+    <p class="sub">Whether V2G can help Europe is largely settled. How quickly Europe&rsquo;s own version can
+      reach interoperable scale is not.</p>
 
     <p>The EU needs about <b>200 GW of storage by 2030</b> and holds roughly 55 today; its own medium scenario
       reaches about <b>160 GW</b>, and the plan naming the target carries no procurement mechanism, auction
       framework or mandatory obligation.<sup><a href="#s8">8</a></sup> The European passenger EV parc is
-      projected past <b>40 million cars by 2030</b>.<sup><a href="#s9">9</a></sup> The physical headroom is not
-      in question: covering a 40 GW residual at a 7 kW connection needs about 5.7 million cars plugged in and
-      willing at once, roughly 14% of that parc.</p>
+      projected past <b>40 million cars by 2030</b>.<sup><a href="#s9">9</a></sup></p>
 
-    <p><b>What is in question is the delivery vehicle.</b> Europe&rsquo;s V2G is genuinely good and genuinely
-      small. Set the programmes against the requirement and the gap is not technological.</p>
+    <p>For scale: <b>5.7 million cars exporting 7 kW simultaneously would provide 40 GW of power</b> &mdash;
+      numerically the size of the residual gap between that medium scenario and the target, and about 14% of the
+      projected parc. That does not make 5.7 million cars equivalent to 40 GW of stationary storage. Duration,
+      availability, state of charge and network location all matter, and a storage target is not simply a power
+      number. But it does demonstrate that <b>the mobile estate is large enough to be relevant</b>, which is not
+      true of most alternatives.</p>
 
-    <div class="score" style="margin-bottom:8px;">
+    <h3>What is actually deployed</h3>
+    <p>Set the European programmes against that and the gap is not technological.</p>
+
+    <div class="score">
       <div class="sc"><div class="nm">Utrecht &mdash; Renault, We Drive Solar<small>public bidirectional AC, car-sharing fleet, live since June 2025</small></div>
         <div class="track"><span class="fill grn" style="width:1.2%"></span></div><div class="v">500 cars</div></div>
-      <div class="sc"><div class="nm">BMW &amp; E.ON, Germany<small>first commercial residential V2G package, launched Feb 2026</small></div>
-        <div class="track"><span class="fill" style="width:0"></span></div><div class="v na">not disclosed</div></div>
-      <div class="sc"><div class="nm">Renault, Mobilize &amp; The Mobility House<small>France; expansion to NL, DE, UK planned 2026</small></div>
-        <div class="track"><span class="fill" style="width:0"></span></div><div class="v na">not disclosed</div></div>
-      <div class="sc"><div class="nm">Volkswagen &amp; Elli, Germany<small>integrated private-customer V2G &mdash; launching Q4 2026</small></div>
+      <div class="sc"><div class="nm">BMW &amp; E.ON, Germany<small>first commercial residential V2G package, launched February 2026</small></div>
+        <div class="track"><span class="fill" style="width:0"></span></div><div class="v na">not published</div></div>
+      <div class="sc"><div class="nm">Renault, Mobilize &amp; The Mobility House<small>France; expansion to NL, DE and UK planned 2026</small></div>
+        <div class="track"><span class="fill" style="width:0"></span></div><div class="v na">not published</div></div>
+      <div class="sc"><div class="nm">Volkswagen &amp; Elli, Germany<small>integrated private-customer V2G, launching Q4 2026</small></div>
         <div class="track"><span class="fill" style="width:0"></span></div><div class="v na">not yet live</div></div>
-      <div class="sc"><div class="nm">Needed to cover the residual gap<small>at a 7 kW connection, simultaneous</small></div>
-        <div class="track"><span class="fill red" style="width:100%"></span></div><div class="v">5.7 m cars</div></div>
+      <div class="sc"><div class="nm">5.7 million cars<small>the power-scale comparison above, for reference</small></div>
+        <div class="track"><span class="fill red" style="width:100%"></span></div><div class="v">40 GW</div></div>
     </div>
-    <p class="fnote">Bars are to the same scale. Three of the four programmes publish no vehicle count, so no bar is
-      drawn for them &mdash; an empty track means undisclosed, not zero. The one published figure is Utrecht&rsquo;s,
-      and at this scale it is a sliver. That non-disclosure is itself a fair indication of scale.<sup><a href="#s10">10</a></sup></p>
+    <p class="fnote" style="margin-top:14px;">Bars are to one scale, and an empty track means undisclosed rather
+      than zero. <b>The striking point is how little scale data is available.</b> Utrecht publishes a fleet
+      number; the three commercial propositions do not. That makes it impossible to establish from public
+      evidence whether European V2G is moving from launch to material scale.<sup><a href="#s10">10</a></sup></p>
 
-    <p style="margin-top:24px;"><b>Each of these is national, OEM-locked and driveway-shaped.</b> A BMW customer
-      on E.ON in Germany, a Renault customer on Mobilize in France, a Volkswagen customer on Elli from the
-      fourth quarter. They are four good products, not one market. A driver cannot take the proposition across a
-      border or across a brand, and none of them serves a household without a private charger.</p>
+    <p style="margin-top:24px;">The programmes also remain vertically narrow. BMW&rsquo;s proposition is tied to
+      BMW and E.ON in Germany; Renault combines its own compatible vehicles with Mobilize and The Mobility
+      House; Volkswagen is building around Elli. <b>These are credible commercial beginnings, but they are not
+      yet a European V2G market in which a driver can change car, energy supplier or country and expect the same
+      battery to remain dispatchable.</b></p>
 
-    <p class="pull">Europe may need V2G before its own V2G is ready to supply it.</p>
+    <p><b>Europe deserves more time than those numbers initially suggest.</b> BMW, Renault and Volkswagen have
+      only just launched these products; a count taken in 2026 is a count taken on the release date. The issue
+      is not whether they have failed. It is how much time Europe has to let them mature.</p>
 
-    <div class="brk">
-      <div class="bh"><span class="bt">Attempt to break it</span><span class="vd v-sv">Survives</span></div>
-      <div class="att"><i>The attack</i>Fragmentation is a normal early-market condition, not a strategic
-        failure. These launched in 2026; judging their scale in 2026 is judging a product on its release date.
-        And Europe has ISO 15118-20, which will deliver interoperability without anyone importing anything.</div>
-      <p><b>The timing objection is fair and materially weakens the alarmist reading.</b> These are launches,
-        not plateaus, and a 2028 count is the honest test. Nothing here says European V2G fails.</p>
-      <p><b>But the attack does not touch the actual claim, which is about a race rather than a
-        capability.</b> The storage requirement has a date on it. If the residual gap is to be met even
-        partly by vehicles, the fleet has to be interoperable and addressable well before 2030 &mdash; which
-        means the reference architecture gets set in the next two or three years, by whoever ships one that
-        works across brands and beyond driveways.</p>
-      <p><b>And the standard does less than it is credited with.</b> ISO 15118-20 specifies the communication
-        handshake. It does not mandate a bidirectional inverter, a metering arrangement, a settlement route or a
-        supplier willing to buy &mdash; which is why Germany needed a separate legal change before V2G became
-        commercially possible there at all.<sup><a href="#s11">11</a></sup> <b>An agreed handshake between
-        parties who have not agreed anything else is not interoperability.</b></p>
-      <p><b>So the case survives, and it is a clock rather than a threat.</b> If a mass-market, brand-agnostic,
-        kerbside-capable model is demonstrated next door around 2028&ndash;29, Europe&rsquo;s choice is not
-        whether to have V2G. It is whether to keep scaling four national products or adopt a proven one &mdash;
-        and that is exactly how a supply industry gets decided without anybody choosing.</p>
-    </div>
+    <p>It is also worth being precise about what the standards do. ISO 15118-20 specifies the communication
+      layer. It does not mandate a bidirectional inverter, a metering arrangement, a settlement route or a
+      supplier willing to buy &mdash; which is why Germany needed a separate legal change before bidirectional
+      charging became commercially possible there at all.<sup><a href="#s11">11</a></sup> An agreed handshake
+      between parties who have agreed nothing else is not yet interoperability.</p>
+
+    <p class="pull">The real question is not whether Europe needs V2G. It is whose architecture it ends up
+      using.</p>
+
+    <p>Which is where Britain becomes consequential without anything melodramatic being claimed. If Chinese
+      manufacturers and charging firms <b>do not</b> solve British kerbside V2G, nothing follows. If they do,
+      Europe has a live mass-market reference model sitting across the Channel while it is still trying to close
+      its own storage and flexibility gap &mdash; and the choice stops being whether to have V2G and becomes
+      whether to keep scaling four national products or adopt a proven one.</p>
   </div>
 </section>
 
@@ -420,107 +327,116 @@
 
 <!-- ============================================ 04 -->
 <section class="row reveal" id="sec-india">
-  <div class="label"><span class="num">04</span>Worth far more<span class="mkt">India</span></div>
+  <div class="label"><span class="num">03</span>India</div>
   <div>
-    <h2>The empty strategic space for the car</h2>
+    <h2>Why buy the battery twice?</h2>
     <p class="sub">India&rsquo;s EV market is overwhelmingly two- and three-wheelers. That fact is usually
       offered as the opportunity. It is actually the setup.</p>
 
-    <p>India needs roughly <b>60.6 GW / 336 GWh of storage by 2029&ndash;30</b>, of which about 41.7 GW /
-      <b>208 GWh is batteries</b>.<sup><a href="#s12">12</a></sup> The shape of the need is specific: solar has
-      hollowed out the middle of the day and left the evening alone, so the evening net-load ramp has grown from
-      about <b>27 GW in 2023 to about 65 GW in 2026</b>, and across April&ndash;May 2026 the grid fell short on
-      <b>36 of 61 days at the non-solar peak against 6 of 61 at the solar peak</b>.<sup><a href="#s13">13</a></sup>
-      Behind that sits demand growth of about <b>6.4% a year to 2030</b>, peak demand rising from 289 GW in FY27
-      toward <b>388 GW by FY32</b>, and data-centre capacity going from 2.2 GW to <b>12 GW by 2030</b>.<sup><a href="#s14">14</a></sup></p>
+    <p>India&rsquo;s electricity problem is increasingly one of timing rather than simple annual shortage. Solar
+      is adding abundant daytime generation while the evening peak continues to rise: the evening net-load ramp
+      has grown from about <b>27 GW in 2023 to about 65 GW in 2026</b>, and across April and May 2026 the grid
+      fell short on <b>36 of 61 days at the non-solar peak against 6 of 61 at the solar
+      peak</b>.<sup><a href="#s13">13</a></sup> The Central Electricity Authority sees a need for <b>208 GWh of
+      battery storage by 2029&ndash;30</b>.<sup><a href="#s12">12</a></sup> At the same time electricity demand
+      is forecast to grow around <b>6.4% a year to 2030</b>, with new loads including data-centre capacity
+      rising from 2.2 GW to about 12 GW.<sup><a href="#s14">14</a></sup></p>
 
-    <h3 style="margin-top:30px;">First, the answer that does not work</h3>
+    <h3>The answer that does not work</h3>
     <p>Of 2.3 million EVs sold in India in 2025, two-wheelers were 57% and three-wheelers 35% &mdash; <b>92% of
-      the market</b> &mdash; against roughly 175,000 electric cars. The parc is about <b>5.6 million
-      vehicles</b>.<sup><a href="#s15">15</a></sup> At a blended 3.7 kWh pack, <b>the entire Indian EV fleet
-      holds only about 21 GWh</b> &mdash; and that is nameplate, before availability or depth of discharge.
-      Against a 208 GWh requirement, and against the ~130 GWh needed to halve a single summer evening&rsquo;s
-      ramp,<sup><a href="#s13">13</a></sup> the two- and three-wheeler fleet is not a national grid resource
-      this decade. It is excellent transport and a fine household backup, and it is not storage policy.</p>
+      the market</b>.<sup><a href="#s15">15</a></sup> Their batteries are generally measured in single-digit
+      kilowatt-hours: 3.4 to 4 kWh for a typical electric scooter, 5 to 6 kWh for a three-wheeler pack. That
+      makes them excellent mobility assets and potentially useful household-scale energy assets, but a much less
+      obvious route to hundreds of gigawatt-hours of national storage.</p>
 
     <p class="pull">Which is exactly why the space for the car is open.</p>
 
-    <h3 style="margin-top:30px;">Then, the answer that might</h3>
-    <p>India sells about <b>4.7 million passenger vehicles a year</b>, of which only around <b>200,000 are
-      electric</b> &mdash; roughly 4%. The market is expected to reach <b>6 million by 2030</b>, with the
-      government targeting <b>30% EV penetration</b> and independent forecasts closer to
-      20%.<sup><a href="#s16">16</a></sup> A car pack is 50&ndash;80 kWh: <b>fifteen to twenty times a
-      scooter&rsquo;s</b>. That changes the arithmetic by an order of magnitude, and nobody owns this market yet.</p>
+    <h3>The market nobody has taken</h3>
+    <p>India sold about <b>4.7 million passenger vehicles</b> in FY26, of which <b>198,224 were electric</b>
+      &mdash; 4.3% penetration, up from 2.7% a year earlier.<sup><a href="#s16">16</a></sup> The market is
+      expected to reach around 6 million by 2030, with the government targeting 30% EV penetration and
+      independent forecasts closer to 20%. A car pack is 50 to 80 kWh: <b>fifteen to twenty times a
+      scooter&rsquo;s</b>.</p>
 
-    <div class="calc">
-      <div class="ctrls">
-        <div class="ctrl"><label for="c-share">EV share of car sales, 2030</label>
-          <input id="c-share" type="range" min="5" max="50" step="1" value="20"><output id="o-share">20%</output></div>
-        <div class="ctrl"><label for="c-pack">Average car pack</label>
-          <input id="c-pack" type="range" min="30" max="90" step="5" value="50"><output id="o-pack">50 kWh</output></div>
-        <div class="ctrl"><label for="c-mkt">Car market, 2030</label>
-          <input id="c-mkt" type="range" min="4" max="8" step="0.1" value="6"><output id="o-mkt">6.0 m</output></div>
-        <div class="ctrl"><label for="c-avail">Usable share at the evening peak</label>
-          <input id="c-avail" type="range" min="5" max="100" step="5" value="25"><output id="o-avail">25%</output></div>
-      </div>
+    <p>At 20% of a 6 million-unit market and a 50 kWh pack, each year of passenger-EV sales would add around
+      <b>60 GWh of battery nameplate</b> to the Indian economy &mdash; <b>nearly 30% of the CEA&rsquo;s 208 GWh
+      requirement, every year</b>. That is not 60 GWh of available grid storage. But it is too large an adjacent
+      battery estate to ignore, and it accumulates.</p>
 
-      <div class="mout">
-        <div class="mo"><div class="k">Battery added per year</div>
-          <div class="v grn" id="v-yr">&mdash;</div>
-          <div class="n" id="n-yr"></div></div>
-        <div class="mo"><div class="k">Years of sales to equal the BESS requirement</div>
-          <div class="v" id="v-eq">&mdash;</div>
-          <div class="n">Against the CEA&rsquo;s 208 GWh of batteries needed by 2029&ndash;30 &mdash; nameplate against nameplate.</div></div>
-        <div class="mo"><div class="k">Deliverable into one evening ramp</div>
-          <div class="v red" id="v-ramp">&mdash;</div>
-          <div class="n" id="n-ramp"></div></div>
-      </div>
-
-      <p class="fnote" style="margin-top:18px;">Model, not forecast. One year of car sales is compared with the
-        national BESS requirement on a <b>nameplate</b> basis &mdash; useful for sizing the estate, not a claim
-        that a car fleet substitutes one-for-one for grid batteries. The third figure is the honest deliverable
-        version: one year&rsquo;s cars, at the availability set here and a 60% usable depth, measured against
-        the ~130 GWh that halving one summer evening&rsquo;s ramp requires. Defaults are the sourced central
-        case: a 6 m car market, 20% electric, 50 kWh.</p>
+    <div class="scroller">
+      <table class="t">
+        <thead><tr><th>Illustrative passenger-EV estate</th><th class="num">Nameplate battery</th><th class="num">At 25% connected &times; 60% usable</th></tr></thead>
+        <tbody>
+          <tr><th>1 year at 1.2 m EVs</th><td class="num">60 GWh</td><td class="num">9 GWh</td></tr>
+          <tr><th>3 years</th><td class="num">180 GWh</td><td class="num">27 GWh</td></tr>
+          <tr><th>5 years</th><td class="num">300 GWh</td><td class="num">45 GWh</td></tr>
+          <tr class="tot"><th>For reference &mdash; CEA battery requirement by 2029&ndash;30</th><td class="num">208 GWh</td><td class="num">&mdash;</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="fnote"><b>Illustrative steady sales, not a forecast.</b> It assumes 1.2 m electric cars a year at
+      50 kWh, held flat, and ignores vehicle retirement, battery degradation, changes in annual sales and any
+      variation in pack size. Nameplate is the battery in the economy, not energy available to a grid; the third
+      column is a single illustrative access assumption, not an engineering estimate. It is here to show the
+      shape of an accumulating estate, nothing more.</p>
 
-    <p style="margin-top:26px;"><b>The proposition this creates is not a car with a feature. It is an
-      oven-ready energy asset sold with the means to use it</b> &mdash; car, bidirectional charger, home backup
-      and a grid contract, in one package. In India that stacks value the same asset cannot stack in Europe:
-      at home it displaces the inverter battery or the generator that the household is already buying, during
-      the solar surplus it absorbs midday generation the grid is currently wasting, and in the evening it
-      discharges into precisely the ramp the system cannot meet.</p>
+    <h3>The value pool Europe does not have</h3>
+    <p>What makes India distinctive is not the grid arithmetic. It is that <b>India already pays for distributed
+      storage twice: once through household and business backup, and increasingly again inside vehicles.</b>
+      The inverter-battery market runs at about <b>$1.02bn a year</b> and the diesel generator market at about
+      <b>$1.33bn</b>, some 60% of the latter in standby duty with residential the fastest-growing
+      segment.<sup><a href="#s18">18</a></sup></p>
 
-    <p><b>And the policy version is sharper than the consumer one.</b> India can acquire a large part of a
-      distributed storage estate <b>without procuring it as stationary BESS</b>, because consumers buy the
-      batteries as cars. For a country adding data centres, industrial load and air conditioning at 6.4% a year,
-      that is a materially different proposition from a resilience feature.</p>
-
-    <div class="brk">
-      <div class="bh"><span class="bt">Attempt to break it</span><span class="vd v-rl">Survives as strategy, not as forecast</span></div>
-      <div class="att"><i>The attack</i>India has almost no electric cars, no V2G regulation, a price-obsessed
-        market that rejects expensive vehicles, and this needs a 2030s fleet to matter. Nameplate GWh in cars is
-        not deliverable energy to a grid, and comparing the two flatters the case.</div>
-      <p><b>The nameplate objection is correct and is conceded in the model itself.</b> A car fleet is not a
-        substitute for grid batteries: it is unavailable when driven, degrades on cycling, sits behind a
-        distribution network that has to accept export, and delivers a fraction of its nameplate into any given
-        hour. The third output above exists to keep that honest, and it lands in the low single-digit
-        percentages of a single evening&rsquo;s ramp at central assumptions.</p>
-      <p><b>The regulatory objection is also correct, and is the nearest hard blocker.</b> Vehicle-to-load and
-        limited vehicle-to-home are permitted in India; <b>grid export is not</b>. The Ministry of Power asked
-        the CEA to frame reverse-charging guidelines in March 2023 and the grid code still needs
-        amending.<sup><a href="#s17">17</a></sup> Nothing at grid scale happens until that is done, and the
-        home half does not need it.</p>
-      <p><b>What the attack does not touch is the strategic claim, which is about who gets there
-        first.</b> India&rsquo;s passenger EV market is 4% electric and has no incumbent V2G proposition of any
-        kind. The battery estate arrives over the 2030s whether or not anyone designs for it &mdash; the only
-        question is whether it arrives bidirectional. <b>That is a specification decision being made now, in
-        vehicles and chargers being homologated now</b>, exactly as the kerbside decision is being made now in
-        Britain. The cost of building it in is small; the cost of retrofitting a national parc is not.</p>
-      <p><b>Which is why India is last in the chain rather than first.</b> It has the largest prize and the
-        least proof. It is the market that most rewards a model somebody else has already demonstrated &mdash;
-        and Britain is where that demonstration is cheapest.</p>
+    <div class="scroller">
+      <table class="t">
+        <thead><tr><th>What India buys today</th><th>What it solves</th><th>What a bidirectional EV could potentially do</th></tr></thead>
+        <tbody>
+          <tr><th>Passenger car</th><td>Mobility</td><td>Mobility</td></tr>
+          <tr><th>Inverter and lead-acid battery</th><td>Short household outages</td><td class="bi">Vehicle-to-home</td></tr>
+          <tr><th>Diesel generator</th><td>Longer or higher-load backup</td><td class="bi">Partial V2H / V2B substitution</td></tr>
+          <tr><th>Stationary BESS</th><td>Grid balancing</td><td class="bi">Aggregated V2G contribution</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="fnote">These are overlapping value pools, not substitution. Not every EV replaces a generator, not
+      every household owns one, and the vehicle is unavailable to the house whenever it is being driven.</p>
+
+    <p style="margin-top:24px;">The opportunity this creates is not a car with a feature. It is an
+      <b>oven-ready energy asset</b>: car, bidirectional charger, home-islanding capability, software and
+      &mdash; when regulation permits &mdash; a grid-flexibility contract.</p>
+
+    <p><b>Home-islanding is load-bearing here and worth stating plainly.</b> A car that can export is not
+      automatically a car that can power a house through an outage. Anti-islanding protection is a
+      non-negotiable safety requirement, so backing up a property means an automatic transfer switch that
+      disconnects it from the grid and an inverter capable of forming its own supply.<sup><a href="#s19">19</a></sup>
+      Any claim that an EV displaces a generator depends on that installation, not on the car alone.</p>
+
+    <h3>Two large qualifications</h3>
+    <p>The first is that vehicle batteries are not equivalent to stationary BESS. They are unavailable when
+      driven, they degrade on cycling, they sit behind a distribution network that has to accept export, and
+      they deliver a fraction of nameplate into any given hour. <b>None of this means India&rsquo;s future cars
+      become a 200 GWh virtual battery. They will not &mdash; availability alone makes that impossible.</b> The
+      more interesting point is that even conservative access to a rapidly growing battery estate could become
+      material, while providing household resilience before grid export is even permitted.</p>
+
+    <p>The second is regulatory, and it is the nearer blocker. Vehicle-to-load and limited vehicle-to-home are
+      permitted in India; <b>grid export is not</b>. The Ministry of Power asked the CEA to frame
+      reverse-charging guidelines in March 2023, and the grid code still needs
+      amending.<sup><a href="#s17">17</a></sup> Nothing above the household meter happens until that is done.
+      Notably, the half of the proposition that matters most to a household needs none of it.</p>
+
+    <p>The economics are also more subtle than &ldquo;free storage&rdquo;. <b>The motorist funds the expensive
+      part &mdash; the battery &mdash; because they wanted a car. The energy system would pay only the
+      incremental cost of making some fraction of it dispatchable</b>, alongside charger infrastructure, grid
+      reinforcement, aggregation and the stationary storage that vehicles cannot replace. That is a materially
+      different proposition from procuring the same energy as BESS, and a materially weaker one than the
+      arithmetic alone suggests.</p>
+
+    <p>India&rsquo;s passenger EV market is not an open field in the ordinary sense. Tata, JSW MG and Mahindra
+      between them hold about <b>87% of it</b>, and Tata alone around 39%.<sup><a href="#s16">16</a></sup> What
+      is unoccupied is narrower and more specific: <b>no incumbent has assembled an integrated passenger-EV plus
+      home-backup plus grid-flexibility proposition</b>. That is the white space, and it is a product decision
+      rather than a market position.</p>
   </div>
 </section>
 
@@ -528,43 +444,42 @@
 
 <!-- ============================================ 05 -->
 <section class="row reveal" id="sec-compare">
-  <div class="label"><span class="num">05</span>Side by side</div>
+  <div class="label"><span class="num">04</span>Side by side</div>
   <div>
-    <h2>The same capability, three positions in one chain</h2>
-    <p class="sub">Read the last two rows together. The verdicts are what the attacks left standing.</p>
+    <h2>The same capability, three different problems</h2>
 
     <div class="scroller">
-      <table class="cmp">
-        <thead><tr><th>Dimension</th><th>Britain</th><th>European Union</th><th>India</th></tr></thead>
+      <table class="t cmp">
+        <thead><tr><th></th><th>Britain</th><th>European Union</th><th>India</th></tr></thead>
         <tbody>
-          <tr><th>Role in the chain</th>
-            <td><b>Could prove it</b></td><td><b>May need it</b></td><td><b>Could make it worth far more</b></td></tr>
-          <tr><th>The question</th>
-            <td>Can V2G work beyond the driveway?</td>
-            <td>Can home-grown V2G scale in time?</td>
-            <td>Can the car enter an empty space?</td></tr>
-          <tr><th>What is missing</th>
-            <td>A bidirectional kerbside product &mdash; none found</td>
-            <td>Scale and cross-brand reach, not capability</td>
-            <td>Electric cars, and grid-export rules</td></tr>
-          <tr><th>Size of the prize</th>
-            <td>~9&ndash;10 m households with no driveway</td>
-            <td>~40 GW residual storage gap by 2030</td>
-            <td>208 GWh of BESS need; 4% of cars electric</td></tr>
-          <tr><th>Who pays for the battery</th>
-            <td>Motorist</td><td>Motorist</td><td>Motorist &mdash; instead of the state</td></tr>
-          <tr><th>Where China sits</th>
-            <td>Has the ingredients, has not assembled them abroad</td>
-            <td>Supplies cars and cells; no dispatch position</td>
-            <td>Open field &mdash; no incumbent of any nationality</td></tr>
-          <tr><th>Verdict under attack</th>
-            <td>Not proven &mdash; premise has not happened</td>
-            <td>Survives &mdash; a clock, not a threat</td>
-            <td>Survives as strategy, not as forecast</td></tr>
-          <tr class="hi"><th>Decision being made now</th>
-            <td>Is the kerbside estate one-way?</td>
-            <td>Whose architecture becomes the reference?</td>
-            <td>Are the cars homologated bidirectional?</td></tr>
+          <tr><th>The unresolved problem</th>
+            <td>V2G beyond private parking</td>
+            <td>Scaling fragmented V2G quickly enough</td>
+            <td>Turning passenger-EV batteries into energy infrastructure</td></tr>
+          <tr><th>Why now</th>
+            <td>Kerbside estate being installed</td>
+            <td>2030 storage and flexibility requirement</td>
+            <td>Rapid demand growth, renewables and storage need</td></tr>
+          <tr><th>Existing advantage</th>
+            <td>Advanced flexibility market</td>
+            <td>Strong OEM and utility pilots</td>
+            <td>Huge existing backup-power value pool</td></tr>
+          <tr><th>Missing piece</th>
+            <td>A bidirectional kerbside model</td>
+            <td>Cross-OEM, cross-market scale</td>
+            <td>Integrated car plus V2H/V2G product</td></tr>
+          <tr><th>China&rsquo;s position</th>
+            <td>Scale in cars, batteries and charging hardware</td>
+            <td>Potential external reference architecture</td>
+            <td>Competitor, but not yet owner of the proposition</td></tr>
+          <tr><th>Who funds the battery</th>
+            <td>Motorist</td>
+            <td>Motorist</td>
+            <td>Motorist funds the battery; system pays for access and infrastructure</td></tr>
+          <tr class="hi"><th>The question</th>
+            <td>Who solves the driveway problem?</td>
+            <td>Can Europe scale before it has to import the answer?</td>
+            <td>Why buy the battery twice?</td></tr>
         </tbody>
       </table>
     </div>
@@ -575,34 +490,62 @@
 
 <!-- ============================================ 06 -->
 <section class="row reveal" id="sec-watch">
-  <div class="label"><span class="num">06</span>What would tell us early</div>
+  <div class="label"><span class="num">05</span>What would change the picture</div>
   <div>
-    <h2>Six observable things, and what each would settle</h2>
-    <p class="sub">Every one is public, dated and checkable. Several would break something written above.</p>
+    <h2>Six things worth watching</h2>
+    <p class="sub">Each is public, dated and checkable, and several would overturn something argued above.</p>
 
-    <div class="thr"><div class="tvl">Britain &middot; the strongest single marker</div>
-      <div class="ttl">Any UK local authority specifies bidirectional capability in a kerbside charging tender</div>
-      <p>Nothing else would move as fast. LEVI-funded procurement is where the one-way decision is currently
-        being made by default rather than on the merits.</p></div>
-    <div class="thr"><div class="tvl">Britain &middot; would restore the strong case</div>
-      <div class="ttl">A second Chinese OEM ships a V2G-capable car into the UK or EU</div>
-      <p>Today only BYD&rsquo;s Dolphin qualifies, which is why section 02 reads &ldquo;not proven&rdquo;. Two
-        or three would make the common-architecture thesis live rather than hypothetical.</p></div>
-    <div class="thr"><div class="tvl">Europe &middot; the fragmentation test</div>
-      <div class="ttl">Any European V2G programme passes 50,000 vehicles, or publishes a number at all</div>
-      <p>Three of the four named programmes do not disclose fleet size. Disclosure would settle whether section
-        03&rsquo;s clock is running fast or slow.</p></div>
-    <div class="thr"><div class="tvl">Europe &middot; would break the OEM-lock reading</div>
-      <div class="ttl">One V2G tariff accepts vehicles from three or more unrelated manufacturers</div>
-      <p>The single cleanest test of whether interoperability is real or merely standardised on paper.</p></div>
-    <div class="thr"><div class="tvl">India &middot; the hard blocker</div>
-      <div class="ttl">CEA reverse-charging guidelines are notified and the grid code amended</div>
-      <p>Asked for in March 2023 and still outstanding. Until it lands, everything in section 04 above the
-        household meter is theory.</p></div>
-    <div class="thr"><div class="tvl">India &middot; the specification decision</div>
-      <div class="ttl">Any manufacturer homologates a bidirectional passenger car for the Indian market</div>
-      <p>Cheap to build in now, expensive to retrofit later. The first one to do it defines what &ldquo;an
-        Indian EV&rdquo; includes.</p></div>
+    <div class="watch">
+      <h4>A UK local authority specifies bidirectional capability in a kerbside charging tender</h4>
+      <p>This would move faster than anything else here. LEVI-funded procurement is where the one-way decision
+        is currently being taken by default rather than on the merits, and a single specification would tell you
+        that somebody has connected the two infrastructure decisions Britain is making separately.</p>
+    </div>
+    <div class="watch">
+      <h4>A second Chinese manufacturer ships a V2G-capable car into the UK or EU</h4>
+      <p>Today only BYD&rsquo;s Dolphin qualifies, which is why we treat the convergence argument as a
+        possibility rather than a trend. Two or three would make it a strategy worth planning against.</p>
+    </div>
+    <div class="watch">
+      <h4>Any European V2G programme publishes a fleet number, or passes 50,000 vehicles</h4>
+      <p>Three of the four programmes we examined publish nothing at all. Disclosure alone would settle whether
+        Europe is moving from launch to material scale, which at present cannot be established from public
+        evidence either way.</p>
+    </div>
+    <div class="watch">
+      <h4>One V2G tariff accepts vehicles from three or more unrelated manufacturers</h4>
+      <p>The cleanest available test of whether interoperability is real or merely standardised on paper, and
+        the point at which a European V2G market rather than a set of vertical products can be said to exist.</p>
+    </div>
+    <div class="watch">
+      <h4>India notifies reverse-charging guidelines and amends the grid code</h4>
+      <p>Asked for in March 2023 and still outstanding. Until it lands, everything above the household meter in
+        India remains theory &mdash; though the household half does not depend on it.</p>
+    </div>
+    <div class="watch">
+      <h4>A manufacturer homologates a bidirectional passenger car for the Indian market</h4>
+      <p>Cheap to design in now and expensive to retrofit across a national parc later. Whoever does it first
+        sets what an Indian electric car is assumed to include.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ============================================ 07 -->
+<section class="row reveal" id="sec-end">
+  <div class="label">In closing</div>
+  <div>
+    <h2>The question V2G has been asked for a decade</h2>
+
+    <p>V2G may have spent a decade being asked the wrong question. Selling a few kilowatt-hours from a car back
+      to the grid is not particularly exciting, and the numbers have always said so.</p>
+
+    <p>But Britain&rsquo;s kerbside problem, Europe&rsquo;s storage requirement and India&rsquo;s need for both
+      resilience and flexibility are not small problems. In each of them the battery is increasingly already
+      there, and <b>the expensive part has been bought for another purpose</b>.</p>
+
+    <p class="pull">The interesting question is what else we decide to let it do.</p>
   </div>
 </section>
 
@@ -611,26 +554,26 @@
 <section class="row reveal" id="sec-sources">
   <div class="label">Sources</div>
   <div><div class="srcs"><ol>
-    <li id="s1">UK households without off-street parking: ~32% in England, ~35% on the RAC Foundation figure, some surveys higher; roughly 9&ndash;9.6 million households. A &pound;25m fund supports cross-pavement gully solutions.
+    <li id="s1">UK households without off-street parking. Estimates vary by source and survey method: approximately 32% of households in England, about 35% on the RAC Foundation figure, and some surveys considerably higher. We use &ldquo;roughly one in three&rdquo; and 9&ndash;10 million households on that basis. A &pound;25m fund supports cross-pavement gully solutions for households without driveways.
       <a href="https://www.openaccessgovernment.org/closing-the-driveway-divide-in-ev-charging/210096/" target="_blank" rel="noopener">openaccessgovernment.org</a> &middot;
       <a href="https://uk.mer.eco/news/ev-charging-with-no-driveway-whats-the-solution/" target="_blank" rel="noopener">mer.eco</a> &middot;
       <a href="https://www.fleetnews.co.uk/news/law-change-to-help-people-without-driveway-charge-an-ev" target="_blank" rel="noopener">fleetnews.co.uk</a></li>
-    <li id="s2">Utrecht: public bidirectional AC charging live since June 2025, scaling to 500 bidirectional Renault 5 E-Tech vehicles and 500 bidirectional chargers, 120,000+ charging transactions, reported as supplying roughly 10% of the region&rsquo;s grid flexibility.
+    <li id="s2">Utrecht: public bidirectional AC charging live since June 2025, scaling to 500 bidirectional Renault 5 E-Tech vehicles and 500 bidirectional chargers, more than 120,000 charging transactions, reported as supplying roughly 10% of the region&rsquo;s grid flexibility. It is a managed car-sharing fleet, not privately owned vehicles.
       <a href="https://wedrivesolar.com/utrecht-becomes-europes-first-city-with-avehicle%E2%80%91to%E2%80%91grid-v2g-car%E2%80%91sharing-service/" target="_blank" rel="noopener">wedrivesolar.com</a> &middot;
       <a href="https://www.pveurope.eu/e-mobility/utrecht-leads-v2g-car-sharing-solar-integration" target="_blank" rel="noopener">pveurope.eu</a> &middot;
       <a href="https://www.evcandi.com/news/first-bidirectional-charging-stations-utrecht" target="_blank" rel="noopener">evcandi.com</a></li>
-    <li id="s3">UK kerbside scale: char.gy installed its 5,000th public charge point (May 2026, Brighton &amp; Hove); Brighton &amp; Hove planning ~6,000 sockets, the largest on-street rollout outside London; UK public estate above 80,000 chargepoints.
+    <li id="s3">UK kerbside scale: char.gy installed its 5,000th public charge point in May 2026 (Brighton &amp; Hove); Brighton &amp; Hove planning around 6,000 sockets, the largest on-street rollout outside London; UK public estate above 80,000 chargepoints.
       <a href="https://greenfleet.net/news/01062026/kerbside-ev-charging-rollout-gathers-pace" target="_blank" rel="noopener">greenfleet.net</a> &middot;
       <a href="https://www.techtimes.com/articles/321225/20260721/driveway-free-ev-charging-scales-lamp-post-model-spreads-across-england.htm" target="_blank" rel="noopener">techtimes.com</a></li>
-    <li id="s4"><b>Negative finding.</b> No bidirectional public on-street or lamppost charging programme was found in the UK. Searches of kerbside rollouts (char.gy, Connected Kerb, ubitricity, LEVI-funded deployments) surfaced unidirectional units only; UK bidirectional products found were home wallboxes. Stated as an absence rather than an established zero &mdash; a single announced trial would overturn it.
+    <li id="s4"><b>Negative finding.</b> No bidirectional public on-street or lamppost charging programme was found in the UK. Searches of kerbside rollouts (char.gy, Connected Kerb, ubitricity, LEVI-funded deployments) surfaced unidirectional units only; the bidirectional UK products found were home wallboxes. Stated as an absence rather than an established zero &mdash; a single announced trial would overturn it.
       <a href="https://chargedevs.com/newswire/char-gy-and-devon-council-partner-on-kerbside-ev-charger-trial/" target="_blank" rel="noopener">chargedevs.com</a> &middot;
       <a href="https://teslacharger.co.uk/blog/v2g-vehicle-to-home-charging-uk-explained/" target="_blank" rel="noopener">teslacharger.co.uk</a></li>
-    <li id="s5">GB/T 20234 is China&rsquo;s mandatory charging standard and 100% of China-sold EVs use it; the Part 3 update carries V2G support. In March 2026 China&rsquo;s standardisation administration approved further mandatory national standards covering EVs and batteries.
+    <li id="s5">GB/T 20234 is China&rsquo;s mandatory charging standard and effectively all China-sold EVs use it; the Part 3 update carries V2G support. In March 2026 China&rsquo;s standardisation administration approved further mandatory national standards covering electric vehicles and batteries. Note that a mandatory connector and protocol is not the same thing as a commercially interoperable V2G market.
       <a href="https://en.wikipedia.org/wiki/GB/T_charging_standard" target="_blank" rel="noopener">GB/T charging standard</a> &middot;
       <a href="https://sesec.eu/2026/04/14/china-introduces-mandatory-battery-and-vehicle-standards-with-implications-for-foreign-stakeholders/" target="_blank" rel="noopener">sesec.eu</a></li>
     <li id="s6">Chinese-owned brands took 15% of UK new car registrations in H1 2026 &mdash; almost 175,000 of 1.13 million, up 121% year on year against a market up 9%.
       <a href="https://www.fleetnews.co.uk/news/chinese-brands-take-15-of-the-new-car-market" target="_blank" rel="noopener">fleetnews.co.uk</a></li>
-    <li id="s7">Chinese OEM bidirectional capability in Europe as of 2026: BYD Dolphin is V2G-capable and bundled with a wallbox and tariff in the UK; MG offers V2L only; XPeng offers V2L only (G6 at 3.3 kW). Chinese cars sold in Europe use Type 2 / CCS2 connectors rather than GB/T.
+    <li id="s7">Chinese manufacturer bidirectional capability in Europe as of 2026: the BYD Dolphin is V2G-capable and bundled with a wallbox and tariff in the UK; MG offers V2L only; XPeng offers V2L only (G6 at 3.3 kW). Chinese cars sold in Europe use Type 2 / CCS2 connectors rather than GB/T.
       <a href="https://mobilityhouse-energy.com/int_en/knowledge-center/article/which-cars-are-v2g-capable" target="_blank" rel="noopener">mobilityhouse-energy.com</a> &middot;
       <a href="https://zecar.com/resources/which-electric-cars-have-bidirectional-charging" target="_blank" rel="noopener">zecar.com</a> &middot;
       <a href="https://www.akyga.com/news-list/93-how-to-charge-chinese-electric-cars-in-europe-gb-t-adapters-for-type-2-and-ccs2.html" target="_blank" rel="noopener">akyga.com</a></li>
@@ -639,41 +582,45 @@
       <a href="https://www.ess-news.com/2026/04/27/europe-accelerateeu-supports-a-200-gw-storage-target-but-omits-financing-mechanism/" target="_blank" rel="noopener">ess-news.com</a></li>
     <li id="s9">European passenger EV parc projected past 40 million by 2030.
       <a href="https://www.consultancy.eu/news/5766/europes-electric-vehicles-fleet-to-reach-40-million-by-2030" target="_blank" rel="noopener">consultancy.eu</a></li>
-    <li id="s10">European V2G programmes: BMW and E.ON launched Germany&rsquo;s first commercial residential V2G package in early February 2026; Volkswagen and Elli plan a Q4 2026 launch in Germany; Renault, Mobilize and The Mobility House run a customer-facing bundle in France with expansion to the Netherlands, Germany and the UK planned for 2026. Vehicle counts are not published for these three.
+    <li id="s10">European V2G programmes: BMW and E.ON launched Germany&rsquo;s first commercial residential V2G package in early February 2026; Volkswagen and Elli plan a Q4 2026 launch in Germany; Renault, Mobilize and The Mobility House run a customer-facing bundle in France with expansion to the Netherlands, Germany and the UK planned for 2026. None of the three publishes a vehicle count.
       <a href="https://www.eon.com/en/innovation/innovation-frontline/innovation-news/Bidirectional-charging--E-ON-and-BMW-launch-Germany-s-first-commercial-V2G-product.html" target="_blank" rel="noopener">eon.com</a> &middot;
       <a href="https://www.electrive.com/2026/04/17/vw-and-elli-to-launch-v2g-offering-in-q4-2026/" target="_blank" rel="noopener">electrive.com</a> &middot;
       <a href="https://mobilityhouse-energy.com/int_en/the-worlds-first-vehicle-to-grid-product-for-end-customers-renault-mobilize" target="_blank" rel="noopener">mobilityhouse-energy.com</a></li>
-    <li id="s11">The German parliament removed a key legal barrier before bidirectional charging became commercially possible; ISO 15118-20 specifies the communication layer, not the inverter, metering or settlement arrangements.
+    <li id="s11">The German parliament removed a key legal barrier before bidirectional charging became commercially possible; ISO 15118-20 specifies the communication layer rather than the inverter, metering or settlement arrangements.
       <a href="https://www.mobilityhouse.com/int_en/our-company/newsroom/article/german-parliament-removes-key-barrier-to-bidirectional-charging-vehicle-to-grid-becomes-possible" target="_blank" rel="noopener">mobilityhouse.com</a> &middot;
       <a href="https://www.transportenvironment.org/articles/unlocking-vehicle-to-grid-at-scale" target="_blank" rel="noopener">transportenvironment.org</a></li>
-    <li id="s12">CEA: India requires 60.63 GW / 336.4 GWh of storage by 2029&ndash;30, of which 41.65 GW / 208.25 GWh is BESS; 411.4 GWh by 2031&ndash;32.
+    <li id="s12">CEA: India requires 60.63 GW / 336.4 GWh of storage by 2029&ndash;30, of which 41.65 GW / 208.25 GWh is batteries; 411.4 GWh by 2031&ndash;32.
       <a href="https://knnindia.co.in/news/newsdetails/sectors/energy/india-needs-6063-gw-of-energy-storage-capacity-by-2030-cea-report" target="_blank" rel="noopener">knnindia.co.in</a> &middot;
       <a href="https://www.energy-storage.news/india-requires-74gw-411gwh-of-energy-storage-by-2032-according-to-national-electricity-plan/" target="_blank" rel="noopener">energy-storage.news</a> &middot;
       <a href="https://powermin.gov.in/sites/default/files/National_Framework_for_promoting_Energy_Storage_Systems_August_2023.pdf" target="_blank" rel="noopener">powermin.gov.in <span class="tier">(primary)</span></a></li>
-    <li id="s13">India&rsquo;s evening net-load ramp: ~27 GW (2023) &rarr; ~50 GW (2025) &rarr; ~65 GW (2026); grid short on 36 of 61 days at the non-solar peak against 6 of 61 at the solar peak, April&ndash;May 2026; halving one summer evening&rsquo;s ramp requires ~130 GWh of discharge across 1pm&ndash;8pm.
+    <li id="s13">India&rsquo;s evening net-load ramp: ~27 GW (2023) &rarr; ~50 GW (2025) &rarr; ~65 GW (2026); grid short on 36 of 61 days at the non-solar peak against 6 of 61 at the solar peak, April&ndash;May 2026.
       <a href="https://eacpm.gov.in/wp-content/uploads/2026/07/2026.07.03_Working_Paper_Current.pdf" target="_blank" rel="noopener">EAC-PM, &ldquo;The Duck and The Camel&rdquo; <span class="tier">(primary)</span></a> &middot;
       <a href="https://www.saurenergy.com/solar-energy-news/64-gw-midday-drop-highlights-indias-growing-storage-need-12144171" target="_blank" rel="noopener">saurenergy.com</a></li>
-    <li id="s14">India electricity demand growing ~6.4% a year to 2030 (+570 TWh in five years); peak demand 289 GW in FY27 rising toward 388 GW by FY32; data-centre capacity 2.2 GW (2025) to 12 GW (2030).
+    <li id="s14">India electricity demand growing ~6.4% a year to 2030; peak demand 289 GW in FY27 rising toward 388 GW by FY32; data-centre capacity 2.2 GW (2025) to about 12 GW (2030). These are separate metrics on separate horizons and are not additive.
       <a href="https://www.iea.org/reports/electricity-2026/demand" target="_blank" rel="noopener">IEA Electricity 2026 <span class="tier">(primary)</span></a> &middot;
-      <a href="https://www.woodmac.com/press-releases/india-data-centre-capacity-to-reach-12-gw-by-2030/" target="_blank" rel="noopener">woodmac.com</a> &middot;
-      <a href="https://www.business-standard.com/amp/industry/news/ai-data-centres-add-26-3-gw-india-power-demand-fy32-govt-126072900236_1.html" target="_blank" rel="noopener">business-standard.com</a></li>
-    <li id="s15">India EV sales 2025: 2.3 million units, ~8% of new vehicle registrations; two-wheelers 1.28 m (57%), three-wheelers 0.8 m (35%), electric cars ~175,000. Parc ~5.6 million. Two-wheeler packs 3.4&ndash;4 kWh (Ather 450X 3.7, TVS iQube 3.4, Ola S1 Pro 4).
+      <a href="https://www.woodmac.com/press-releases/india-data-centre-capacity-to-reach-12-gw-by-2030/" target="_blank" rel="noopener">woodmac.com</a></li>
+    <li id="s15">India EV sales 2025: 2.3 million units, ~8% of new vehicle registrations; two-wheelers 1.28 m (57%), three-wheelers 0.8 m (35%). Two-wheeler packs 3.4&ndash;4 kWh (Ather 450X 3.7, TVS iQube 3.4, Ola S1 Pro 4); three-wheeler LFP packs in trade listings cluster at ~5&ndash;6.4 kWh. <b>No aggregate figure is given for the energy held in India&rsquo;s existing EV parc</b> &mdash; parc composition by segment is not established in the sources we hold, and multiplying a mixed parc by a two-wheeler pack size would not be defensible.
       <a href="https://ddnews.gov.in/en/indias-ev-sales-cross-2-3-million-in-2025-market-share-rises-to-8/" target="_blank" rel="noopener">ddnews.gov.in <span class="tier">(state broadcaster)</span></a> &middot;
-      <a href="https://www.blackridgeresearch.com/reports/india-electric-vehicles-ev-market-share-size" target="_blank" rel="noopener">blackridgeresearch.com</a> &middot;
       <a href="https://bikeindia.in/specification-comparison-ather-450x-ola-s1-pro-tvs-iqube-s-chetak-and-hero-vida-v1-pro/" target="_blank" rel="noopener">bikeindia.in</a></li>
-    <li id="s16">India passenger vehicles: ~4.7 m sold in FY26 with ~200,000 electric (4.2&ndash;4.5%); FY27 penetration expected ~8% (~400,000 units); market projected to ~6.0 m units by 2030; government target 30% EV penetration of PV sales by FY2030; S&amp;P Global Mobility projects ~1.33 m units / ~20% by 2030.
-      <a href="https://www.autocarpro.in/news/indias-passenger-ev-market-set-for-breakout-year-sales-could-reach-400000-units-in-fy27-132842" target="_blank" rel="noopener">autocarpro.in</a> &middot;
+    <li id="s16">India passenger vehicles: ~4.7 m sold in FY26 with 198,224 electric &mdash; 4.3% penetration, up from 2.7% in FY25 and 84% growth year on year. Tata Motors, JSW MG Motor and Mahindra hold about 87.3% of electric car sales between them, Tata at 39.2%. Market projected to ~6.0 m units by 2030; government target 30% EV penetration by FY2030; S&amp;P Global Mobility projects ~20%.
+      <a href="https://www.autocarpro.in/news/electric-car-sales-jump-84-in-fy26-tata-mg-maintain-lead-131930" target="_blank" rel="noopener">autocarpro.in</a> &middot;
+      <a href="https://www.pninews.com/tata-motors-jsw-mg-motor-and-mahindra-hold-ev-crown-capture-87-market-share-in-fy26/" target="_blank" rel="noopener">pninews.com</a> &middot;
       <a href="https://www.spglobal.com/automotive-insights/en/blogs/2025/03/india-ev-market-trends-future" target="_blank" rel="noopener">spglobal.com</a></li>
-    <li id="s17">India V2G regulatory position: V2L and limited vehicle-to-home are permitted where vehicle and charger support them; grid export remains under development. The Ministry of Power asked the CEA to frame reverse-charging guidelines on 20 March 2023, a committee was constituted 11 April 2023, and the India Electricity Grid Code must be updated to allow bidirectional flow. KSEB/IIT Bombay and BESCOM pilots under way.
+    <li id="s17">India V2G regulatory position: V2L and limited vehicle-to-home are permitted where vehicle and charger support them; grid export remains under development. The Ministry of Power asked the CEA to frame reverse-charging guidelines on 20 March 2023, a committee was constituted on 11 April 2023, and the India Electricity Grid Code must be updated to allow bidirectional flow. KSEB/IIT Bombay and BESCOM pilots are under way.
       <a href="https://cea.nic.in/wp-content/uploads/gm_and_npc/2023/11/V2G_Report.pdf" target="_blank" rel="noopener">CEA V2G report <span class="tier">(primary)</span></a> &middot;
       <a href="https://vasudha-foundation.org/why-vehicle-to-grid-v2g-is-the-missing-puzzle-india-must-solve-now/" target="_blank" rel="noopener">vasudha-foundation.org</a></li>
+    <li id="s18">India backup-power markets: inverter-battery market valued at ~$1.02bn in 2025; diesel generator market ~$1.33bn in 2026, with standby/backup 60.25% of it in 2025 and residential the fastest-growing end-use at 8.98% CAGR.
+      <a href="https://www.researchandmarkets.com/report/india-inverter-battery-market" target="_blank" rel="noopener">researchandmarkets.com <span class="tier">(market research)</span></a> &middot;
+      <a href="https://www.mordorintelligence.com/industry-reports/india-diesel-generator-market" target="_blank" rel="noopener">mordorintelligence.com <span class="tier">(market research)</span></a></li>
+    <li id="s19">Vehicle-to-home islanding: V2H operates behind the meter, creating an intentional island via an automatic transfer switch to prevent backfeeding, with anti-islanding protection a mandatory safety requirement (UL 9741, IEEE 1547) so that systems disconnect within milliseconds of grid failure. The bidirectional charger must then form its own supply. Standards cited are US practice; the engineering principle is general, and the point stands that export capability alone does not deliver outage backup.
+      <a href="https://chargedevs.com/sep-2026-session/how-to-test-for-anti-islanding-in-ev-chargers-obcs-and-v2g-systems/" target="_blank" rel="noopener">chargedevs.com</a> &middot;
+      <a href="https://industrialcontrolacademy.com/vehicle-to-home-v2h-ev-home-backup/" target="_blank" rel="noopener">industrialcontrolacademy.com <span class="tier">(trade)</span></a></li>
   </ol>
   <p class="fnote" style="margin-top:18px;">Source tiers are marked where not primary. Market-research and trade
-    figures are used for market sizing only, never for arithmetic that carries an argument. Two claims are
-    stated as absences rather than estimated: no bidirectional public on-street charging programme was found in
-    the UK, and three of the four named European V2G programmes publish no vehicle count. Both would be
-    overturned by a single disclosure, and both are load-bearing &mdash; which is why they are flagged here
-    rather than buried.</p>
+    figures are used for market sizing only, never for arithmetic that carries an argument. Two load-bearing
+    claims are stated as absences rather than estimated: no bidirectional public on-street charging programme
+    was found in the UK, and three of the four European V2G programmes publish no vehicle count. Both would be
+    overturned by a single disclosure.</p>
   </div></div>
 </section>
 
@@ -684,9 +631,9 @@
 
 <script>
 (function(){
-  /* ---------- section nav ---------- */
-  var SECS=[['sec-chain','The chain'],['sec-uk','Britain'],['sec-eu','Europe'],['sec-india','India'],
-            ['sec-compare','Side by side'],['sec-watch','What to watch'],['sec-sources','Sources']];
+  var SECS=[['sec-uk','Britain'],['sec-eu','Europe'],['sec-india','India'],
+            ['sec-compare','Side by side'],['sec-watch','What would change it'],
+            ['sec-end','In closing'],['sec-sources','Sources']];
   var nav=document.getElementById('secnav');
   SECS.forEach(function(s){
     var a=document.createElement('a'); a.href='#'+s[0]; a.textContent=s[1];
@@ -702,45 +649,6 @@
   },{rootMargin:'-25% 0px -65% 0px'});
   SECS.forEach(function(s){ var el=document.getElementById(s[0]); if(el) spy.observe(el); });
 
-  /* ---------- India: car-fleet arithmetic ---------- */
-  var BESS_GWH  = 208;   // CEA battery requirement by 2029-30
-  var RAMP_GWH  = 130;   // to halve one summer evening ramp, 1pm-8pm
-  var PARC_GWH  = 21;    // entire current 2W/3W-dominated EV parc, nameplate
-  var DEPTH     = 0.60;  // usable depth for the deliverable figure
-  var S={share:document.getElementById('c-share'),pack:document.getElementById('c-pack'),
-         mkt:document.getElementById('c-mkt'),avail:document.getElementById('c-avail')};
-
-  function run(){
-    var share=+S.share.value/100, pack=+S.pack.value,
-        mkt=+S.mkt.value, avail=+S.avail.value/100;
-
-    document.getElementById('o-share').textContent=S.share.value+'%';
-    document.getElementById('o-pack').textContent=pack+' kWh';
-    document.getElementById('o-mkt').textContent=mkt.toFixed(1)+' m';
-    document.getElementById('o-avail').textContent=S.avail.value+'%';
-
-    var cars = mkt*1e6*share;            // electric cars sold in the year
-    var gwh  = cars*pack/1e6;            // GWh of new battery, nameplate
-    var yrs  = BESS_GWH/gwh;
-    var mult = gwh/PARC_GWH;
-    var deliver = gwh*avail*DEPTH;
-    var pct = deliver/RAMP_GWH*100;
-
-    document.getElementById('v-yr').textContent = gwh.toFixed(0)+' GWh';
-    document.getElementById('n-yr').innerHTML =
-      '<b>'+(cars/1e6).toFixed(2)+' m</b> electric cars &mdash; <b>'+mult.toFixed(1)+
-      '×</b> the battery in India&rsquo;s entire current EV parc (~21 GWh), added every year.';
-
-    document.getElementById('v-eq').textContent = yrs.toFixed(1);
-    document.getElementById('v-ramp').textContent = pct<10?pct.toFixed(1)+'%':pct.toFixed(0)+'%';
-    document.getElementById('n-ramp').innerHTML =
-      'One year&rsquo;s cars at '+S.avail.value+'% availability and 60% depth &mdash; <b>'+
-      deliver.toFixed(1)+' GWh</b> against the ~130 GWh a single evening needs.';
-  }
-  Object.keys(S).forEach(function(k){ S[k].addEventListener('input',run); });
-  run();
-
-  /* ---------- reveal ---------- */
   var els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); }
   else{
