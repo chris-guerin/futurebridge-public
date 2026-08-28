@@ -12,7 +12,7 @@ CLIENTS='volkswagen|[^a-z]vwg[^a-z]|audi|porsche|skoda|bentley|lamborghini|scani
 # from public, cited sources. Adding a file here is a deliberate act, recorded
 # in git history. It waives ONLY the client-name check -- the contact-data and
 # LinkedIn checks below still run on every file, without exception.
-REVIEWED='v2g-europe.html'
+REVIEWED='v2g-europe.html v2g-three-markets.html'
 
 for f in $files; do
   [ -f "$f" ] || continue
